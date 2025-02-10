@@ -2,8 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  font-family: 'Ubuntu';
+* {
+  scroll-behavior: smooth;
+  transition: 300ms;
+  /* font-family: 'Ubuntu'; */
+}
+
+*::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;
 }
 
 input:focus {
@@ -13,24 +21,6 @@ input:focus {
 
 input {
   outline: none !important;
-}
-
-* {
-  scroll-behavior: smooth;
-  transition: 300ms;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-body {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
 }
 
 @layer base {

@@ -22,7 +22,7 @@ import SidePanel from '@/components/SidePanel.vue';
 <template>
   <ClientOnly>
     <div class="flex flex-col h-screen overflow-hidden">
-      <div class="flex flex-col md:w-[900px] w-full mx-auto">
+      <div class="flex flex-col md:w-[800px] w-full mx-auto">
         <NavBar/>
         <NuxtPage/>
       </div>

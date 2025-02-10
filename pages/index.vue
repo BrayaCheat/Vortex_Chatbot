@@ -9,13 +9,11 @@
         <div v-for="item, index in memoryStore.memoryList" :key="index" class="my-6">
 
           <!-- chat date -->
-          <Separator v-if="index % 2 === 0" :label="item.date" class="mb-6" />
+          <Separator v-if="index % 8 === 0" :label="'New Message'" class="mb-6" />
 
           <!-- message box -->
-          <div :class="['flex', item.role === 'user' ? 'justify-end' : 'justify-stretch']">
-            <ChatBoard :data="item" />
-          </div>
-
+          <ChatBoard :data="item" />
+          
         </div>
         <Loading v-if="isLoading" />
       </div>
