@@ -1,6 +1,5 @@
 <template>
   <div :class="`flex flex-col ${chatStyle} flex-1 gap-3 pb-6`">
-    <UserIcon :data="props.data" />
     <div :class="`${chatBoxStyle} response-box rounded-xl`" v-html="message" />
   </div>
 </template>
@@ -29,7 +28,7 @@ const message = computed(() => {
   return marked(text)
 })
 const chatStyle = computed(() => props?.data?.role === 'ai' ? 'items-start' : 'items-end')
-const chatBoxStyle = computed(() => props?.data?.role === 'ai' ? 'whitespace-pre-line' : 'whitespace-normal bg-primary-foreground p-3')
+const chatBoxStyle = computed(() => props?.data?.role === 'ai' ? 'whitespace-pre-line text-muted-foreground' : 'whitespace-normal bg-primary text-primary px-3 py-1.5')
 
 //life cycle
 onMounted(() => {
@@ -81,9 +80,21 @@ onUpdated(() => {
   font-size: 16px;
   font-weight: 700;
   /* padding: 6px; */
-  background-color: hsl(var(--primary-foreground));
+  margin-right: 6px;
+  /* background-color: hsl(var(--primary-foreground)); */
   width: fit-content;
   border-radius: 10px;
+}
+
+::v-deep .response-box ul li strong::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: hsl(var(--primary));
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
 ::v-deep .response-box ul li code {
@@ -95,10 +106,26 @@ onUpdated(() => {
   font-size: 14px;
 }
 
-::v-deep .response-box ul li ul li strong {
+::v-deep .response-box ul li strong {
   color: hsl(var(--primary));
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
+  /* padding: 6px; */
+  margin-right: 6px;
+  /* background-color: hsl(var(--primary-foreground)); */
+  width: fit-content;
+  border-radius: 10px;
+}
+
+::v-deep .response-box ul li strong::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: hsl(var(--primary));
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
 ::v-deep .response-box pre {

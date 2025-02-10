@@ -28,7 +28,9 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Virgo - BRAINSTORM YOUR IDEA'
+      charset: 'utf-8',
+      title: 'Virgo - BRAINSTORM YOUR IDEA',
+      viewport: 'width=device-width, user-scalable=no, initial-scale=0'
     }
   },
   devServer: {
