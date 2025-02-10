@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="onSubmitPrompt" class="relative">
-    <Input type="text" placeholder="Enter a prompt for OHLALA" v-model.trim.lazy="prompt" required tabindex="0"
-      autofocus/>
+    <Input type="text" placeholder="Ask Virgo" v-model.trim.lazy="prompt" required tabindex="0"
+      class="text-[16px]"/>
     <Button v-if="isShowSubmitButton" type="submit" class="absolute right-0 inset-y-6 text-muted-foreground px-3"
       variant="ghost" size="lg">
       <component :is="SendHorizonal" />

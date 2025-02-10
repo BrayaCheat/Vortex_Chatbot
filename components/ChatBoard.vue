@@ -48,6 +48,7 @@ onUpdated(() => {
 <style scoped>
 .response-box {
   /* background-color: hsl(var(--primary-foreground)); */
+  overflow: hidden;
 }
 
 ::v-deep .response-box p {
@@ -77,9 +78,9 @@ onUpdated(() => {
 
 ::v-deep .response-box ul li strong {
   color: hsl(var(--primary));
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  padding: 6px;
+  /* padding: 6px; */
   background-color: hsl(var(--primary-foreground));
   width: fit-content;
   border-radius: 10px;
@@ -104,6 +105,7 @@ onUpdated(() => {
   padding: 12px;
   border-radius: 5px;
   overflow-x: auto;
+  width: 800px;
 }
 
 ::v-deep .response-box pre code {

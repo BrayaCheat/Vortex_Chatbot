@@ -25,5 +25,13 @@ export default defineNuxtConfig({
     prefetch: true,
     preload: true,
     useStylesheet: true
+  },
+  app: {
+    head: {
+      title: 'Virgo - BRAINSTORM YOUR IDEA'
+    }
+  },
+  devServer: {
+    host: '0.0.0.0'
   }
 })

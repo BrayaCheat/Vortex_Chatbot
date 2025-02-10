@@ -13,7 +13,7 @@
 
           <!-- message box -->
           <ChatBoard :data="item" />
-          
+
         </div>
         <Loading v-if="isLoading" />
       </div>

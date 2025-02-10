@@ -5,7 +5,7 @@
 * {
   scroll-behavior: smooth;
   transition: 300ms;
-  /* font-family: 'Ubuntu'; */
+  font-family: 'Ubuntu';
 }
 
 *::-webkit-scrollbar {
