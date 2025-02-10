@@ -1,4 +1,3 @@
-
 // // import 'prismjs/plugins/autoloader/prism-autoloader.js'
 // // import 'prismjs/components/prism-core.js';
 // import Prism from 'prismjs'
@@ -19,79 +18,69 @@
 // import 'prismjs/components/prism-sql';
 // import 'prismjs/components/prism-php.js';
 
+export const formattedText = (text: string) => {
+  if (!text) return "";
 
-// export const formattedText = (text: string) => {
-//   if (!text) return "";
+  return (
+    text
+      // Code Blocks (```code```) - Add language label and format code block
+      // .replace(/```(\w+)\s([\s\S]*?)```/g, (match, language, codeContent) => {
+      //   const mapLanguage = language ? language : 'javascript'
+      //   return `<code class="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none">
+      //             ${language?.toUpperCase()?.trim()}
+      //           </code>
+      //           <pre class="text-wrap p-3 rounded-xl bg-secondary text-primary flex items-center">
+      //             <code class="">
+      //               ${Prism.highlight(codeContent,Prism.languages[mapLanguage],mapLanguage)?.trim()}
+      //             </code>
+      //           </pre>`;
+      // })
 
-//   return (
-//     text
-//       // Code Blocks (```code```) - Add language label and format code block
-//       .replace(/```(\w+)\s([\s\S]*?)```/g, (match, language, codeContent) => {
-//         const mapLanguage = language ? language : 'javascript'
-//         return `<code class="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none">
-//                   ${language?.toUpperCase()?.trim()}
-//                 </code>
-//                 <pre class="text-wrap p-3 rounded-xl bg-secondary text-primary flex items-center">
-//                   <code class="">
-//                     ${Prism.highlight(codeContent,Prism.languages[mapLanguage],mapLanguage)?.trim()}
-//                   </code>
-//                 </pre>`;
-//       })
+      // Break comment lines after `//`
+      // .replace(
+      //   /<code class="text-green-600">([\s\S]*?)<\/code>/g,
+      //   (match, codeContent) => {
+      //     const modifiedCode = codeContent
+      //       .replace(/\/\/(.*?)(?=\n|$)/g, (match, comment) => `// ${comment.replace(/ /g, "&nbsp;")}<br>`)
+      //       // .replace(/\n\*/g, "\n"); // Remove '*' immediately after '\n'
 
+      //     return `<code class="text-green-600">${modifiedCode}</code>`;
+      //   }
+      // )
 
+      // Headings (**Title**)
+      .replace(
+        /\*\*(.*?)\*\*/g,
+        '<h1 class="text-[20px] font-bold pb-6">$1</h1>'
+      )
 
-//       // Break comment lines after `//`
-//       // .replace(
-//       //   /<code class="text-green-600">([\s\S]*?)<\/code>/g,
-//       //   (match, codeContent) => {
-//       //     const modifiedCode = codeContent
-//       //       .replace(/\/\/(.*?)(?=\n|$)/g, (match, comment) => `// ${comment.replace(/ /g, "&nbsp;")}<br>`)
-//       //       // .replace(/\n\*/g, "\n"); // Remove '*' immediately after '\n'
+      // // Headings (**Title**)
+      .replace(
+        /\*\s\*\*(.*?)\*\*/g,
+        '<h1 class="text-[20px] font-bold pb-6">$1</h1>'
+      )
 
-//       //     return `<code class="text-green-600">${modifiedCode}</code>`;
-//       //   }
-//       // )
+      // Main Headings (Top-level titles)
+      // .replace(
+      //   /\*(.*?)\*/g
+      // )
 
-//       // Headings (**Title**)
-//       // .replace(
-//       //   /\*\*(.*?)\*\*/g,
-//       //   '<h1 class="text-[20px] font-bold pb-6">$1</h1>'
-//       // )
+      // // Paragraph (*Text*)
+      .replace(
+        /^\*\s*(.*)$/gm,
+        '<p class="text-muted-foreground text-[14px] list-decimal">$1</p>'
+      )
 
-//       // // Headings (**Title**)
-//       // .replace(
-//       //   /\*\s\*\*(.*?)\*\*/g,
-//       //   '<h1 class="text-[20px] font-bold pb-6">$1</h1>'
-//       )
+      // // Replace "" to *
+      .replace(/\*;$/, "")
 
-//       // Main Headings (Top-level titles)
+      // // Bold
+      .replace(/\*(.*?)\*/g, "<p class='font-bold text-destructive'>$1</p>")
 
-//       // .replace(
-//       //   /\*(.*?)\*/g
-//       // )
+      // // Wrap lists with <ul> (ensure lists are properly wrapped)
+      .replace(/(<li>.*?<\/li>)+/gs, "<ul>$&</ul>")
 
-//       // // Paragraph (*Text*)
-//       // .replace(
-//       //   /^\*\s*(.*)$/gm,
-//       //   '<p class="text-muted-foreground text-[14px] list-decimal">$1</p>'
-//       // )
-
-//       // // Replace "" to *
-//       // .replace(
-//       //   /\*;$/, ""
-//       // )
-
-//       // // Bold
-//       // .replace(
-//       //   /\*(.*?)\*/g, "<p class='font-bold text-destructive'>$1</p>"
-//       // )
-
-
-
-//     // // Wrap lists with <ul> (ensure lists are properly wrapped)
-//     // .replace(/(<li>.*?<\/li>)+/gs, "<ul>$&</ul>")
-
-//     // // Preserve line breaks as <br> for readability
-//     // .replace(/\n/g, "<br>")
-//   );
-// };
+      // // Preserve line breaks as <br> for readability
+      .replace(/\n/g, "<br>")
+  );
+};
