@@ -51,13 +51,13 @@ export const formattedText = (text: string) => {
       // Headings (**Title**)
       .replace(
         /\*\*(.*?)\*\*/g,
-        '<h1 class="text-[20px] font-bold pb-6">$1</h1>'
+        '<h1 class="text-[14px] font-bold pb-6">$1</h1>'
       )
 
       // // Headings (**Title**)
       .replace(
         /\*\s\*\*(.*?)\*\*/g,
-        '<h1 class="text-[20px] font-bold pb-6">$1</h1>'
+        '<h1 class="text-[14px] font-bold pb-6">$1</h1>'
       )
 
       // Main Headings (Top-level titles)

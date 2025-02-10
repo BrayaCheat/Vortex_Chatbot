@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <ClientOnly>
     <div class="flex flex-col h-screen overflow-hidden">
       <div class="flex flex-1">
@@ -17,4 +17,19 @@
 <script setup>
 import NavBar from '@/components/NavBar.vue';
 import SidePanel from '@/components/SidePanel.vue';
+</script> -->
+
+<template>
+  <ClientOnly>
+    <div class="flex flex-col h-screen overflow-hidden">
+      <div class="flex flex-col md:w-[900px] w-full mx-auto">
+        <NavBar/>
+        <NuxtPage/>
+      </div>
+    </div>
+  </ClientOnly>
+</template>
+
+<script setup>
+  import NavBar from '@/components/NavBar.vue';
 </script>

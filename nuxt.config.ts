@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
+  ssr: false,
   pages: true,
   devtools: { enabled: false },
   modules: [
@@ -9,11 +10,20 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
+    '@nuxtjs/google-fonts'
   ],
   runtimeConfig: {
     GEMINI_KEY: process.env.GEMINI_KEY,
     GEMINI_ENDPOINT: process.env.GEMINI_ENDPOINT,
     GEMINI_MODEL: process.env.GEMINI_MODEL
   },
-  ssr: false
+  googleFonts: {
+    families: {
+      Ubuntu: [400,700]
+    },
+    display: 'swap',
+    prefetch: true,
+    preload: true,
+    useStylesheet: true
+  }
 })

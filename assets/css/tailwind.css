@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  font-family: 'Ubuntu';
+}
+
 input:focus {
   outline: none !important;
   box-shadow: none !important;
