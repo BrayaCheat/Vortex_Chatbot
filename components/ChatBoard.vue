@@ -3,7 +3,8 @@
     <Avatar class="size-[40px]">
       <AvatarImage :src="profile" class="object-cover max-w-full min-w-full" />
     </Avatar>
-    <Card class="text-muted-foreground pl-3 pr-6 py-2 text-[14px] border-none shadow-none flex flex-col gap-3 max-w-[600px] min-w-[600px]">
+    <Card
+      class="text-muted-foreground pl-3 pr-6 py-2 border-none shadow-none flex flex-col gap-3 max-w-[800px] min-w-[800px]">
       <!-- <span v-if="role === 'ai'">OHLELE RESPONSE</span> -->
       <div v-html="message" />
     </Card>
@@ -27,13 +28,7 @@ marked.options({
     const validLang = hljs.getLanguage(lang) ? lang : "plaintext";
     return hljs.highlight(code, { language: validLang }).value;
   }
-})
-
-const renderer = new marked.Renderer()
-
-const customStyle = () => {
-  renderer?.heading
-}
+});
 
 const props = defineProps({
   data: {
@@ -48,15 +43,22 @@ console.log("props: ", props.data.prompt)
 const profile = computed(() => props?.data?.role === 'ai' ? '/images/delulu.jpg' : '/images/user.jpg')
 const message = computed(() => {
   const text = props?.data?.prompt || 'Error props'
-  if(typeof text !== 'string'){
+  if (typeof text !== 'string') {
     return 'Error props'
   }
-  return marked(text)
+  return marked.TextRenderer(text)
 })
 const role = computed(() => props?.data?.role || '')
 
+
 //life cycle
 onMounted(() => {
+  nextTick(() => {
+    hljs.highlightAll()
+  })
+})
+
+onUpdated(() => {
   nextTick(() => {
     hljs.highlightAll()
   })

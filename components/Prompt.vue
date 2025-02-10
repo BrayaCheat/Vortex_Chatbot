@@ -2,7 +2,7 @@
   <form @submit.prevent="onSubmitPrompt" class="relative">
     <Input type="text" placeholder="Enter a prompt for OHLALA" v-model.trim.lazy="prompt" required tabindex="0"
       autofocus/>
-    <Button v-if="isShowSubmitButton" type="submit" class="absolute right-0 inset-y-3 text-muted-foreground px-3"
+    <Button v-if="isShowSubmitButton" type="submit" class="absolute right-0 inset-y-6 text-muted-foreground px-3"
       variant="ghost" size="lg">
       <component :is="SendHorizonal" />
     </Button>

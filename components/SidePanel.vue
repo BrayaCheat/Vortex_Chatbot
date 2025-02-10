@@ -1,45 +1,38 @@
 <template>
-  <aside
-    :class="`${isSidePanelOpen ? 'w-[60px]' : 'w-[200px]'} flex flex-col items-start border-e py-6 ps-1.5 overflow-hidden`">
-    <div class="flex-1 flex flex-col items-start gap-3">
+  <aside :class="`${isSidePanelOpen ? 'w-[60px] items-center' : 'w-[300px] items-start'} flex flex-col border-e p-3 overflow-hidden`">
+    <div class="flex-1 flex flex-col items-center gap-9">
 
-      <!-- <Button @click="toggleSidePanel" variant="ghost" class="flex items-center gap-3">
-          <component :is="isSidePanelOpen ? PanelRightClose : PanelLeftClose" class="text-muted-foreground" />
-          <span>OHLELE</span>
-        </Button> -->
+      <!-- <component
+        :is="isSidePanelOpen ? PanelRightClose : PanelLeftClose"
+        class="text-muted-foreground cursor-pointer hover:text-secondary"
+        @click="toggleSidePanel"
+      /> -->
 
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger as-child>
-            <Button @click="toggleDark" variant="ghost">
-              <component v-if="isDark" :is="Sun" class="text-muted-foreground" />
-              <component v-else :is="Moon" class="text-muted-foreground" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent class="text-[12px] text-muted-foreground shadow-none">
-            <p>Theme toggle</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <component
+        v-if="isDark"
+        :is="Sun"
+        class="text-muted-foreground cursor-pointer hover:text-secondary"
+        @click="toggleDark"
+      />
+      <component
+        v-else
+        :is="Moon"
+        class="text-muted-foreground cursor-pointer hover:text-secondary"
+        @click="toggleDark"
+      />
 
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger as-child>
-            <Button @click="onClearMemory" variant="ghost">
-              <component :is="Trash" class="text-destructive" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent class="text-[12px] text-muted-foreground shadow-none">
-            <p>Clear chat</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <component
+        @click="onClearMemory"
+        :is="Trash"
+        class="text-destructive cursor-pointer hover:text-secondary"
+      />
     </div>
 
-    <div>
-      <Button variant="ghost">
-        <component :is="Settings" class="text-muted-foreground" />
-      </Button>
+    <div class="flex-1 flex flex-col justify-end">
+      <component
+        :is="Settings"
+        class="text-muted-foreground cursor-pointer hover:text-secondary"
+      />
     </div>
   </aside>
 </template>
@@ -55,6 +48,7 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from '@/components/ui/tooltip'
+import HistoryCard from '@/components/HistoryCard.vue';
 
 //state
 const isDark = useDark()

@@ -3,10 +3,10 @@
     <h1>OHLALA</h1>
 
     <div class="flex items-center gap-3">
-      <Avatar>
+      <!-- <Avatar>
         <AvatarImage src="https://github.com/radix-vue.png" alt="@radix-vue" />
         <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
+      </Avatar> -->
     </div>
 
   </nav>

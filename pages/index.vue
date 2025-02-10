@@ -35,10 +35,12 @@ import Greeting from '@/components/Greeting.vue';
 import { v4 as uuidv4 } from 'uuid'
 import { useMemoryStore } from '@/store/memory';
 import { Separator } from '@/components/ui/separator';
+import { useHistoryStore } from '@/store/history';
 
 const isLoading = ref(false)
 const chatContainer = ref(null)
 const memoryStore = useMemoryStore()
+const historyStore = useHistoryStore()
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
@@ -46,6 +48,7 @@ const chatDate = computed(() => new Date().toLocaleString())
 //function
 const onRequest = async (payload) => {
   try {
+    var recent = {}
     isLoading.value = true
     const userMessage = {
       userId: uuidv4(),
@@ -54,6 +57,7 @@ const onRequest = async (payload) => {
       date: chatDate.value
     }
     memoryStore.setMemory(userMessage)
+    recent = {user: userMessage}
     const response = await axios.post(`/api/prompt`, userMessage, { timeout: 30000 })
     const data = response?.data?.data
     // console.log("data: ", data)
@@ -66,6 +70,7 @@ const onRequest = async (payload) => {
         date: chatDate.value
       }
       memoryStore.setMemory(aiMessage)
+      recent = {ai: aiMessage}
     } else {
       const errorMessage = {
         userId: uuidv4(),
@@ -89,6 +94,7 @@ const onRequest = async (payload) => {
     }
     memoryStore.setMemory(errorMessage)
   } finally {
+    historyStore.setHistory(recent)
     isLoading.value = false
   }
 }
