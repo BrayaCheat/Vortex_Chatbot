@@ -2,10 +2,10 @@
   <form @submit.prevent="onSubmitPrompt" class="relative pb-10 mx-3">
     <Input
       type="text"
-      :placeholder="placeholder"
       v-model.trim.lazy="prompt"
+      :placeholder="placeholder"
       required
-      class="text-[16px] rounded-[10px]"
+      class="rounded-[10px] placeholder:text-[14px]"
     />
     <Button
       v-if="isShowSubmitButton"

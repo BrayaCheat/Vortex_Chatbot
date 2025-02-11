@@ -16,6 +16,7 @@
           <SheetDescription class="flex-1 flex flex-col gap-3">
             <ThemeToggle/>
             <ClearChat/>
+            <DonateMe/>
           </SheetDescription>
           <SignOut/>
         </SheetContent>
@@ -28,6 +29,7 @@
 <script setup>
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import ClearChat from '@/components/ClearChat.vue';
+import DonateMe from '@/components/DonateMe.vue';
 import SignOut from '@/components/SignOut.vue';
 import { Button } from '@/components/ui/button';
 import {

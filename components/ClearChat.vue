@@ -11,14 +11,13 @@
       <DialogDescription>
         <div class="flex items-center justify-end gap-3">
           <DialogClose as-child>
-            <Button variant="ghost">Cancel</Button>
+            <Button id="close-btn" variant="ghost">Cancel</Button>
           </DialogClose>
           <Button variant="destructive" @click="onClearChat">Remove</Button>
         </div>
       </DialogDescription>
     </DialogContent>
   </Dialog>
-
 </template>
 
 <script setup>
@@ -32,8 +31,12 @@ import DialogClose from './ui/dialog/DialogClose.vue';
 const memoryStore = useMemoryStore()
 
 //function
+const onCloseModal = () => {
+  const closeBtn = document.getElementById('close-btn')
+  closeBtn?.click()
+}
 const onClearChat = () => {
   memoryStore.clearMemory()
-  window.location.reload()
+  onCloseModal()
 }
 </script>

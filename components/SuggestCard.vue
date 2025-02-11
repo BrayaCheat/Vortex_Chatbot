@@ -9,7 +9,7 @@
   />
 
   <!-- Dynamic width for title -->
-  <h1 class="text-[13px] duration-0 truncate md:w-full w-[200px]">
+  <h1 class="text-[14px] duration-0 truncate md:w-full w-[200px]">
     {{ suggestion.title }}
   </h1>
 

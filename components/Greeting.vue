@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col items-center justify-center flex-1 h-[70vh] gap-3">
+  <div class="flex flex-col items-center justify-center flex-1 h-[50vh] gap-3">
     <component :is="Brain" class="size-20 text-muted-foreground animate-pulse"/>
-    <span class="text-muted-foreground text-center text-wrap px-3">{{ message }}</span>
+    <span class="text-muted-foreground text-center text-wrap px-3 md:w-[570px]">{{ message }}</span>
   </div>
 </template>
 
