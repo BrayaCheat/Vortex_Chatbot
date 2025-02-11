@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSubmitPrompt" class="relative pb-10 mx-3">
+  <form @submit.prevent="onSubmitPrompt" class="relative pb-12 pt-2 mx-3">
     <Input
       type="text"
       v-model.trim.lazy="prompt"

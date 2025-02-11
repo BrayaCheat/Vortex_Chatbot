@@ -1,12 +1,12 @@
 <template>
-  <nav class="flex items-center px-3 md:py-6 py-3">
-    <div class="flex items-center gap-3">
+  <nav class="flex items-center px-3 md:py-6 py-3 relative">
+    <div class="flex items-center gap-3 absolute">
       <Sheet>
         <SheetTrigger as-child>
           <component :is="AlignJustify" class="text-muted-foreground size-5"/>
         </SheetTrigger>
         <SheetContent class="flex flex-col" side="left">
-          <SheetTitle>BRAYA-CHATBOT</SheetTitle>
+          <SheetTitle id="title">BRAYA-CHATBOT</SheetTitle>
           <SheetDescription class="flex-1 flex flex-col gap-3">
             <!-- <ThemeToggle/> -->
             <ClearChat/>
@@ -17,7 +17,7 @@
       </Sheet>
     </div>
     <div class="flex-1 text-center">
-        <h1 class="font-semibold text-[18px]">BRAYA-CHATBOT</h1>
+        <h1 class="font-semibold text-[18px]" id="title">BRAYA-CHATBOT</h1>
     </div>
   </nav>
 </template>
@@ -40,3 +40,9 @@ import {
 } from '@/components/ui/sheet'
 import { AlignJustify } from 'lucide-vue-next';
 </script>
+
+<style scoped>
+  #title{
+    font-family: 'JetBrains Mono', serif;
+  }
+</style>

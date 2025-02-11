@@ -5,8 +5,7 @@
 * {
   scroll-behavior: smooth;
   transition: 300ms;
-  font-family: 'JetBrains Mono', serif;
-  letter-spacing: 1px;
+  /* font-family: 'JetBrains Mono', serif; */
 }
 
 *::-webkit-scrollbar {
