@@ -1,17 +1,11 @@
 <template>
-  <nav class="flex items-center justify-between px-3 py-6">
-    <div>
-        <h1 class="font-semibold text-[16px]">BRAYA-CHATBOT</h1>
-    </div>
-
+  <nav class="flex items-center px-3 md:py-6 py-3">
     <div class="flex items-center gap-3">
       <Sheet>
         <SheetTrigger as-child>
-          <Button class="text-muted-foreground" variant="outline">
-            <component :is="Menu"/>
-          </Button>
+          <component :is="AlignJustify" class="text-muted-foreground size-5"/>
         </SheetTrigger>
-        <SheetContent class="flex flex-col">
+        <SheetContent class="flex flex-col" side="left">
           <SheetTitle>BRAYA-CHATBOT</SheetTitle>
           <SheetDescription class="flex-1 flex flex-col gap-3">
             <!-- <ThemeToggle/> -->
@@ -22,7 +16,9 @@
         </SheetContent>
       </Sheet>
     </div>
-
+    <div class="flex-1 text-center">
+        <h1 class="font-semibold text-[18px]">BRAYA-CHATBOT</h1>
+    </div>
   </nav>
 </template>
 
@@ -42,5 +38,5 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { Menu, Brain } from 'lucide-vue-next';
+import { AlignJustify } from 'lucide-vue-next';
 </script>

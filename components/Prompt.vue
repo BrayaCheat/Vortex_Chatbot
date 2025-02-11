@@ -6,7 +6,6 @@
       :placeholder="placeholder"
       required
       class="rounded-[10px] placeholder:text-[14px] bg-primary-foreground"
-      size="sm"
       id="input-field"
     />
     <Button
