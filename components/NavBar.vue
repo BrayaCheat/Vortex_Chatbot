@@ -7,18 +7,18 @@
     <div class="flex items-center gap-3">
       <Sheet>
         <SheetTrigger as-child>
-          <Button class="text-primary-foreground">
+          <Button class="text-muted-foreground" variant="outline">
             <component :is="Menu"/>
           </Button>
         </SheetTrigger>
         <SheetContent class="flex flex-col">
           <SheetTitle>BRAYA-CHATBOT</SheetTitle>
           <SheetDescription class="flex-1 flex flex-col gap-3">
-            <ThemeToggle/>
+            <!-- <ThemeToggle/> -->
             <ClearChat/>
             <DonateMe/>
           </SheetDescription>
-          <SignOut/>
+          <!-- <SignOut/> -->
         </SheetContent>
       </Sheet>
     </div>

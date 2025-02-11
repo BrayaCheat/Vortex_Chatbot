@@ -5,7 +5,9 @@
       v-model.trim.lazy="prompt"
       :placeholder="placeholder"
       required
-      class="rounded-[10px] placeholder:text-[14px]"
+      class="rounded-[10px] placeholder:text-[14px] bg-primary-foreground"
+      size="sm"
+      id="input-field"
     />
     <Button
       v-if="isShowSubmitButton"
@@ -33,6 +35,8 @@ const isShowSubmitButton = computed(() => prompt.value.length > 0 && !isLoading.
 
 //function
 const onSubmitPrompt = () => {
+  const input = document.querySelector('#input-field')
+  input?.blur()
   if(isLoading.value) return
   emits('onRequest', prompt.value)
   prompt.value = ''
