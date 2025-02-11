@@ -5,7 +5,7 @@
       :placeholder="placeholder"
       v-model.trim.lazy="prompt"
       required
-      class="text-[16px]"
+      class="text-[16px] rounded-[10px]"
     />
     <Button
       v-if="isShowSubmitButton"
@@ -25,7 +25,7 @@ import { useMemoryStore } from '@/store/memory';
 const prompt = ref('')
 const emits = defineEmits(['onRequest'])
 const memoryStore = useMemoryStore()
-const placeholder = ref("Describe the problem you're trying to solve")
+const placeholder = ref("Ask Braya")
 
 //computed
 const isLoading = computed(() => memoryStore?.isLoading || false)

@@ -1,18 +1,45 @@
 <template>
   <nav class="flex items-center justify-between px-3 py-6">
     <div>
-        <h1 class="font-semibold text-[16px]">Braya - CHATBOT</h1>
+        <h1 class="font-semibold text-[16px]">BRAYA-CHATBOT</h1>
     </div>
 
     <div class="flex items-center gap-3">
-      <component :is="Settings" class="cursor-pointer size-6 text-muted-foreground"/>
+      <Sheet>
+        <SheetTrigger as-child>
+          <Button class="text-primary-foreground">
+            <component :is="Menu"/>
+          </Button>
+        </SheetTrigger>
+        <SheetContent class="flex flex-col">
+          <SheetTitle>BRAYA-CHATBOT</SheetTitle>
+          <SheetDescription class="flex-1 flex flex-col gap-3">
+            <span>Setting</span>
+            <ThemeToggle/>
+            <ClearChat/>
+          </SheetDescription>
+          <SignOut/>
+        </SheetContent>
+      </Sheet>
     </div>
 
   </nav>
 </template>
 
 <script setup>
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import ThemeToggle from '@/components/ThemeToggle.vue';
+import ClearChat from '@/components/ClearChat.vue';
+import SignOut from '@/components/SignOut.vue';
 import { Button } from '@/components/ui/button';
-import { Settings, Brain } from 'lucide-vue-next';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import { Menu, Brain } from 'lucide-vue-next';
 </script>
