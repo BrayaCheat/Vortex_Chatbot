@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@vite-pwa/nuxt'
   ],
   runtimeConfig: {
     GEMINI_KEY: process.env.GEMINI_KEY,
@@ -30,7 +31,10 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       title: 'Braya - BRAINSTORM YOUR IDEA',
-      viewport: 'width=device-width, user-scalable=no, initial-scale=0'
+      viewport: 'width=device-width, user-scalable=no, initial-scale=0',
+      link: [
+        {rel: 'manifest', href: './manifest.webmanifest'}
+      ]
     }
   },
   devServer: {
