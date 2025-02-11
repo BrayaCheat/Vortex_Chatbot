@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
       ], // Correct placement of the closing bracket for the contents array
       generationConfig: {
         // "generationConfig" moved outside contents and made a property
-        temperature: 0.2, // Corrected temperature to be within the typical 0-1 range (or adjust as needed for your model/preference)
+        temperature: 1, // Corrected temperature to be within the typical 0-1 range (or adjust as needed for your model/preference)
         topK: 64,
         topP: 0.95,
         maxOutputTokens: 1024, // Reduced maxOutputTokens to a more reasonable value (adjust based on your needs and API limits)
