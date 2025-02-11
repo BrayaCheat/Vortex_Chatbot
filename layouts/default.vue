@@ -3,6 +3,7 @@
     <div class="flex flex-col h-screen overflow-hidden lg:w-[900px] w-full mx-auto">
       <NavBar />
       <main class="px-3 flex-1 overflow-auto">
+        <NuxtPwaManifest/>
         <NuxtPage />
       </main>
       <!-- suggestions -->
