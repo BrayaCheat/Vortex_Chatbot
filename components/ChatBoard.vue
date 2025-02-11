@@ -1,7 +1,7 @@
 <template>
   <div :class="`flex ${chatStyle} flex-1 gap-3 pb-6`">
     <Avatar v-if="role" class="md:block hidden">
-      <AvatarImage src="/images/delulu.jpg"/>
+      <AvatarImage src="/images/delulu.png"/>
     </Avatar>
     <div :class="`${chatBoxStyle} response-box rounded-xl`" v-html="message" />
   </div>
