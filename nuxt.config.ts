@@ -32,6 +32,20 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       title: 'Braya - BRAINSTORM YOUR IDEA',
       viewport: 'width=device-width, user-scalable=no, initial-scale=0',
+      meta: [
+        {
+          name: 'mobile-web-app-capable',
+          content: 'yes'
+        },
+        {
+          name: 'apple-mobile-web-app-capable',
+          content: 'yes'
+        },
+        {
+          name: 'apple-mobile-web-app-status-bar-style',
+          content: 'black-translucent'
+        }
+      ],
       link: [
         {
           rel: 'icon',
@@ -59,6 +73,7 @@ export default defineNuxtConfig({
       name: 'Braya - CHATBOT',
       short_name: 'Braya - CHATBOT',
       description: 'AI Assist',
+      display: 'standalone',
       icons: [
         {
           src: '/icons/logo-64x64.png',
