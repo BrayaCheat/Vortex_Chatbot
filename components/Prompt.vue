@@ -25,7 +25,7 @@ import { useMemoryStore } from '@/store/memory';
 const prompt = ref('')
 const emits = defineEmits(['onRequest'])
 const memoryStore = useMemoryStore()
-const placeholder = ref("Ask Braya")
+const placeholder = ref("What's on your mind?")
 
 //computed
 const isLoading = computed(() => memoryStore?.isLoading || false)

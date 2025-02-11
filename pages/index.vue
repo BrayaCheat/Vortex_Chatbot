@@ -1,17 +1,12 @@
 <template>
       <div ref="chatContainer">
-
         <Greeting v-if="!memoryList.length" />
-
         <!-- chat box -->
         <div v-for="item, index in memoryList" :key="index" class="my-6">
-
           <!-- chat date -->
           <Separator v-if="index % 8 === 0" :label="'New Message'" class="mb-6" />
-
           <!-- message box -->
           <ChatBoard :data="item" />
-
         </div>
         <Loading v-if="isLoading" />
       </div>

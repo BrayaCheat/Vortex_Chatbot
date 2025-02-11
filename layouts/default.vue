@@ -1,10 +1,16 @@
 <template>
   <ClientOnly>
-    <div class="flex flex-col h-screen overflow-hidden md:w-[900px] w-full mx-auto">
+    <div class="flex flex-col h-screen overflow-hidden lg:w-[900px] w-full mx-auto">
       <NavBar />
       <main class="px-3 flex-1 overflow-auto">
         <NuxtPage />
       </main>
+      <!-- suggestions -->
+      <div v-if="!memoryStore.memoryList.length" class="flex items-center gap-3 overflow-x-auto m-3">
+        <div v-for="item, index in suggestions" :key="index">
+          <SuggestCard :data="item" @onSuggestion="onSuggestion" />
+        </div>
+      </div>
       <Prompt @onRequest="onRequest" />
     </div>
   </ClientOnly>
@@ -13,12 +19,16 @@
 <script setup>
 import NavBar from '@/components/NavBar.vue';
 import Prompt from '@/components/Prompt.vue';
+import SuggestCard from '@/components/SuggestCard.vue';
+import { useSuggestData } from '@/composables/SuggestData';
 import { useMemoryStore } from '@/store/memory';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
 
+
 //state
 const memoryStore = useMemoryStore()
+const { suggestions } = useSuggestData()
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
@@ -69,5 +79,9 @@ const onRequest = async (payload) => {
   } finally {
     memoryStore.isLoading = false
   }
+}
+
+const onSuggestion = (payload) => {
+  onRequest(payload?.prompt)
 }
 </script>

@@ -14,7 +14,6 @@
         <SheetContent class="flex flex-col">
           <SheetTitle>BRAYA-CHATBOT</SheetTitle>
           <SheetDescription class="flex-1 flex flex-col gap-3">
-            <span>Setting</span>
             <ThemeToggle/>
             <ClearChat/>
           </SheetDescription>
