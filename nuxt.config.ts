@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@vite-pwa/nuxt'
   ],
   runtimeConfig: {
     GEMINI_KEY: process.env.GEMINI_KEY,
@@ -31,6 +32,47 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       title: 'Braya - BRAINSTORM YOUR IDEA',
       viewport: 'width=device-width, user-scalable=no, initial-scale=0',
+      link: [
+        {
+          rel: 'icon',
+          href: '/icons/logo-64x64.png', // Standard favicon for browsers
+          sizes: '64x64',
+          type: 'image/png',
+        },
+        {
+          rel: 'icon',
+          href: '/icons/logo-64x64.png', // Same icon for Android
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          rel: 'apple-touch-icon',
+          href: '/icons/logo-64x64.png', // Same icon for Apple devices
+          sizes: '180x180',
+          type: 'image/png',
+        }
+      ],
+    }
+  },
+  pwa: {
+    manifest: {
+      name: 'Braya - CHATBOT',
+      short_name: 'Braya - CHATBOT',
+      description: 'AI Assist',
+      icons: [
+        {
+          src: '/icons/logo-64x64.png',
+          sizes: '64x64',
+          type: 'image/png'
+        }
+      ]
+    },
+    workbox: {
+      navigateFallback: '/'
+    },
+    devOptions: {
+      enabled: true,
+      type: 'module'
     }
   }
 })
