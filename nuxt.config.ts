@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Ubuntu: [400,700]
+      "JetBrains Mono": [400,700,900]
     },
     display: 'swap',
     prefetch: true,
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       charset: 'utf-8',
-      title: 'Virgo - BRAINSTORM YOUR IDEA',
+      title: 'Braya - BRAINSTORM YOUR IDEA',
       viewport: 'width=device-width, user-scalable=no, initial-scale=0'
     }
   },

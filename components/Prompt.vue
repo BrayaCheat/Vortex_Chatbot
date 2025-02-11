@@ -1,8 +1,16 @@
 <template>
-  <form @submit.prevent="onSubmitPrompt" class="relative">
-    <Input type="text" placeholder="Ask Virgo" v-model.trim.lazy="prompt" required tabindex="0"
-      class="text-[16px]"/>
-    <Button v-if="isShowSubmitButton" type="submit" class="absolute right-0 inset-y-6 text-muted-foreground px-3"
+  <form @submit.prevent="onSubmitPrompt" class="relative pb-10 mx-3">
+    <Input
+      type="text"
+      :placeholder="placeholder"
+      v-model.trim.lazy="prompt"
+      required
+      class="text-[16px]"
+    />
+    <Button
+      v-if="isShowSubmitButton"
+      type="submit"
+      class="absolute right-0 inset-y-0 text-muted-foreground px-3"
       variant="ghost" size="lg">
       <component :is="SendHorizonal" />
     </Button>
@@ -12,19 +20,16 @@
 <script setup>
 import { Input } from '@/components/ui/input';
 import { SendHorizonal } from 'lucide-vue-next';
+import { useMemoryStore } from '@/store/memory';
 
 const prompt = ref('')
 const emits = defineEmits(['onRequest'])
-const props = defineProps({
-  data: {
-    type: Boolean,
-    required: true
-  }
-})
+const memoryStore = useMemoryStore()
+const placeholder = ref("Describe the problem you're trying to solve")
 
 //computed
-const isShowSubmitButton = computed(() => prompt.value.length > 0)
-const isLoading = computed(() => props?.data)
+const isLoading = computed(() => memoryStore?.isLoading || false)
+const isShowSubmitButton = computed(() => prompt.value.length > 0 && !isLoading.value)
 
 //function
 const onSubmitPrompt = () => {

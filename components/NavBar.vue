@@ -1,16 +1,11 @@
 <template>
-  <nav class="flex items-center justify-between">
+  <nav class="flex items-center justify-between px-3 py-6">
     <div>
-      <Button variant="ghost">
-        <component :is="Brain"/>
-        <h1>OHLALA</h1>
-      </Button>
+        <h1 class="font-semibold text-[16px]">Braya - CHATBOT</h1>
     </div>
 
     <div class="flex items-center gap-3">
-      <Button class="text-muted-foreground" variant="ghost">
-        <component :is="Settings"/>
-      </Button>
+      <component :is="Settings" class="cursor-pointer size-6 text-muted-foreground"/>
     </div>
 
   </nav>

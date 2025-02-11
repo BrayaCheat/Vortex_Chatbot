@@ -7,5 +7,5 @@
 
 <script setup>
   import { Brain } from 'lucide-vue-next';
-  const message = ref("Welcome to OHLELE. Ready to brainstorm? Share your ideas below.")
+  const message = ref("Welcome to Braya-CHATBOT. Ready to brainstorm? Share your ideas below.")
 </script>
