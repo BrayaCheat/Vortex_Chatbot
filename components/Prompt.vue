@@ -11,7 +11,7 @@
     <Button
       v-if="isShowSubmitButton"
       type="submit"
-      class="absolute right-0 inset-y-0 text-muted-foreground px-3"
+      class="absolute right-0 inset-y-2 text-muted-foreground px-3"
       variant="ghost" size="lg">
       <component :is="SendHorizonal" />
     </Button>
@@ -34,8 +34,6 @@ const isShowSubmitButton = computed(() => prompt.value.length > 0 && !isLoading.
 
 //function
 const onSubmitPrompt = () => {
-  const input = document.querySelector('#input-field')
-  input?.blur()
   if(isLoading.value) return
   emits('onRequest', prompt.value)
   prompt.value = ''
