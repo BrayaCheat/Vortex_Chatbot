@@ -55,6 +55,10 @@ onUpdated(() => {
   word-wrap: break-word;
 }
 
+::v-deep .response-box h2 {
+  font-size: 14px !important;
+}
+
 ::v-deep .hljs {
     white-space: pre;
     overflow-x: auto;
@@ -62,18 +66,18 @@ onUpdated(() => {
 
 ::v-deep .response-box p {
   color: hsl(var(--muted-foreground));
-  font-size: 16px;
+  font-size: 14px;
 }
 
 ::v-deep .response-box p strong {
   color: hsl(var(--primary));
-  font-size: 20px;
-  font-weight: 900;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 ::v-deep .response-box ul li {
   color: hsl(var(--muted-foreground));
-  font-size: 16px;
+  font-size: 14px;
 }
 
 ::v-deep .response-box ul li code {
@@ -87,7 +91,7 @@ onUpdated(() => {
 
 ::v-deep .response-box ul li strong {
   color: hsl(var(--primary));
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   margin-right: 6px;
   width: fit-content;
@@ -120,7 +124,7 @@ onUpdated(() => {
 
 ::v-deep .response-box ol li {
   color: hsl(var(--muted-foreground));
-  font-size: 16px;
+  font-size: 14px;
 }
 
 ::v-deep .response-box ol li code {
@@ -134,7 +138,7 @@ onUpdated(() => {
 
 ::v-deep .response-box ol li strong {
   color: hsl(var(--primary));
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   margin-right: 6px;
   width: fit-content;

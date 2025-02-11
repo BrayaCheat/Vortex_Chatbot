@@ -6,7 +6,7 @@
         <NuxtPage />
       </main>
       <!-- suggestions -->
-      <div v-if="!memoryStore.memoryList.length" class="flex items-center gap-3 overflow-x-auto m-3">
+      <div v-if="!memoryStore.memoryList.length" class="flex items-center gap-3 overflow-x-auto m-3 md:grid md:grid-cols-4">
         <div v-for="item, index in suggestions" :key="index">
           <SuggestCard :data="item" @onSuggestion="onSuggestion" />
         </div>
