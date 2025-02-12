@@ -1,5 +1,5 @@
 <template>
-      <div ref="chatContainer">
+      <div ref="chatContainer" class="flex-1">
         <Greeting v-if="!memoryList.length" />
         <!-- chat box -->
         <div v-for="item, index in memoryList" :key="index" class="my-6">
@@ -8,7 +8,7 @@
           <!-- message box -->
           <ChatBoard :data="item" />
         </div>
-        <Loading v-if="isLoading" />
+        <Loading v-if="!isLoading" />
       </div>
 </template>
 

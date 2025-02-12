@@ -66,6 +66,7 @@ onUpdated(() => {
     flex: 1 !important;
     width: 100% !important;
     padding: 10px !important;
+    border: 1px solid hsl(var(--input));
 }
 
 @media (max-width: 768px){

@@ -1,18 +1,18 @@
 <template>
   <form @submit.prevent="onSubmitPrompt" class="pb-10 pt-5 px-3 rounded-t-3xl">
-    <div class="relative flex items-center rounded-3xl bg-primary-foreground">
+    <div class="relative flex items-center rounded-3xl bg-primary-foreground border">
       <Input
         id="search"
         type="text"
         v-model.trim.lazy="prompt"
         :placeholder="placeholder"
         required
-        class="placeholder:text-[14px] border-none bg-transparent flex-1 ml-3"
+        class="md:placeholder:text-[14px] md:text-[14px] placeholder:text-[12px] text-[12px] border-none bg-transparent flex-1 ml-3"
       />
       <Button
         v-if="isShowSubmitButton"
         type="submit" c
-        class="rounded-full size-10 mr-3"
+        class="rounded-full size-10 mr-3 text-muted-foreground"
         variant="ghost"
       >
         <component :is="SendHorizonal" />

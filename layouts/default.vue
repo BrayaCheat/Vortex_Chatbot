@@ -4,17 +4,9 @@
       <NavBar />
       <main class="px-3 flex-1 flex flex-col overflow-auto">
         <VitePwaManifest />
-        <NuxtPage class="flex-1"/>
-        <Toaster/>
-        <!-- suggestions -->
-        <div
-          v-if="!memoryStore.memoryList.length"
-          class="flex items-center gap-3 overflow-x-auto m-3 md:grid md:grid-cols-4"
-        >
-          <div v-for="item, index in suggestions" :key="index">
-            <SuggestCard :data="item" @onSuggestion="onSuggestion" />
-          </div>
-        </div>
+        <NuxtPage />
+        <Suggest @onSuggestion="onSuggestion"/>
+        <Toaster />
       </main>
       <!-- prompt -->
       <Prompt @onRequest="onRequest" />
@@ -25,8 +17,7 @@
 <script setup>
 import NavBar from '@/components/NavBar.vue';
 import Prompt from '@/components/Prompt.vue';
-import SuggestCard from '@/components/SuggestCard.vue';
-import { useSuggestData } from '@/composables/SuggestData';
+import Suggest from '@/components/Suggest.vue';
 import { useMemoryStore } from '@/store/memory';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
@@ -34,7 +25,7 @@ import Toaster from '@/components/ui/toast/Toaster.vue';
 
 //state
 const memoryStore = useMemoryStore()
-const { suggestions } = useSuggestData()
+
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())

@@ -14,20 +14,25 @@
   import { Button } from '@/components/ui/button';
   import { Moon, Sun } from 'lucide-vue-next';
 
+
   //state
-  const isDark = useDark()
+  // const isDark = useDark()
+  const colorMode = useColorMode()
 
   //computed
-  const toggleIcon = computed(() => isDark.value ? Sun : Moon)
-  const toggleTitle = computed(() => isDark.value ? 'Light Mode' : 'Dark Mode')
+  const toggleIcon = computed(() => colorMode.preference === 'dark' ? Sun : Moon)
+  const toggleTitle = computed(() => colorMode.preference === 'dark' ? 'Light Mode' : 'Dark Mode')
 
   //function
+  // const toggleDarkMode = () => {
+  //   isDark.value = !isDark.value
+  // }
   const toggleDarkMode = () => {
-    isDark.value = !isDark.value
+    colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark'
   }
 
   //watcher
-  watch(() => isDark.value, (val) => {
+  watch(() => colorMode.preference, (val) => {
     console.log("theme: ", val)
   })
 </script>
