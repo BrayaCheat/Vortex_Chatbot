@@ -35,7 +35,7 @@ const memoryStore = useMemoryStore()
 const chatDate = computed(() => new Date().toLocaleString())
 const isError = computed(() => memoryStore?.isError || false)
 const isLoading = computed(() => memoryStore?.isLoading || false)
-const latestPrompt = computed(() => memoryStore?.memoryList?.[memoryStore.memoryList.length - 2] || null)
+const latestPrompt = computed(() => memoryStore?.memoryList?.[memoryStore.memoryList.length - 1] || null)
 
 //function
 const onRequest = async (payload) => {
