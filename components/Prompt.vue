@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="onSubmitPrompt" class="absolute bottom-0 inset-x-0">
-    <div class="relative w-full flex items-center flex-1 pb-10 pt-5 rounded-t-3xl backdrop-blur-xl">
+  <form @submit.prevent="onSubmitPrompt" class="pb-10 pt-5 px-3 rounded-t-3xl">
+    <div class="relative flex items-center rounded-3xl bg-primary-foreground">
       <Input
         id="search"
         type="text"
@@ -13,7 +13,7 @@
         v-if="isShowSubmitButton"
         type="submit" c
         class="rounded-full size-10 mr-3"
-        variant="default"
+        variant="ghost"
       >
         <component :is="SendHorizonal" />
       </Button>

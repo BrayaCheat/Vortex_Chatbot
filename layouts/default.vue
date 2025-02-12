@@ -2,7 +2,7 @@
   <ClientOnly>
     <div class="flex flex-col h-screen overflow-hidden lg:w-[900px] w-full mx-auto relative">
       <NavBar />
-      <main class="px-3 flex-1 flex flex-col py-[100px] overflow-auto">
+      <main class="px-3 flex-1 flex flex-col overflow-auto">
         <VitePwaManifest />
         <NuxtPage class="flex-1"/>
         <Toaster/>
