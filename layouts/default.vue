@@ -49,7 +49,7 @@ const onRequest = async (payload) => {
       date: chatDate.value
     }
     memoryStore.setMemory(userMessage)
-    const response = await axios.post(`/api/prompt`, userMessage, { timeout: 30000 })
+    const response = await axios.post(`/api/prompt`, userMessage, { timeout: 60000 })
     const data = response?.data?.data
     if (data) {
       const aiMessage = {
@@ -69,11 +69,7 @@ const onRequest = async (payload) => {
       memoryStore.setMemory(errorMessage)
     }
   } catch (error) {
-    if (error.code === 'ECONNABORTED') {
-      console.error('Request timed out');
-    } else {
-      console.error('Error occurred:', error.message || error);
-    }
+    memoryStore.isError = true
     // const errorMessage = {
     //   userId: uuidv4(),
     //   prompt: "Sorry, there was an error processing your request.",
@@ -81,7 +77,6 @@ const onRequest = async (payload) => {
     //   date: chatDate.value
     // }
     // memoryStore.setMemory(errorMessage)
-    memoryStore.isError = true
   } finally {
     memoryStore.isLoading = false
   }

@@ -7,7 +7,7 @@
       <Skeleton class="h-4 w-full bg-secondary" />
     </div>
   </Card> -->
-  <Card class="flex items-center flex-1 gap-3 border-none my-10 shadow-none md:text-[14px] text-[12px] text-muted-foreground">
+  <Card class="flex items-center flex-1 gap-3 border-none my-10 shadow-none text-[14px] text-muted-foreground">
     <component :is="Loader2" class="animate-spin"/>
     <span>Just a moment...</span>
   </Card>

@@ -30,9 +30,4 @@
   const toggleDarkMode = () => {
     colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark'
   }
-
-  //watcher
-  watch(() => colorMode.preference, (val) => {
-    console.log("theme: ", val)
-  })
 </script>

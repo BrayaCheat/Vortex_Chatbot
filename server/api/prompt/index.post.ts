@@ -28,13 +28,14 @@ export default defineEventHandler(async (event) => {
         },
       ],
       generationConfig: {
-        temperature: 0.8,
-        topK: 50,
-        topP: 0.95,
-        maxOutputTokens: 2048,
+        temperature: 0.2,  // Lower value makes responses more deterministic
+        topK: 40,          // Reduces randomness in word selection
+        topP: 0.8,         // Limits variability while keeping coherence
+        maxOutputTokens: 4096, // 65536 is too high, keeping it reasonable
         responseMimeType: "text/plain",
       },
     };
+
 
     const response = await $fetch(
       `${GEMINI_ENDPOINT}${GEMINI_MODEL}?key=${GEMINI_KEY}`,

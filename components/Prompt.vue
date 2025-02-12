@@ -7,7 +7,7 @@
         v-model.trim.lazy="prompt"
         :placeholder="placeholder"
         required
-        class="placeholder:text-[14px] text-[14px] border-none bg-transparent flex-1 ml-3"
+        class="placeholder:text-[14px] text-[14px] border-none bg-transparent flex-1 ml-3 text-muted-foreground"
       />
       <Button
         v-if="isShowSubmitButton"
@@ -32,7 +32,7 @@ const {toast} = useToast()
 const prompt = ref('')
 const emits = defineEmits(['onRequest'])
 const memoryStore = useMemoryStore()
-const placeholder = ref("What's on your mind?")
+const placeholder = ref("Message here...")
 
 //computed
 const isLoading = computed(() => memoryStore?.isLoading || false)

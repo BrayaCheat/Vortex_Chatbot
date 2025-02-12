@@ -22,6 +22,8 @@ export const useMemoryStore = defineStore(
 
     const clearMemory = () => {
       memoryList.value = [];
+      isError.value = false
+      isLoading.value = false
     };
 
     return {

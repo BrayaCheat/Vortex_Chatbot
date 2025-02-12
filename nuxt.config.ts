@@ -21,6 +21,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       "JetBrains Mono": [400, 700, 900],
+      "Fira Code": [400, 700, 900]
     },
     display: "swap",
     prefetch: true,
