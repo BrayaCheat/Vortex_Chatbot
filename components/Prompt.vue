@@ -7,7 +7,7 @@
         v-model.trim.lazy="prompt"
         :placeholder="placeholder"
         required
-        class="md:placeholder:text-[14px] md:text-[14px] placeholder:text-[12px] text-[12px] border-none bg-transparent flex-1 ml-3"
+        class="placeholder:text-[14px] text-[14px] border-none bg-transparent flex-1 ml-3"
       />
       <Button
         v-if="isShowSubmitButton"
