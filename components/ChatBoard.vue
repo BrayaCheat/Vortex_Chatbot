@@ -67,6 +67,7 @@ onUpdated(() => {
     width: 100% !important;
     padding: 10px !important;
     border: 1px solid hsl(var(--input));
+    border-radius: 10px;
 }
 
 @media (max-width: 768px){
@@ -77,6 +78,8 @@ onUpdated(() => {
     flex: 1 !important;
     width: 100% !important;
     padding: 10px !important;
+    border: 1px solid hsl(var(--input));
+    border-radius: 10px;
 }
 }
 
