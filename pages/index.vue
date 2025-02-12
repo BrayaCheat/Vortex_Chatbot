@@ -8,7 +8,7 @@
           <!-- message box -->
           <ChatBoard :data="item" />
         </div>
-        <Loading v-if="!isLoading" />
+        <Loading v-if="isLoading" />
       </div>
 </template>
 

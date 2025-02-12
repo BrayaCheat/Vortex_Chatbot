@@ -3,7 +3,7 @@
     <div class="flex items-center gap-3 absolute">
       <Sheet>
         <SheetTrigger as-child>
-          <component :is="AlignJustify" class="text-muted-foreground size-5"/>
+          <component :is="AlignJustify" class="text-muted-foreground size-5 cursor-pointer"/>
         </SheetTrigger>
         <SheetContent class="flex flex-col" side="left">
           <SheetTitle>BRAYA-CHATBOT</SheetTitle>
