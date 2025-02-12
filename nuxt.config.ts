@@ -59,38 +59,53 @@ export default defineNuxtConfig({
       ],
       link: [
         {
-          rel: "icon",
-          href: "/icons/logo-64x64.png", // Standard favicon for browsers
-          sizes: "64x64",
-          type: "image/png",
+          "rel": "icon",
+          "href": "/icons/icon-64.png",
+          "sizes": "64x64",
+          "type": "image/png"
         },
         {
-          rel: "icon",
-          href: "/icons/logo-64x64.png", // Same icon for Android
-          sizes: "192x192",
-          type: "image/png",
+          "rel": "icon",
+          "href": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
         },
         {
-          rel: "apple-touch-icon",
-          href: "/icons/logo-64x64.png", // Same icon for Apple devices
-          sizes: "180x180",
-          type: "image/png",
-        },
+          "rel": "apple-touch-icon",
+          "href": "/icons/icon-192.png",
+          "sizes": "180x180",
+          "type": "image/png"
+        }
       ],
     },
   },
   pwa: {
     manifest: {
-      name: "Braya - CHATBOT",
-      short_name: "Braya - CHATBOT",
-      description: "AI Assist",
+      name: "BRAYA - CHATBOT",
+      short_name: "BRAYA - CHATBOT",
+      description: "An AI chatbot built to assist users with conversations, support, and automation.",
       display: "standalone",
       theme_color: 'dark',
       icons: [
         {
-          src: "/icons/logo-64x64.png",
+          src: "/icons/icon-64.png",
           sizes: "64x64",
-          type: "image/png",
+          type: "image/png"
+        },
+        {
+          src: "/icons/icon-128.png",
+          sizes: "128x128",
+          type: "image/png"
+        },
+        {
+          src: "/icons/icon-192.png",
+          sizes: "192x192",
+          "type": "image/png"
+        },
+        {
+          src: "/icons/icon-256.png",
+          sizes: "256x256",
+          type: "image/png"
         },
       ],
     },
