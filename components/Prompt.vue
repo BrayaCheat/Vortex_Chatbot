@@ -18,12 +18,6 @@
         <component :is="SendHorizonal" />
       </Button>
     </div>
-    <!-- <Input type="text" v-model.trim.lazy="prompt" :placeholder="placeholder" required
-      class="rounded-[10px] placeholder:text-[14px] bg-primary-foreground" id="input-field" />
-    <Button v-if="isShowSubmitButton" type="submit" class="absolute right-0 inset-y-2 text-muted-foreground px-3"
-      variant="ghost" size="lg">
-      <component :is="SendHorizonal" />
-    </Button> -->
   </form>
 </template>
 
@@ -31,7 +25,10 @@
 import { Input } from '@/components/ui/input';
 import { SendHorizonal, Smile } from 'lucide-vue-next';
 import { useMemoryStore } from '@/store/memory';
+import DOMPurify from 'dompurify'
+import { useToast } from '@/components/ui/toast/use-toast';
 
+const {toast} = useToast()
 const prompt = ref('')
 const emits = defineEmits(['onRequest'])
 const memoryStore = useMemoryStore()
@@ -44,6 +41,15 @@ const isShowSubmitButton = computed(() => prompt.value.length > 0 && !isLoading.
 //function
 const onSubmitPrompt = () => {
   if (isLoading.value) return
+  const sanitizedPrompt = DOMPurify.sanitize(prompt.value)
+  if(sanitizedPrompt !== prompt.value){
+    toast({
+      title: 'Warning',
+      description: 'Potential XSS attack detected. Prompt sanitized.',
+      variant: 'destructive'
+    })
+    return
+  }
   emits('onRequest', prompt.value)
   prompt.value = ''
 }

@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center px-3 md:py-6 py-3 fixed top-0 inset-x-0 border-b backdrop-blur-xl z-50">
+  <nav class="flex items-center px-3 md:py-6 py-3 fixed top-0 inset-x-0 border-b bg-primary-foreground z-50">
     <div class="flex items-center gap-3 absolute">
       <Sheet>
         <SheetTrigger as-child>

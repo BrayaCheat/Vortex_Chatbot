@@ -5,6 +5,7 @@
       <main class="px-3 flex-1 flex flex-col py-[100px] overflow-auto">
         <VitePwaManifest />
         <NuxtPage class="flex-1"/>
+        <Toaster/>
         <!-- suggestions -->
         <div
           v-if="!memoryStore.memoryList.length"
@@ -29,7 +30,7 @@ import { useSuggestData } from '@/composables/SuggestData';
 import { useMemoryStore } from '@/store/memory';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
-
+import Toaster from '@/components/ui/toast/Toaster.vue';
 
 //state
 const memoryStore = useMemoryStore()
