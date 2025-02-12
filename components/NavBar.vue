@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center px-3 md:py-6 py-3 relative">
+  <nav class="flex items-center px-3 md:py-6 py-3 fixed top-0 inset-x-0 border-b backdrop-blur-xl z-50">
     <div class="flex items-center gap-3 absolute">
       <Sheet>
         <SheetTrigger as-child>
@@ -8,7 +8,7 @@
         <SheetContent class="flex flex-col" side="left">
           <SheetTitle id="title">BRAYA-CHATBOT</SheetTitle>
           <SheetDescription class="flex-1 flex flex-col gap-3">
-            <!-- <ThemeToggle/> -->
+            <ThemeToggle/>
             <ClearChat/>
             <DonateMe/>
           </SheetDescription>

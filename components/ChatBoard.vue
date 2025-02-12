@@ -62,6 +62,21 @@ onUpdated(() => {
 ::v-deep .hljs {
     white-space: pre;
     overflow-x: auto;
+    font-size: 14px !important;
+    flex: 1 !important;
+    width: 100% !important;
+    padding: 10px !important;
+}
+
+@media (max-width: 768px){
+  ::v-deep .hljs {
+    white-space: pre;
+    overflow-x: auto;
+    font-size: 12px !important;
+    flex: 1 !important;
+    width: 100% !important;
+    padding: 10px !important;
+}
 }
 
 ::v-deep .response-box p {
@@ -172,11 +187,11 @@ onUpdated(() => {
   width: 100%;
 }
 
-::v-deep .response-box pre code {
-  font-size: 14px;
-}
+/* ::v-deep .response-box pre code {
+  font-size: 12px;
+} */
 
-::v-deep .response-box pre code span {
-  font-size: 14px;
-}
+/* ::v-deep .response-box pre code span {
+  font-size: 12px;
+} */
 </style>
