@@ -83,7 +83,7 @@ export default defineNuxtConfig({
     manifest: {
       name: "BRAYA - CHATBOT",
       short_name: "BRAYA - CHATBOT",
-      description: "An AI chatbot built to assist users with conversations, support, and automation.",
+      description: "An advanced AI-powered chatbot designed to assist users with various tasks and conversations.",
       display: "standalone",
       theme_color: 'dark',
       icons: [
