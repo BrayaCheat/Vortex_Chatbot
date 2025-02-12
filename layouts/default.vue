@@ -6,6 +6,8 @@
         <VitePwaManifest />
         <NuxtPage />
         <Suggest @onSuggestion="onSuggestion"/>
+        <Loading v-if="isLoading"/>
+        <Retry v-if="isError" :data="latestPrompt" @onRetry="onRetry"/>
         <Toaster />
       </main>
       <!-- prompt -->
@@ -18,6 +20,8 @@
 import NavBar from '@/components/NavBar.vue';
 import Prompt from '@/components/Prompt.vue';
 import Suggest from '@/components/Suggest.vue';
+import Retry from '@/components/Retry.vue';
+import Loading from '@/components/Loading.vue';
 import { useMemoryStore } from '@/store/memory';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
@@ -29,10 +33,14 @@ const memoryStore = useMemoryStore()
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
+const isError = computed(() => memoryStore?.isError || false)
+const isLoading = computed(() => memoryStore?.isLoading || false)
+const latestPrompt = computed(() => memoryStore?.memoryList?.[memoryStore.memoryList.length - 2] || null)
 
 //function
 const onRequest = async (payload) => {
   memoryStore.isLoading = true
+  memoryStore.isError = false
   try {
     const userMessage = {
       userId: uuidv4(),
@@ -66,19 +74,24 @@ const onRequest = async (payload) => {
     } else {
       console.error('Error occurred:', error.message || error);
     }
-    const errorMessage = {
-      userId: uuidv4(),
-      prompt: "Sorry, there was an error processing your request.",
-      role: 'ai',
-      date: chatDate.value
-    }
-    memoryStore.setMemory(errorMessage)
+    // const errorMessage = {
+    //   userId: uuidv4(),
+    //   prompt: "Sorry, there was an error processing your request.",
+    //   role: 'ai',
+    //   date: chatDate.value
+    // }
+    // memoryStore.setMemory(errorMessage)
+    memoryStore.isError = true
   } finally {
     memoryStore.isLoading = false
   }
 }
 
 const onSuggestion = (payload) => {
-  onRequest(payload?.prompt)
+  onRequest(payload)
+}
+
+const onRetry = (payload) => {
+  onRequest(payload)
 }
 </script>

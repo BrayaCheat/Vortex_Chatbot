@@ -9,6 +9,7 @@ export const useMemoryStore = defineStore(
   () => {
     const memoryList = ref<MemoryItem[]>([]);
     const isLoading = ref<boolean>(false);
+    const isError = ref<boolean>(false);
 
     const setMemory = (data: MemoryItem) => {
       if (!data) return;
@@ -27,6 +28,7 @@ export const useMemoryStore = defineStore(
       //state
       memoryList,
       isLoading,
+      isError,
 
       //functions
       setMemory,

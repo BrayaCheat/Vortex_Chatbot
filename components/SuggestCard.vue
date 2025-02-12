@@ -36,6 +36,6 @@
   const suggestion = computed(() => props?.data || [])
 
   const onSuggestClick = () => {
-    emits('onSuggestion', suggestion.value)
+    emits('onSuggestion', suggestion.value?.prompt)
   }
 </script>

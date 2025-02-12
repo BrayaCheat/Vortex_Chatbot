@@ -8,13 +8,11 @@
           <!-- message box -->
           <ChatBoard :data="item" />
         </div>
-        <Loading v-if="isLoading" />
       </div>
 </template>
 
 <script setup>
 import ChatBoard from '@/components/ChatBoard.vue';
-import Loading from '@/components/Loading.vue';
 import Greeting from '@/components/Greeting.vue';
 import { Separator } from '@/components/ui/separator';
 import { useMemoryStore } from '@/store/memory';
@@ -23,7 +21,6 @@ const memoryStore = useMemoryStore()
 const chatContainer = ref(null)
 
 //computed
-const isLoading = computed(() => memoryStore?.isLoading || false)
 const memoryList = computed(() => memoryStore?.memoryList || [])
 
 //life cycle
