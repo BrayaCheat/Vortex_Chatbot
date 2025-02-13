@@ -9,7 +9,7 @@
           <SheetTitle id="title">BRAYA-CHATBOT</SheetTitle>
           <SheetDescription class="flex-1 flex flex-col gap-3">
             <ThemeToggle/>
-            <ClearChat/>
+            <ClearChat v-if="isShowClearButton"/>
             <DonateMe/>
           </SheetDescription>
           <Logout/>
@@ -21,7 +21,7 @@
         <h1 class="font-semibold text-[18px]" id="title">BRAYA-CHATBOT</h1>
     </div>
     <div>
-      profile
+      <UserIcon/>
     </div>
   </nav>
 </template>
@@ -31,6 +31,7 @@ import ThemeToggle from '@/components/ThemeToggle.vue';
 import ClearChat from '@/components/ClearChat.vue';
 import DonateMe from '@/components/DonateMe.vue';
 import Logout from '@/components/Logout.vue';
+import UserIcon from '@/components/UserIcon.vue';
 import {
   Sheet,
   SheetClose,
@@ -42,6 +43,11 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { PanelsTopLeft } from 'lucide-vue-next';
+import { useMemoryStore } from '@/store/memory';
+
+const memoryStore = useMemoryStore()
+
+const isShowClearButton = computed(() => memoryStore.memoryList.length)
 </script>
 
 <style scoped>

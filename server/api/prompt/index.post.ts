@@ -1,3 +1,4 @@
+import { supabase } from "~/server/lib/supabase";
 interface ResponseText {
   candidates: {
     content: {
@@ -13,54 +14,82 @@ export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();
     const { GEMINI_KEY, GEMINI_ENDPOINT, GEMINI_MODEL } = config;
     const { prompt } = await readBody(event);
+    const access_token = event.headers.get("access_token");
+    const refresh_token = event.headers.get("refresh_token");
 
-    if (!prompt) {
-      return {
-        message: "Invalid prompt",
-        status: 400,
-      };
+    if (!access_token || !refresh_token) {
+      return createError({
+        statusMessage: "Invalid token.",
+        status: 403,
+      });
+    }
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.setSession({
+      access_token,
+      refresh_token,
+    });
+    if (error) {
+      return createError({
+        statusMessage: error?.message || "An error occur.",
+        status: 500,
+      });
     }
 
-    const query = {
-      contents: [
-        {
-          parts: [{ text: prompt.trim() }],
+    if (!prompt) {
+      return createError({
+        statusMessage: "Invalid prompt.",
+        status: 400,
+      });
+    }
+
+    if (user) {
+      const query = {
+        contents: [
+          {
+            parts: [{ text: prompt.trim() }],
+          },
+        ],
+        generationConfig: {
+          temperature: 0.2, // Lower value makes responses more deterministic
+          topK: 40, // Reduces randomness in word selection
+          topP: 0.8, // Limits variability while keeping coherence
+          maxOutputTokens: 4096, // 65536 is too high, keeping it reasonable
+          responseMimeType: "text/plain",
         },
-      ],
-      generationConfig: {
-        temperature: 0.2,  // Lower value makes responses more deterministic
-        topK: 40,          // Reduces randomness in word selection
-        topP: 0.8,         // Limits variability while keeping coherence
-        maxOutputTokens: 4096, // 65536 is too high, keeping it reasonable
-        responseMimeType: "text/plain",
-      },
-    };
+      };
 
+      const response = await $fetch(
+        `${GEMINI_ENDPOINT}${GEMINI_MODEL}?key=${GEMINI_KEY}`,
+        {
+          method: "POST",
+          body: query,
+        }
+      );
 
-    const response = await $fetch(
-      `${GEMINI_ENDPOINT}${GEMINI_MODEL}?key=${GEMINI_KEY}`,
-      {
-        method: "POST",
-        body: query,
-      }
-    );
+      const responseText =
+        (response &&
+          (response as ResponseText)?.candidates?.[0]?.content?.parts?.[0]
+            ?.text) ||
+        "";
 
-    const responseText =
-      (response &&
-        (response as ResponseText)?.candidates?.[0]?.content?.parts?.[0]
-          ?.text) ||
-      "";
-
-    return {
-      data: responseText,
-      message: "New response from ohlala",
-      status: 201,
-    };
+      return {
+        data: responseText,
+        message: "New response from Braya-CHATBOT",
+        status: 201,
+      };
+    } else {
+      return createError({
+        statusMessage: "You don't have permission to access this resource.",
+        status: 401,
+      });
+    }
   } catch (error) {
     console.error("Prompt error: ", error);
-    return {
-      message: "Internal server error",
+    return createError({
+      statusMessage: "Internal server error",
       status: 500,
-    };
+    });
   }
 });

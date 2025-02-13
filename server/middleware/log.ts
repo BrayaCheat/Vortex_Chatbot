@@ -1,3 +1,3 @@
-export default defineEventHandler((event) => {
-  console.log("New req: ", getRequestURL(event));
+export default defineEventHandler(async (event) => {
+  console.log("Server logging: ", getRequestURL(event))
 });

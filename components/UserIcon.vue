@@ -1,8 +1,8 @@
 <template>
   <div :class="`flex items-center gap-3 ${userIconStyle}`">
-    <!-- <Avatar class="size-[40px]">
+    <Avatar class="size-[40px]">
       <AvatarImage :src="profile" class="object-cover max-w-full min-w-full" />
-    </Avatar> -->
+    </Avatar>
     <!-- <div class="flex flex-col">
       <span class="text-[14px] text-muted-foreground">{{ chatDate }}</span>
       <span class="text-[14px]">{{ userName }}</span>
