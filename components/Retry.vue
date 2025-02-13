@@ -17,7 +17,7 @@
 
   //function
   const onRetryClick = () => {
-    emits('onRetry', message.value)
     memoryStore.isError = false
+    emits('onRetry', message.value)
   }
 </script>

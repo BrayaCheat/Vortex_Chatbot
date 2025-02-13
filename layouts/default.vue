@@ -36,7 +36,7 @@ const sessionStore = useSessionStore()
 const chatDate = computed(() => new Date().toLocaleString())
 const isError = computed(() => memoryStore?.isError || false)
 const isLoading = computed(() => memoryStore?.isLoading || false)
-const latestPrompt = computed(() => memoryStore?.memoryList?.[memoryStore.memoryList.length - 1] || null)
+const latestPrompt = computed(() => memoryStore?.memoryList?.[memoryStore.memoryList.length - 1]?.prompt || null)
 const accessToken = computed(() => sessionStore.session?.access_token || '')
 const refreshToken = computed(() => sessionStore.session?.refresh_token || '')
 
@@ -97,6 +97,7 @@ const onSuggestion = (payload) => {
 }
 
 const onRetry = (payload) => {
+  console.log(payload)
   onRequest(payload)
 }
 </script>
