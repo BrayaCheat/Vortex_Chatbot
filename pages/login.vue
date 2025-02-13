@@ -1,7 +1,6 @@
 <template>
-  <div class="w-full lg:grid lg:min-h-[600px] lg:grid-cols-1 xl:min-h-[800px]">
-    <div class="flex items-center justify-center py-12">
-      <Card class="mx-auto grid w-[450px] gap-6 p-6">
+    <div class="flex items-center justify-center flex-1 h-full m-3">
+      <Card class="mx-auto grid w-[450px] gap-6 px-3 py-6">
         <div class="grid gap-2 text-center">
           <h1 class="text-3xl font-bold">
             Login
@@ -41,7 +40,6 @@
         </div>
       </Card>
     </div>
-  </div>
 </template>
 
 <script setup>
@@ -82,30 +80,29 @@ const onSignIn = async () => {
     return
   }
   try {
-    const { data } = await axios.post(`/api/auth/login`, { credential }, { timeout: 15000 })
-    if (data && data?.user && data?.session) {
-      userStore.setUser(data?.user)
-      sessionStore.setSession(data?.session)
-      credential.email = ''
-      credential.password = ''
-      userStore.isLoading = false
-      return navigateTo('/')
-    } else {
-      toast({
-        title: 'Invalid response data.',
-        description: '',
-        variant: 'destructive'
-      })
-      userStore.isLoading = false
-      return
-    }
+    const response = await axios.post(`/api/auth/login`, { credential }, { timeout: 15000 })
+    const {data, message} = response?.data
+    toast({
+      title: message,
+      variant: 'default'
+    })
+    userStore.setUser(data?.user)
+    sessionStore.setSession(data?.session)
+    clearCredential()
+    userStore.isLoading = false
+    return navigateTo('/')
   } catch (error) {
     userStore.isLoading = false
+    const errorMessage = error?.response?.data?.message || 'An error occur.'
     toast({
-      title: 'An error occur during login process.',
-      description: 'error',
+      title: errorMessage,
       variant: 'destructive'
     })
   }
+}
+
+const clearCredential = () => {
+  credential.email = ''
+  credential.password = ''
 }
 </script>

@@ -4,23 +4,18 @@ interface User {
   credential: {
     email?: string;
     password?: string;
-  }
+  };
 }
 
 export default defineEventHandler(async (event) => {
   try {
     const body: User = await readBody(event);
-    const { credential: {email, password} } = body;
-
-    if (!email) {
+    const {
+      credential: { email, password },
+    } = body;
+    if (!email || !password) {
       return {
-        message: "Email is missing",
-        status: 400,
-      };
-    }
-    if (!password) {
-      return {
-        message: "Password is missing.",
+        message: "Credential is missing",
         status: 400,
       };
     }
@@ -28,19 +23,23 @@ export default defineEventHandler(async (event) => {
       email,
       password,
     });
-    if (data && data?.user) {
-      return data
+    if (error) {
+      return createError({
+        message: error?.message || "Authentication failed.",
+        statusCode: 400,
+      });
     }
-    if(error){
+    if (data) {
       return {
-        message: error?.message,
-        status: 400
-      }
+        data,
+        message: "Login success.",
+        status: 201,
+      };
     }
-    return {
-      message: "There was a problem. Please try again.",
-      status: 400,
-    };
+    return createError({
+      message: "Unexpected error during login.",
+      statusCode: 500,
+    });
   } catch (error) {
     throw createError({
       message: "Internal server error",
