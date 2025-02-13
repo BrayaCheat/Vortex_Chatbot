@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="onSubmitPrompt" class="py-5 px-3 rounded-t-3xl">
-    <div class="relative flex items-center rounded-3xl bg-primary-foreground border">
+    <div class="relative flex items-center rounded-[10px] bg-primary-foreground border">
       <Input
         id="search"
         type="text"

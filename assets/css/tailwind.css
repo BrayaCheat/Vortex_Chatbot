@@ -5,7 +5,7 @@
 * {
   scroll-behavior: smooth;
   transition: 300ms;
-  /* font-family: 'JetBrains Mono', serif; */
+  font-family: 'JetBrains Mono', serif;
 }
 
 *::-webkit-scrollbar {
@@ -21,6 +21,10 @@ input:focus {
 
 input {
   outline: none !important;
+}
+
+#title {
+  font-family: "JetBrains Mono", serif;
 }
 
 .light-mode {

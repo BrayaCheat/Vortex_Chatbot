@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <div class="relative h-screen">
+    <div class="relative h-[90vh]">
       <NuxtPage />
       <Toaster />
     </div>

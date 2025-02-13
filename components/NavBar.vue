@@ -51,7 +51,5 @@ const isShowClearButton = computed(() => memoryStore.memoryList.length)
 </script>
 
 <style scoped>
-  #title {
-    font-family: "JetBrains Mono", serif;
-  }
+  
 </style>
