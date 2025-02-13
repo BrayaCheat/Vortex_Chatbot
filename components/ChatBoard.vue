@@ -27,12 +27,12 @@ const message = computed(() => {
   marked.options({
     breaks: true,
     highlight: (code, lang) => {
-      // return hljs.highlightAuto(code).value
-      const language = lang && hljs.getLanguage(lang) ? lang : 'bash';
-      return hljs.highlight(code, { language }).value;
+      return hljs.highlightAuto(code).value
+      // const language = lang && hljs.getLanguage(lang) ? lang : 'bash';
+      // return hljs.highlight(code, { language }).value;
     }
   })
-  const text = props?.data?.prompt || ''
+  const text = props?.data?.prompt ? JSON.stringify(props?.data?.prompt) : ''
   return marked(text)
 })
 const chatStyle = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')

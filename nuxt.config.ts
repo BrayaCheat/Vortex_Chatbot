@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   ssr: false,
   pages: true,
   devtools: { enabled: false },
+  css: ['@/assets/css/tailwind.css'],
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
@@ -11,17 +12,19 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "pinia-plugin-persistedstate/nuxt",
     "@nuxtjs/google-fonts",
-    "@vite-pwa/nuxt",
+    "@vite-pwa/nuxt"
   ],
   runtimeConfig: {
     GEMINI_KEY: process.env.GEMINI_KEY,
     GEMINI_ENDPOINT: process.env.GEMINI_ENDPOINT,
     GEMINI_MODEL: process.env.GEMINI_MODEL,
+    SUPABASE_URL: process.env.SUPABASE_URL,
+    SUPABASE_KEY: process.env.SUPABASE_KEY,
   },
   googleFonts: {
     families: {
       "JetBrains Mono": [400, 700, 900],
-      "Fira Code": [400, 700, 900]
+      "Fira Code": [400, 700, 900],
     },
     display: "swap",
     prefetch: true,
@@ -60,23 +63,23 @@ export default defineNuxtConfig({
       ],
       link: [
         {
-          "rel": "icon",
-          "href": "/icons/icon-64.png",
-          "sizes": "64x64",
-          "type": "image/png"
+          rel: "icon",
+          href: "/icons/icon-64.png",
+          sizes: "64x64",
+          type: "image/png",
         },
         {
-          "rel": "icon",
-          "href": "/icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png"
+          rel: "icon",
+          href: "/icons/icon-192.png",
+          sizes: "192x192",
+          type: "image/png",
         },
         {
-          "rel": "apple-touch-icon",
-          "href": "/icons/icon-192.png",
-          "sizes": "180x180",
-          "type": "image/png"
-        }
+          rel: "apple-touch-icon",
+          href: "/icons/icon-192.png",
+          sizes: "180x180",
+          type: "image/png",
+        },
       ],
     },
   },
@@ -84,29 +87,30 @@ export default defineNuxtConfig({
     manifest: {
       name: "BRAYA - CHATBOT",
       short_name: "BRAYA - CHATBOT",
-      description: "An advanced AI-powered chatbot designed to assist users with various tasks and conversations.",
+      description:
+        "An advanced AI-powered chatbot designed to assist users with various tasks and conversations.",
       display: "standalone",
-      theme_color: 'dark',
+      theme_color: "dark",
       icons: [
         {
           src: "/icons/icon-64.png",
           sizes: "64x64",
-          type: "image/png"
+          type: "image/png",
         },
         {
           src: "/icons/icon-128.png",
           sizes: "128x128",
-          type: "image/png"
+          type: "image/png",
         },
         {
           src: "/icons/icon-192.png",
           sizes: "192x192",
-          "type": "image/png"
+          type: "image/png",
         },
         {
           src: "/icons/icon-256.png",
           sizes: "256x256",
-          type: "image/png"
+          type: "image/png",
         },
       ],
     },

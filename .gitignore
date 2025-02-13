@@ -26,3 +26,6 @@ logs
 
 # pwa
 sw.*
+
+#nuxt
+nuxt

@@ -5,15 +5,15 @@
         <SheetTrigger as-child>
           <component :is="PanelsTopLeft" class="text-muted-foreground size-5 cursor-pointer"/>
         </SheetTrigger>
-        <SheetContent class="flex flex-col" side="left">
+        <SheetContent class="flex flex-col w-[250px]" side="left">
           <SheetTitle id="title">BRAYA-CHATBOT</SheetTitle>
           <SheetDescription class="flex-1 flex flex-col gap-3">
             <ThemeToggle/>
             <ClearChat/>
             <DonateMe/>
           </SheetDescription>
+          <Logout/>
           <span class="text-[14px]">Develop by: <span class="text-green-500">#Braya Cheat#</span></span>
-          <!-- <SignOut/> -->
         </SheetContent>
       </Sheet>
     </div>
@@ -30,8 +30,7 @@
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import ClearChat from '@/components/ClearChat.vue';
 import DonateMe from '@/components/DonateMe.vue';
-import SignOut from '@/components/SignOut.vue';
-import { Button } from '@/components/ui/button';
+import Logout from '@/components/Logout.vue';
 import {
   Sheet,
   SheetClose,

@@ -17,6 +17,12 @@ import Greeting from '@/components/Greeting.vue';
 import { Separator } from '@/components/ui/separator';
 import { useMemoryStore } from '@/store/memory';
 
+//meta
+definePageMeta({
+  middleware: "auth"
+})
+
+//state
 const memoryStore = useMemoryStore()
 const chatContainer = ref(null)
 
