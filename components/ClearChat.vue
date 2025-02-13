@@ -23,9 +23,8 @@
 <script setup>
 import { Button } from '@/components/ui/button';
 import { useMemoryStore } from '@/store/memory';
-import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose } from '@/components/ui/dialog'
 import { Trash } from 'lucide-vue-next';
-import DialogClose from './ui/dialog/DialogClose.vue';
 
 //state
 const memoryStore = useMemoryStore()

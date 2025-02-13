@@ -5,6 +5,7 @@
       <main class="px-3 flex-1 flex flex-col overflow-auto">
         <VitePwaManifest />
         <NuxtPage />
+        <div v-if="!memoryStore.memoryList.length" class="flex-1"/>
         <Suggest @onSuggestion="onSuggestion"/>
         <Loading v-if="isLoading"/>
         <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage"/>
