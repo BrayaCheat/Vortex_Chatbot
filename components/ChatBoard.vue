@@ -32,7 +32,10 @@ const message = computed(() => {
       // return hljs.highlight(code, { language }).value;
     }
   })
-  const text = props?.data?.prompt ? JSON.stringify(props?.data?.prompt) : ''
+  const text = props?.data?.prompt || ''
+  if(typeof text !== 'string'){
+    return ''
+  }
   return marked(text)
 })
 const chatStyle = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')
