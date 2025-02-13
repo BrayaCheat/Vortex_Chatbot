@@ -46,8 +46,9 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-8",
       title: "Braya - BRAINSTORM YOUR IDEA",
-      viewport: "width=device-width, user-scalable=no, initial-scale=0",
+      viewport: "width=device-width, user-scalable=no, initial-scale=0, viewport-fit=cover",
       meta: [
+
         {
           name: "mobile-web-app-capable",
           content: "yes",
