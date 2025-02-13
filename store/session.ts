@@ -5,11 +5,14 @@ export const useSessionStore = defineStore(
 
     const setSession = (data: any) => {
       if (!data) return;
+      const storage = sessionStorage.getItem("SessionStore");
+      storage && sessionStorage.removeItem("SessionStorage");
       session.value = data;
     };
 
     const clearSession = () => {
       session.value = null;
+      sessionStorage.removeItem("SessionStore");
     };
 
     return {

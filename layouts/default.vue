@@ -7,7 +7,7 @@
         <NuxtPage />
         <Suggest @onSuggestion="onSuggestion"/>
         <Loading v-if="isLoading"/>
-        <Retry v-if="isError" :data="latestPrompt" @onRetry="onRetry"/>
+        <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage"/>
         <Toaster />
       </main>
       <!-- prompt -->
@@ -31,12 +31,12 @@ import Toaster from '@/components/ui/toast/Toaster.vue';
 //state
 const memoryStore = useMemoryStore()
 const sessionStore = useSessionStore()
+const errorMessage = ref('')
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
 const isError = computed(() => memoryStore?.isError || false)
 const isLoading = computed(() => memoryStore?.isLoading || false)
-const latestPrompt = computed(() => memoryStore?.memoryList?.[memoryStore.memoryList.length - 1]?.prompt || null)
 const accessToken = computed(() => sessionStore.session?.access_token || '')
 const refreshToken = computed(() => sessionStore.session?.refresh_token || '')
 
@@ -79,14 +79,9 @@ const onRequest = async (payload) => {
       memoryStore.setMemory(errorMessage)
     }
   } catch (error) {
+    errorMessage.value = error?.response?.data?.statusMessage
     memoryStore.isError = true
-    // const errorMessage = {
-    //   userId: uuidv4(),
-    //   prompt: "Sorry, there was an error processing your request.",
-    //   role: 'ai',
-    //   date: chatDate.value
-    // }
-    // memoryStore.setMemory(errorMessage)
+    console.log(error)
   } finally {
     memoryStore.isLoading = false
   }

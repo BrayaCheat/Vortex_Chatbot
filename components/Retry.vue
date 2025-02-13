@@ -1,6 +1,6 @@
 <template>
   <Card class="rounded-[10px] border-destructive p-3 bg-primary-foreground flex flex-col gap-3">
-    <span class="text-[14px] text-muted-foreground">There was a server error.</span>
+    <span class="text-[14px] text-muted-foreground">{{ errorMessage }}</span>
     <Button variant="destructive" class="border-rounded-[10px]" @click="onRetryClick">Retry</Button>
   </Card>
 </template>
@@ -13,8 +13,14 @@
   //state
   const emits = defineEmits(['onRetry'])
   const memoryStore = useMemoryStore()
-  const message = computed(() => memoryStore?.memoryList?.[memoryStore?.memoryList?.length - 1] || 'There was a technical issue.')
-
+  const message = computed(() => memoryStore?.memoryList?.[memoryStore?.memoryList?.length - 1]?.prompt || 'There was a technical issue.')
+  const props = defineProps({
+    errorMessage: {
+      type: String,
+      required: true
+    }
+  })
+  const errorMessage = computed(() => props.errorMessage || 'Server error.')
   //function
   const onRetryClick = () => {
     memoryStore.isError = false
