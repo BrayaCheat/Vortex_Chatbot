@@ -23,19 +23,22 @@ import Suggest from '@/components/Suggest.vue';
 import Retry from '@/components/Retry.vue';
 import Loading from '@/components/Loading.vue';
 import { useMemoryStore } from '@/store/memory';
+import { useSessionStore } from '@/store/session';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
 import Toaster from '@/components/ui/toast/Toaster.vue';
 
 //state
 const memoryStore = useMemoryStore()
-
+const sessionStore = useSessionStore()
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
 const isError = computed(() => memoryStore?.isError || false)
 const isLoading = computed(() => memoryStore?.isLoading || false)
 const latestPrompt = computed(() => memoryStore?.memoryList?.[memoryStore.memoryList.length - 1] || null)
+const accessToken = computed(() => sessionStore.session?.access_token || '')
+const refreshToken = computed(() => sessionStore.session?.refresh_token || '')
 
 //function
 const onRequest = async (payload) => {
@@ -49,7 +52,14 @@ const onRequest = async (payload) => {
       date: chatDate.value
     }
     memoryStore.setMemory(userMessage)
-    const response = await axios.post(`/api/prompt`, userMessage, { timeout: 60000 })
+    const response = await axios.post(`/api/prompt`, userMessage,
+      {
+        timeout: 60000,
+        headers: {
+          'access_token': accessToken.value,
+          'refresh_token': refreshToken.value
+        }
+      })
     const data = response?.data?.data
     if (data) {
       const aiMessage = {

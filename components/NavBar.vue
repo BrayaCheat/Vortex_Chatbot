@@ -21,7 +21,7 @@
         <h1 class="font-semibold text-[18px]" id="title">BRAYA-CHATBOT</h1>
     </div>
     <div>
-      <UserIcon/>
+      <!-- <UserIcon/> -->
     </div>
   </nav>
 </template>
