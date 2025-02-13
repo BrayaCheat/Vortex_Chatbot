@@ -11,8 +11,8 @@ export const useSessionStore = defineStore(
     };
 
     const clearSession = () => {
-      session.value = null;
       sessionStorage.removeItem("SessionStore");
+      session.value = null;
     };
 
     return {

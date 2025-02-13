@@ -92,7 +92,6 @@ const onSuggestion = (payload) => {
 }
 
 const onRetry = (payload) => {
-  console.log(payload)
   onRequest(payload)
 }
 </script>

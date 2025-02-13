@@ -82,10 +82,6 @@ const onSignIn = async () => {
   try {
     const response = await axios.post(`/api/auth/login`, { credential }, { timeout: 15000 })
     const {data, message} = response?.data
-    toast({
-      title: message,
-      variant: 'default'
-    })
     userStore.setUser(data?.user)
     sessionStore.setSession(data?.session)
     clearCredential()

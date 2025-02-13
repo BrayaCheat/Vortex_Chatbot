@@ -11,25 +11,30 @@ interface ResponseText {
 
 export default defineEventHandler(async (event) => {
   try {
-    const config = useRuntimeConfig();
-    const { GEMINI_KEY, GEMINI_ENDPOINT, GEMINI_MODEL } = config;
+    const { GEMINI_KEY, GEMINI_ENDPOINT, GEMINI_MODEL } = useRuntimeConfig();
     const { prompt } = await readBody(event);
     const access_token = event.headers.get("access_token");
     const refresh_token = event.headers.get("refresh_token");
 
     if (!access_token || !refresh_token) {
       return createError({
-        statusMessage: "Invalid token.",
-        status: 403,
+        statusMessage: "You don't have permission to access this resource.",
+        status: 401,
       });
     }
-    const {
-      data: { user },
-      error,
-    } = await supabase.auth.setSession({
+
+    if (!prompt && typeof prompt !== 'string') {
+      return createError({
+        statusMessage: "Invalid prompt! prompt's type must be string.",
+        status: 400,
+      });
+    }
+
+    const { data, error } = await supabase.auth.setSession({
       access_token,
       refresh_token,
     });
+
     if (error) {
       return createError({
         statusMessage: error?.message || "An error occur.",
@@ -37,14 +42,7 @@ export default defineEventHandler(async (event) => {
       });
     }
 
-    if (!prompt) {
-      return createError({
-        statusMessage: "Invalid prompt.",
-        status: 400,
-      });
-    }
-
-    if (user) {
+    if (data && data?.user && data?.session) {
       const query = {
         contents: [
           {

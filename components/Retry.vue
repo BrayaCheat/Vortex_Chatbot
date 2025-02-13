@@ -1,7 +1,11 @@
 <template>
-  <Card class="rounded-[10px] border-destructive p-3 bg-primary-foreground flex flex-col gap-3">
-    <span class="text-[14px] text-muted-foreground">{{ errorMessage }}</span>
-    <Button variant="destructive" class="border-rounded-[10px]" @click="onRetryClick">Retry</Button>
+  <Card class="rounded-[10px] border-destructive p-3 bg-red-100 flex flex-col gap-3">
+    <span class="text-[14px] text-primary font-medium">{{ errorMessage }}</span>
+    <Button
+      variant="destructive"
+      @click="onRetryClick">
+        Retry
+    </Button>
   </Card>
 </template>
 
