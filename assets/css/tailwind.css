@@ -60,6 +60,7 @@ input {
 
 #title {
   font-family: "JetBrains Mono", serif !important;
+  font-weight: 700;
 }
 
 .page-enter-active,
