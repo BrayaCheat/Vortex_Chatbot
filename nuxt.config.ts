@@ -42,6 +42,10 @@ export default defineNuxtConfig({
     storageKey: "nuxt-color-mode",
   },
   app: {
+    pageTransition: {
+      mode: 'out-in',
+      name: 'page'
+    },
     head: {
       charset: "utf-8",
       title: "Braya - BRAINSTORM YOUR IDEA",
