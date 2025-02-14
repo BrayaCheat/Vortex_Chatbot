@@ -1,18 +1,17 @@
 <template>
   <div class="my-3 flex flex-col items-center gap-[10px]">
     <!-- cover -->
-    <div id="background-cover" class="inset-0 w-full h-[150px] rounded-[10px]" />
+    <div id="background-cover" class="inset-0 w-full h-[150px] rounded-[10px] border-4 border-border" />
 
     <!-- profile -->
-    <Avatar class="size-[100px] mx-auto -mt-[65px] border-2 border-border">
+    <Avatar class="size-[100px] mx-auto -mt-[65px] border-4 border-border">
       <AvatarImage :src="getProfile" class="object-cover" />
     </Avatar>
     <ChangeProfile :profiles="profiles" @onChangeProfile="onChangeProfile" />
 
     <!-- nickname -->
      <div class="flex items-center">
-      <span class="text-[16px] text-primary">{{ getNickName }}</span>
-      <component :is="Pencil" class="size-[30px] p-1.5 bg-primary-foreground rounded-full text-muted-foreground cursor-pointer"/>
+      <span class="text-[16px] text-primary">{{ getUsername }}</span>
      </div>
 
     <!-- bio -->
@@ -49,8 +48,9 @@ const bio = ref('')
 
 //computed
 const getProfile = computed(() => userStore.profile ? userStore.profile : '/icons/icon-128.png')
-const getNickName = computed(() => userStore.nickname ? userStore.nickname : 'Your nickname')
+// const getNickName = computed(() => userStore.nickname ? userStore.nickname : 'Your nickname')
 const getBio = computed(() => userStore.bio ? userStore.bio : 'Say something here...')
+const getUsername = computed(() => userStore.user ? userStore.user?.email : '')
 
 //function
 const onChangeProfile = (payload) => {
