@@ -39,9 +39,10 @@ import { Input } from '@/components/ui/input';
 import ChangeProfile from '@/components/ChangeProfile.vue';
 import { useToast } from '@/components/ui/toast';
 import { Check, Pencil } from 'lucide-vue-next';
+import { profileList } from '@/utils/helper';
 
 //state
-const profiles = ref(['/icons/icon-128.png', '/images/delulu.png', '/images/user.png', '/background/background-1.avif'])
+const profiles = profileList()
 const userStore = useUserStore()
 const { toast } = useToast()
 const bio = ref('')

@@ -15,7 +15,6 @@
 import ChatBoard from '@/components/ChatBoard.vue';
 import Greeting from '@/components/Greeting.vue';
 import { useMemoryStore } from '@/store/memory';
-import { profileList } from '@/utils/helper';
 
 //meta
 definePageMeta({
@@ -31,7 +30,6 @@ const memoryList = computed(() => memoryStore?.memoryList || [])
 
 //life cycle
 onMounted(() => {
-  profileList()
   nextTick(() => {
     if(chatContainer.value){
       chatContainer.value.lastElementChild?.scrollIntoView({ behavior: 'smooth' })
