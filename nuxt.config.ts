@@ -5,11 +5,6 @@ export default defineNuxtConfig({
   pages: true,
   devtools: { enabled: false },
   css: ['@/assets/css/tailwind.css'],
-  vite: {
-    esbuild: {
-      drop: ['console', 'debugger']
-    }
-  },
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
