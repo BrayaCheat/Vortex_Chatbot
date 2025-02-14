@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-import '@/components/UserIcon.vue'
 import "highlight.js/styles/github-dark.css"
 import hljs from 'highlight.js'
 import { marked } from 'marked'

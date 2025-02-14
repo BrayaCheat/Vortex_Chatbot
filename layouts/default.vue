@@ -6,13 +6,13 @@
         <VitePwaManifest />
         <NuxtPage />
         <div v-if="!memoryStore.memoryList.length" class="flex-1"/>
-        <Suggest @onSuggestion="onSuggestion"/>
+        <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt"/>
         <Loading v-if="isLoading"/>
         <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage"/>
         <Toaster />
       </main>
       <!-- prompt -->
-      <Prompt @onRequest="onRequest" />
+      <Prompt @onRequest="onRequest" v-show="isShowPrompt"/>
     </div>
   </ClientOnly>
 </template>
@@ -33,6 +33,7 @@ import Toaster from '@/components/ui/toast/Toaster.vue';
 const memoryStore = useMemoryStore()
 const sessionStore = useSessionStore()
 const errorMessage = ref('')
+const route = useRoute()
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
@@ -40,6 +41,7 @@ const isError = computed(() => memoryStore?.isError || false)
 const isLoading = computed(() => memoryStore?.isLoading || false)
 const accessToken = computed(() => sessionStore.session?.access_token || '')
 const refreshToken = computed(() => sessionStore.session?.refresh_token || '')
+const isShowPrompt = computed(() => route.path === '/')
 
 //function
 const onRequest = async (payload) => {

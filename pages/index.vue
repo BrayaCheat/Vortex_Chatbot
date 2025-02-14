@@ -14,7 +14,6 @@
 <script setup>
 import ChatBoard from '@/components/ChatBoard.vue';
 import Greeting from '@/components/Greeting.vue';
-import { Separator } from '@/components/ui/separator';
 import { useMemoryStore } from '@/store/memory';
 
 //meta

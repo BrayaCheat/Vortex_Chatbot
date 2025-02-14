@@ -96,7 +96,7 @@ export default defineNuxtConfig({
       description:
         "An advanced AI-powered chatbot designed to assist users with various tasks and conversations.",
       display: "standalone",
-      theme_color: "dark",
+      theme_color: "#000000",
       icons: [
         {
           src: "/icons/icon-64.png",
