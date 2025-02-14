@@ -9,7 +9,7 @@
         <SheetContent class="flex flex-col w-[270px]" side="left">
           <SheetHeader class="hidden" />
           <SheetTitle class="hidden" />
-          <h1 id="title">BRAYA-CHATBOT</h1>
+          <span id="title">BRAYA-CHATBOT</span>
           <SheetDescription class="flex-1 flex flex-col gap-3">
             <ThemeToggle />
             <ClearChat v-if="isShowClearButton" />

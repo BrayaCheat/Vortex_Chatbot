@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'BrayaFont';
+  src: url('@/assets/fonts/circular/Euclid Circular A Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   scroll-behavior: smooth;
   transition: 300ms;
-  /* font-family: 'JetBrains Mono', serif; */
-  /* font-family: "Flow Circular", serif; */
-  font-family: 'Euclid Circular A', sans-serif;
+  font-family: 'BrayaFont', sans-serif;
 }
 
 *::-webkit-scrollbar {

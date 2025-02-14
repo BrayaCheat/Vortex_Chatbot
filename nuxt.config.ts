@@ -23,9 +23,7 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      "JetBrains Mono": [400, 700, 900],
-      "Fira Code": [400, 700, 900],
-      "Flow Circular": [400, 700, 900]
+      "JetBrains Mono": [400, 700, 900]
     },
     display: "swap",
     prefetch: true,
@@ -64,10 +62,6 @@ export default defineNuxtConfig({
         },
       ],
       link: [
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.cdnfonts.com/css/euclid-circular-a'
-        },
         {
           rel: "icon",
           href: "/icons/icon-64.png",
