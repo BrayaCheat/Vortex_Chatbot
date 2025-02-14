@@ -15,6 +15,9 @@
 import ChatBoard from '@/components/ChatBoard.vue';
 import Greeting from '@/components/Greeting.vue';
 import { useMemoryStore } from '@/store/memory';
+import { profileList } from '@/utils/helper';
+
+profileList()
 
 //meta
 definePageMeta({

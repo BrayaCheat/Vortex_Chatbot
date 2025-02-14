@@ -24,6 +24,7 @@ const props = defineProps({
 // computed
 const message = computed(() => {
   marked.options({
+    silent: true,
     breaks: true,
     highlight: (code, lang) => {
       return hljs.highlightAuto(code).value
