@@ -83,7 +83,7 @@ const onSignIn = async () => {
   try {
     const response = await axios.post(`/api/auth/login`, { credential }, { timeout: 15000 })
     const { data } = response?.data
-    userStore.setUser(data?.user)
+    userStore.user = data?.user
     sessionStore.setSession(data?.session)
     clearCredential()
     return navigateTo('/')

@@ -10,11 +10,11 @@ import { LogOut } from 'lucide-vue-next';
 import { useSessionStore } from '@/store/session';
 import { useUserStore } from '@/store/user';
 
-const authStore = useUserStore()
+const userStore = useUserStore()
 const sessionStore = useSessionStore()
 
 const onSignOut = () => {
-  authStore.clearUser()
+  userStore.clearUser()
   sessionStore.clearSession()
   return navigateTo('/login')
 }

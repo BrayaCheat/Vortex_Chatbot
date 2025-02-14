@@ -11,15 +11,6 @@ export const useMemoryStore = defineStore(
     const isLoading = ref<boolean>(false);
     const isError = ref<boolean>(false);
 
-    const setMemory = (data: MemoryItem) => {
-      if (!data) return;
-      memoryList.value.push(data);
-    };
-
-    const getMemory = () => {
-      return memoryList.value;
-    };
-
     const clearMemory = () => {
       memoryList.value = [];
       isError.value = false
@@ -32,9 +23,7 @@ export const useMemoryStore = defineStore(
       isLoading,
       isError,
 
-      //functions
-      setMemory,
-      getMemory,
+      //methods
       clearMemory,
     };
   },

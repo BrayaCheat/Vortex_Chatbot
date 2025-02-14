@@ -30,8 +30,8 @@ input {
   outline: none !important;
 }
 
-#title {
-  font-family: "JetBrains Mono", serif;
+#title, pre code span {
+  font-family: "JetBrains Mono", serif !important;
 }
 
 .page-enter-active,

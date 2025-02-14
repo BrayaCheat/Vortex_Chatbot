@@ -5,14 +5,14 @@
       <main class="px-3 flex-1 flex flex-col overflow-auto">
         <VitePwaManifest />
         <NuxtPage />
-        <div v-if="!memoryStore.memoryList.length" class="flex-1"/>
-        <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt"/>
-        <Loading v-if="isLoading"/>
-        <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage"/>
+        <div v-if="!memoryStore.memoryList.length" class="flex-1" />
+        <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
+        <Loading v-if="isLoading" />
+        <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" />
         <Toaster />
       </main>
       <!-- prompt -->
-      <Prompt @onRequest="onRequest" v-show="isShowPrompt"/>
+      <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
     </div>
   </ClientOnly>
 </template>
@@ -47,47 +47,47 @@ const isShowPrompt = computed(() => route.path === '/')
 const onRequest = async (payload) => {
   memoryStore.isLoading = true
   memoryStore.isError = false
-  try {
-    const userMessage = {
-      userId: uuidv4(),
-      prompt: payload,
-      role: 'user',
-      date: chatDate.value
-    }
-    memoryStore.setMemory(userMessage)
-    const response = await axios.post(`/api/prompt`, userMessage,
-      {
-        timeout: 60000,
-        headers: {
-          'access_token': accessToken.value,
-          'refresh_token': refreshToken.value
+    try {
+      const userMessage = {
+        userId: uuidv4(),
+        prompt: payload,
+        role: 'user',
+        date: chatDate.value
+      }
+      memoryStore.memoryList.push(userMessage)
+      const response = await axios.post(`/api/prompt`, userMessage,
+        {
+          timeout: 60000,
+          headers: {
+            'access_token': accessToken.value,
+            'refresh_token': refreshToken.value
+          }
+        })
+      const data = response?.data?.data
+      if (data) {
+        const aiMessage = {
+          userId: uuidv4(),
+          prompt: data,
+          role: 'ai',
+          date: chatDate.value
         }
-      })
-    const data = response?.data?.data
-    if (data) {
-      const aiMessage = {
-        userId: uuidv4(),
-        prompt: data,
-        role: 'ai',
-        date: chatDate.value
+        memoryStore.memoryList.push(aiMessage)
+      } else {
+        const errorMessage = {
+          userId: uuidv4(),
+          prompt: "Sorry, I didn't receive a valid response.",
+          role: 'ai',
+          date: chatDate.value
+        }
+        memoryStore.memoryList.push(errorMessage)
       }
-      memoryStore.setMemory(aiMessage)
-    } else {
-      const errorMessage = {
-        userId: uuidv4(),
-        prompt: "Sorry, I didn't receive a valid response.",
-        role: 'ai',
-        date: chatDate.value
-      }
-      memoryStore.setMemory(errorMessage)
+    } catch (error) {
+      errorMessage.value = error?.response?.data?.statusMessage
+      memoryStore.isError = true
+      console.log(error)
+    } finally {
+      memoryStore.isLoading = false
     }
-  } catch (error) {
-    errorMessage.value = error?.response?.data?.statusMessage
-    memoryStore.isError = true
-    console.log(error)
-  } finally {
-    memoryStore.isLoading = false
-  }
 }
 
 const onSuggestion = (payload) => {

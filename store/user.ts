@@ -8,6 +8,13 @@ export const useUserStore = defineStore(
     const bio = ref<string>('')
     const profile = ref<string>('')
 
+    const clearUser = () => {
+      user.value = {}
+      nickname.value = ''
+      bio.value = ''
+      profile.value = ''
+    }
+
     return {
       //state
       user,
@@ -15,7 +22,10 @@ export const useUserStore = defineStore(
       isError,
       nickname,
       bio,
-      profile
+      profile,
+
+      //methods
+      clearUser
     };
   },
   {

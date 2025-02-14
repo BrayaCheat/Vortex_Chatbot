@@ -1,7 +1,7 @@
 <template>
   <Dialog>
     <DialogTrigger as-child>
-      <Button variant="outline" class="w-full flex items-center justify-start">
+      <Button variant="outline" class="w-full flex items-center justify-start" :disabled="memoryStore.isLoading">
         <component :is="Trash" class="mr-3" />
         <span>Clear Conversation</span>
       </Button>
@@ -13,7 +13,7 @@
           <DialogClose as-child>
             <Button id="close-btn" variant="ghost">Cancel</Button>
           </DialogClose>
-          <Button variant="destructive" @click="onClearChat">Remove</Button>
+          <Button variant="destructive" @click="onClearChat" :disabled="memoryStore.isLoading">Remove</Button>
         </div>
       </DialogDescription>
     </DialogContent>
@@ -35,6 +35,7 @@ const onCloseModal = () => {
   closeBtn?.click()
 }
 const onClearChat = () => {
+  if (memoryStore.isLoading) return
   memoryStore.clearMemory()
   onCloseModal()
 }
