@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@vite-pwa/nuxt"
   ],
+  plugins: ['~/plugins/disableLogs'],
   runtimeConfig: {
     GEMINI_KEY: process.env.GEMINI_KEY,
     GEMINI_ENDPOINT: process.env.GEMINI_ENDPOINT,

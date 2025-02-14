@@ -1,4 +1,4 @@
 export const profileList = () => {
   const path = '/profiles/'
-  console.log(path)
+  console.log("utils: ",path)
 }
