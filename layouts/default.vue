@@ -30,6 +30,7 @@ import { v4 as uuidv4 } from 'uuid'
 import Toaster from '@/components/ui/toast/Toaster.vue';
 import { UseSettingStore } from '@/store/setting';
 import { useToast } from '~/components/ui/toast';
+import { useVibrate } from '@vueuse/core';
 
 //state
 const memoryStore = useMemoryStore()
@@ -38,6 +39,7 @@ const sessionStore = useSessionStore()
 const errorMessage = ref('')
 const route = useRoute()
 const {toast} = useToast()
+const {vibrate, stop, isSupported} = useVibrate({pattern: [300, 100, 300]})
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
@@ -72,10 +74,11 @@ const onRequest = async (payload) => {
     const data = response?.data?.data
     const message = response?.data?.message
     if (data && message) {
+      vibrate()
       toast({
-        title: message,
-        description: `Received: ${new Date().toDateString()}`,
-        class: 'py-2 px-3',
+        title: `New message`,
+        description: `Received at: ${new Date().toDateString()}`,
+        class: 'py-2 px-6',
         duration: 3000
       })
       const aiMessage = {

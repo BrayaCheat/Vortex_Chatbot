@@ -3,7 +3,7 @@
     <DialogTrigger as-child>
         <component :is="MessageCircleX" class="text-muted-foreground size-[30px] cursor-pointer p-1" :class="memoryStore.memoryList.length <= 1 && 'cursor-not-allowed'"/>
     </DialogTrigger>
-    <DialogContent class="rounded-[10px] w-[90%]">
+    <DialogContent class="rounded-[10px] w-[90%] p-3">
       <DialogTitle class="hidden" />
       <div class="flex flex-col items-start">
         <h1 class="text-[16px]">Clear conversation?</h1>

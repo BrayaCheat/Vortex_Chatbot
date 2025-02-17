@@ -58,8 +58,10 @@ const onChangeProfile = (payload) => {
   if (typeof payload !== 'string' || !payload) return
   userStore.profile = payload
   toast({
-    title: 'Profile changed.',
-    duration: 500
+    title: 'Successfully.',
+    description: 'Profile changed.',
+    class: 'py-2 px-6',
+    duration: 3000
   })
 }
 
