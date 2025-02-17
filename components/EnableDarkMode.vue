@@ -1,7 +1,7 @@
 <template>
-  <Card class="w-full flex items-center justify-start px-0 border-none shadow-none bg-transparent" @click="toggleDarkMode" >
-    <Label for="toggleTheme" class="flex-1 text-muted-foreground cursor-pointer">{{ toggleTitle }}</Label>
-    <Switch id="toggleTheme" :checked="settingStore.isEnableDarkMode">
+  <Card class="w-full flex items-center justify-start px-0 border-none shadow-none bg-transparent">
+    <Label class="flex-1 text-muted-foreground">{{ toggleTitle }}</Label>
+    <Switch :checked="settingStore.isEnableDarkMode" @click="toggleDarkMode">
       <template #thumb>
         <component :is="toggleIcon" class="size-5 p-0.5 text-amber-500"/>
       </template>
