@@ -3,10 +3,12 @@ export const UseSettingStore = defineStore(
   () => {
     const isEnableAutoClear = ref<boolean>(false);
     const isEnableDarkMode = ref<boolean>(false);
+    const isEnableSmartModel = ref<boolean>(false)
 
     return {
       isEnableAutoClear,
-      isEnableDarkMode
+      isEnableDarkMode,
+      isEnableSmartModel
     };
   },
   {

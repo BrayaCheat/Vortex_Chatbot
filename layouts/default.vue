@@ -28,9 +28,11 @@ import { useSessionStore } from '@/store/session';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
 import Toaster from '@/components/ui/toast/Toaster.vue';
+import { UseSettingStore } from '@/store/setting';
 
 //state
 const memoryStore = useMemoryStore()
+const settingStore = UseSettingStore()
 const sessionStore = useSessionStore()
 const errorMessage = ref('')
 const route = useRoute()
@@ -42,52 +44,54 @@ const isLoading = computed(() => memoryStore?.isLoading || false)
 const accessToken = computed(() => sessionStore.session?.access_token || '')
 const refreshToken = computed(() => sessionStore.session?.refresh_token || '')
 const isShowPrompt = computed(() => route.path === '/')
+const model = computed(() => settingStore.isEnableSmartModel ? 'enable' : 'disable')
 
 //function
 const onRequest = async (payload) => {
   memoryStore.isLoading = true
   memoryStore.isError = false
-    try {
-      const userMessage = {
+  try {
+    const userMessage = {
+      userId: uuidv4(),
+      prompt: payload,
+      role: 'user',
+      date: chatDate.value
+    }
+    memoryStore.memoryList.push(userMessage)
+    const response = await axios.post(`/api/prompt`, userMessage,
+      {
+        timeout: 60000,
+        headers: {
+          'access_token': accessToken.value,
+          'refresh_token': refreshToken.value,
+          'model': model.value
+        }
+      })
+    const data = response?.data?.data
+    if (data) {
+      const aiMessage = {
         userId: uuidv4(),
-        prompt: payload,
-        role: 'user',
+        prompt: data,
+        role: 'ai',
         date: chatDate.value
       }
-      memoryStore.memoryList.push(userMessage)
-      const response = await axios.post(`/api/prompt`, userMessage,
-        {
-          timeout: 60000,
-          headers: {
-            'access_token': accessToken.value,
-            'refresh_token': refreshToken.value
-          }
-        })
-      const data = response?.data?.data
-      if (data) {
-        const aiMessage = {
-          userId: uuidv4(),
-          prompt: data,
-          role: 'ai',
-          date: chatDate.value
-        }
-        memoryStore.memoryList.push(aiMessage)
-      } else {
-        const errorMessage = {
-          userId: uuidv4(),
-          prompt: "Sorry, I didn't receive a valid response.",
-          role: 'ai',
-          date: chatDate.value
-        }
-        memoryStore.memoryList.push(errorMessage)
+      memoryStore.memoryList.push(aiMessage)
+    } else {
+      const errorMessage = {
+        userId: uuidv4(),
+        prompt: "Sorry, I didn't receive a valid response.",
+        role: 'ai',
+        date: chatDate.value
       }
-    } catch (error) {
-      errorMessage.value = error?.response?.data?.statusMessage
-      memoryStore.isError = true
-      console.log(error)
-    } finally {
-      memoryStore.isLoading = false
+      memoryStore.memoryList.push(errorMessage)
     }
+  } catch (error) {
+    errorMessage.value = error?.response?.data?.statusMessage
+    memoryStore.isError = true
+    console.log(error)
+  } finally {
+    memoryStore.isLoading = false
+  }
 }
 
 const onSuggestion = (payload) => {

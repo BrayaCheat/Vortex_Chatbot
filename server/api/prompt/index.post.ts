@@ -11,10 +11,12 @@ interface ResponseText {
 
 export default defineEventHandler(async (event) => {
   try {
-    const { GEMINI_KEY, GEMINI_ENDPOINT, GEMINI_MODEL } = useRuntimeConfig();
+    const { GEMINI_KEY, GEMINI_ENDPOINT, NORMAL_MODEL, SMART_MODEL } = useRuntimeConfig();
     const { prompt } = await readBody(event);
     const access_token = event.headers.get("access_token");
     const refresh_token = event.headers.get("refresh_token");
+    const model = event.headers.get('model')
+    const configModel = model === 'enable' ? SMART_MODEL : NORMAL_MODEL
 
     if (!access_token || !refresh_token) {
       return createError({
@@ -59,7 +61,7 @@ export default defineEventHandler(async (event) => {
       };
 
       const response = await $fetch(
-        `${GEMINI_ENDPOINT}${GEMINI_MODEL}?key=${GEMINI_KEY}`,
+        `${GEMINI_ENDPOINT}${configModel}?key=${GEMINI_KEY}`,
         {
           method: "POST",
           body: query,

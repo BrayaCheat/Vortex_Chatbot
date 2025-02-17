@@ -14,13 +14,13 @@
 
         <span class="text-[16px] font-semibold mb-3 text-primary">Chat Setting</span>
         <div class="flex flex-col gap-6 mb-3">
-          <ClearChat @onCloseSidePanel="onCloseSidePanel" />
-          <ClearChatAuto />
+          <EnableSmartModel />
+          <EnableClearConversation />
         </div>
 
         <span class="text-[16px] font-semibold mb-3 text-primary">Appearance Setting</span>
         <div class="flex flex-col gap-6 mb-3">
-          <ThemeToggle />
+          <EnableDarkMode />
         </div>
 
       </SheetDescription>
@@ -33,10 +33,9 @@
 </template>
 
 <script setup>
-import ThemeToggle from '@/components/ThemeToggle.vue';
-import ClearChat from '@/components/ClearChat.vue';
-import ClearChatAuto from './ClearChatAuto.vue';
-import DonateMe from '@/components/DonateMe.vue';
+import EnableDarkMode from '~/components/EnableDarkMode.vue';
+import EnableSmartModel from '@/components/EnableSmartModel.vue';
+import EnableClearConversation from './EnableClearConversation.vue';
 import Logout from '@/components/Logout.vue';
 import {
   Sheet,

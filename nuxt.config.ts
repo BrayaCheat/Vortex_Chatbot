@@ -1,4 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+//enable env
+import dotenv from 'dotenv'
+dotenv.config()
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   ssr: false,
@@ -18,9 +21,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     GEMINI_KEY: process.env.GEMINI_KEY,
     GEMINI_ENDPOINT: process.env.GEMINI_ENDPOINT,
-    GEMINI_MODEL: process.env.GEMINI_MODEL,
     SUPABASE_URL: process.env.SUPABASE_URL,
     SUPABASE_KEY: process.env.SUPABASE_KEY,
+    NORMAL_MODEL: process.env.NORMAL_MODEL,
+    SMART_MODEL: process.env.SMART_MODEL,
   },
   googleFonts: {
     families: {

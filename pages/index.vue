@@ -58,8 +58,6 @@ watch(
 );
 
 watch([() => settingStore.isEnableAutoClear, () => memoryStore.memoryList], ([isEnable, memoryList]) => {
-  console.log("isEnable: ", isEnable)
-  console.log("memoryList: ", memoryList)
   if (isEnable && memoryList.length > 10) {
     memoryStore.clearMemory()
   }

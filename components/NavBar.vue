@@ -7,7 +7,7 @@
         class="cursor-pointer size-[35px] p-1 text-muted-foreground" />
     </div>
     <div class="text-center flex-1">
-      <h1 class="font-semibold text-[18px]">BRAYA-CHATBOT</h1>
+      <h1 class="font-semibold text-[18px]">VORTEX</h1>
     </div>
     <div>
       <NuxtLink to="/profile">
