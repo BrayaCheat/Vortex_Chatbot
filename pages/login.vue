@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center flex-1 h-full m-3">
-    <Card class="mx-auto grid w-[450px] gap-6 px-3 py-12" id="login-form">
+    <Card class="mx-auto grid w-[450px] gap-6 px-3 py-20" id="login-form">
       <div class="flex items-center justify-center gap-1">
         <img src="public/icons/icon-256.png" class="rounded-full object-cover size-[40px]" />
         <h1 id="title" class="text-[20px]">VORTEX</h1>

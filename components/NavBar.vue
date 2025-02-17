@@ -11,12 +11,8 @@
     <div class="text-center flex-1">
       <h1 class="font-semibold md:text-[18px] text-[14px]">VORTEX</h1>
     </div>
-    <!-- profile -->
-    <NuxtLink to="/profile" class="flex items-center">
-      <Avatar>
-        <AvatarImage :src="getProfile" />
-      </Avatar>
-    </NuxtLink>
+    <!-- clear chat -->
+    <ClearChat/>
   </nav>
 </template>
 
@@ -25,6 +21,7 @@ import SidePanel from '@/components/SidePanel.vue';
 import { ChevronLeft } from 'lucide-vue-next';
 import { useMemoryStore } from '@/store/memory';
 import { useUserStore } from '@/store/user';
+import ClearChat from '@/components/ClearChat.vue';
 
 const userStore = useUserStore()
 const memoryStore = useMemoryStore()
@@ -32,8 +29,6 @@ const router = useRouter()
 const route = useRoute()
 
 //computed
-const getProfile = computed(() => userStore.profile ? userStore.profile : '/icons/icon-128.png')
-const isShowClearButton = computed(() => memoryStore.memoryList.length)
 const isShowSideMenu = computed(() => route.path === '/')
 
 const onGoBack = () => {

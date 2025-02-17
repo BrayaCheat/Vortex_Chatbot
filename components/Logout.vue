@@ -1,6 +1,11 @@
 <template>
-  <Button variant="destructive" @click="onSignOut" class="w-full flex items-center justify-start">
-    <component :is="LogOut" class="mr-3" />
+  <Button
+    variant="none"
+    @click="onSignOut"
+    class="p-0 text-muted-foreground flex-1 flex items-center justify-start"
+    size="md"
+  >
+    <component :is="LogOut"/>
     <span>Logout</span>
   </Button>
 </template>
@@ -16,6 +21,7 @@ const sessionStore = useSessionStore()
 const onSignOut = () => {
   userStore.clearUser()
   sessionStore.clearSession()
+
   return navigateTo('/login')
 }
 </script>

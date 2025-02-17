@@ -2,7 +2,7 @@
   <ClientOnly>
     <div class="flex flex-col h-screen overflow-hidden lg:w-[900px] w-full mx-auto relative">
       <NavBar />
-      <main class="px-3 flex-1 flex flex-col overflow-auto">
+      <main left class="px-3 flex-1 flex flex-col overflow-auto">
         <VitePwaManifest />
         <NuxtPage />
         <div v-if="!memoryStore.memoryList.length" class="flex-1" />

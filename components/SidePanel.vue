@@ -1,7 +1,7 @@
 <template>
   <Sheet>
     <SheetTrigger as-child>
-      <component :is="Menu" class="text-muted-foreground size-[35px] cursor-pointer p-1" />
+      <component :is="Menu" class="text-muted-foreground size-[30px] cursor-pointer p-1" />
     </SheetTrigger>
     <SheetContent class="flex flex-col w-[75%] p-0" side="left">
       <SheetHeader class="hidden" />
@@ -26,17 +26,18 @@
       </SheetDescription>
       <SheetClose id="close-side-panel" />
       <div class="px-3 pb-6">
-        <Logout />
+        <UserDisplayCard/>
       </div>
     </SheetContent>
   </Sheet>
 </template>
 
 <script setup>
-import EnableDarkMode from '~/components/EnableDarkMode.vue';
+import EnableDarkMode from '@/components/EnableDarkMode.vue';
 import EnableSmartModel from '@/components/EnableSmartModel.vue';
-import EnableClearConversation from './EnableClearConversation.vue';
-import Logout from '@/components/Logout.vue';
+import EnableClearConversation from '@/components/EnableClearConversation.vue';
+import UserDisplayCard from '@/components/UserDisplayCard.vue';
+
 import {
   Sheet,
   SheetClose,
@@ -47,7 +48,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { Separator } from '@/components/ui/separator';
 import { Menu } from 'lucide-vue-next';
 
 const onCloseSidePanel = (payload) => {
