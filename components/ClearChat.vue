@@ -12,9 +12,20 @@
       <DialogDescription>
         <div class="flex items-center justify-end gap-3">
           <DialogClose as-child>
-            <Button id="close-btn" variant="ghost">Cancel</Button>
+            <Button
+              id="close-btn"
+              variant="ghost"
+              size="sm"
+            >
+              Cancel
+            </Button>
           </DialogClose>
-          <Button variant="destructive" @click="onClearChat" :disabled="memoryStore.isLoading">
+          <Button
+            variant="destructive"
+            @click="onClearChat"
+            :disabled="memoryStore.isLoading"
+            size="sm"
+          >
             <span>Clear</span>
           </Button>
         </div>

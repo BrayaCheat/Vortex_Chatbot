@@ -1,5 +1,5 @@
 <template>
-  <Card class="flex items-center bg-primary-foreground">
+  <Card class="flex items-center bg-primary-foreground p-1 rounded-[10px]">
     <DropdownMenu>
       <DropdownMenuTrigger as-child>
         <Button class="flex items-center flex-1 cursor-pointer p-1" variant="none">
