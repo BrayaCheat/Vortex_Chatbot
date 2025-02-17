@@ -23,6 +23,6 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     :class="cn(toastVariants({ variant }), props.class)"
     @update:open="onOpenChange"
   >
-    <slot />
+    <slot/>
   </ToastRoot>
 </template>

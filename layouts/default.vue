@@ -9,7 +9,7 @@
         <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
         <Loading v-if="isLoading" v-show="isShowPrompt"/>
         <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt"/>
-        <Toaster />
+        <Toaster v-if="settingStore.isEnableNotification"/>
       </main>
       <!-- prompt -->
       <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
@@ -29,6 +29,7 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
 import Toaster from '@/components/ui/toast/Toaster.vue';
 import { UseSettingStore } from '@/store/setting';
+import { useToast } from '~/components/ui/toast';
 
 //state
 const memoryStore = useMemoryStore()
@@ -36,6 +37,7 @@ const settingStore = UseSettingStore()
 const sessionStore = useSessionStore()
 const errorMessage = ref('')
 const route = useRoute()
+const {toast} = useToast()
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
@@ -68,7 +70,14 @@ const onRequest = async (payload) => {
         }
       })
     const data = response?.data?.data
-    if (data) {
+    const message = response?.data?.message
+    if (data && message) {
+      toast({
+        title: message,
+        description: `Received: ${new Date().toDateString()}`,
+        class: 'py-2 px-3',
+        duration: 3000
+      })
       const aiMessage = {
         userId: uuidv4(),
         prompt: data,
@@ -101,4 +110,18 @@ const onSuggestion = (payload) => {
 const onRetry = (payload) => {
   onRequest(payload)
 }
+
+// toast debug
+// onMounted(() => {
+//   if(1 === 1) {
+//     toast({
+//       title: 'New message',
+//       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
+//       duration: 10000,
+//       class: 'py-2 px-3'
+//     })
+//   }
+// })
 </script>
+
+

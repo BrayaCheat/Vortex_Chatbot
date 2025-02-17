@@ -76,7 +76,7 @@ export default defineEventHandler(async (event) => {
 
       return {
         data: responseText,
-        message: "New response from Braya-CHATBOT",
+        message: "New response from VORTEX.",
         status: 201,
       };
     } else {

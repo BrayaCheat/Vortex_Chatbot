@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils'
+import { Mail } from 'lucide-vue-next';
 import { ToastTitle, type ToastTitleProps } from 'radix-vue'
 import { computed, type HTMLAttributes } from 'vue'
 
@@ -13,7 +14,7 @@ const delegatedProps = computed(() => {
 </script>
 
 <template>
-  <ToastTitle v-bind="delegatedProps" :class="cn('text-sm font-semibold', props.class)">
+  <ToastTitle v-bind="delegatedProps" :class="cn('text-[14px] flex items-center gap-3 text-primary', props.class)">
     <slot />
   </ToastTitle>
 </template>

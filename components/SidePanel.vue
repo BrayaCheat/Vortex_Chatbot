@@ -15,7 +15,8 @@
         <span class="text-[16px] font-semibold mb-3 text-primary">Chat Setting</span>
         <div class="flex flex-col gap-6 mb-3">
           <EnableSmartModel />
-          <!-- <EnableClearConversation /> -->
+          <EnableNotification/>
+          <EnableClearConversation />
         </div>
 
         <span class="text-[16px] font-semibold mb-3 text-primary">Appearance Setting</span>
@@ -36,6 +37,7 @@
 import EnableDarkMode from '@/components/EnableDarkMode.vue';
 import EnableSmartModel from '@/components/EnableSmartModel.vue';
 import EnableClearConversation from '@/components/EnableClearConversation.vue';
+import EnableNotification from '@/components/EnableNotification.vue';
 import UserDisplayCard from '@/components/UserDisplayCard.vue';
 
 import {
