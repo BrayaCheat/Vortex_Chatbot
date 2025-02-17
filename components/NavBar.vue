@@ -1,19 +1,22 @@
 <template>
   <nav
     class="flex items-center px-3 md:py-6 py-1 sticky top-0 inset-x-0 bg-inherit z-50 border-b md:shadow-none shadow">
+    <!-- side-panel -->
     <div>
       <SidePanel v-if="isShowSideMenu" />
       <component v-else :is="ChevronLeft" @click="onGoBack"
         class="cursor-pointer size-[35px] p-1 text-muted-foreground" />
     </div>
+    <!-- title -->
     <div class="text-center flex-1">
       <h1 class="font-semibold md:text-[18px] text-[14px]">VORTEX</h1>
     </div>
-      <NuxtLink to="/profile" class="flex items-center">
-        <Avatar>
-          <AvatarImage :src="getProfile" />
-        </Avatar>
-      </NuxtLink>
+    <!-- profile -->
+    <NuxtLink to="/profile" class="flex items-center">
+      <Avatar>
+        <AvatarImage :src="getProfile" />
+      </Avatar>
+    </NuxtLink>
   </nav>
 </template>
 
