@@ -7,9 +7,9 @@
       <Skeleton class="h-4 w-full bg-secondary" />
     </div>
   </Card> -->
-  <Card class="flex items-start justify-start flex-1 gap-3 border-none shadow-none text-[14px] text-muted-foreground">
+  <Card class="flex items-start justify-start flex-1 gap-3 border-none shadow-none text-[14px] text-muted-foreground animate-pulse">
     <component :is="Loader2" class="animate-spin"/>
-    <span>Just a moment...</span>
+    <span class="mt-1">Just a moment...</span>
   </Card>
 </template>
 

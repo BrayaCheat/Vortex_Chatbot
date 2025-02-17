@@ -15,7 +15,7 @@
         <span class="text-[16px] font-semibold mb-3 text-primary">Chat Setting</span>
         <div class="flex flex-col gap-6 mb-3">
           <EnableSmartModel />
-          <EnableClearConversation />
+          <!-- <EnableClearConversation /> -->
         </div>
 
         <span class="text-[16px] font-semibold mb-3 text-primary">Appearance Setting</span>

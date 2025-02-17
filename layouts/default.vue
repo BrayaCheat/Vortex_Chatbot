@@ -7,8 +7,8 @@
         <NuxtPage />
         <div v-if="!memoryStore.memoryList.length" class="flex-1" />
         <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
-        <Loading v-if="isLoading" />
-        <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" />
+        <Loading v-if="isLoading" v-show="isShowPrompt"/>
+        <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt"/>
         <Toaster />
       </main>
       <!-- prompt -->
