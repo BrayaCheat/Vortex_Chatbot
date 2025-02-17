@@ -25,7 +25,7 @@
 
       </SheetDescription>
       <SheetClose id="close-side-panel" />
-      <div class="p-3">
+      <div class="px-3 pb-6">
         <Logout />
       </div>
     </SheetContent>
