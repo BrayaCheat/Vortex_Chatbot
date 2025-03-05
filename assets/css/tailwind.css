@@ -49,6 +49,10 @@
   display: none;
 }
 
+body {
+  padding-top: env(safe-area);
+}
+
 input:focus {
   outline: none !important;
   box-shadow: none !important;

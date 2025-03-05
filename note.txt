@@ -1,0 +1,7 @@
+Feature:
+        -Custom greeting message
+        -Custom prompt message
+        -Toggle message timestamp
+        -Enable sound
+        -Typing effect
+        

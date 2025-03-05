@@ -1,7 +1,7 @@
 <template>
   <Sheet>
     <SheetTrigger as-child>
-      <component :is="Menu" class="text-muted-foreground size-[30px] cursor-pointer p-1" />
+      <component :is="AlignLeft" class="text-muted-foreground size-[30px] cursor-pointer p-1" />
     </SheetTrigger>
     <SheetContent class="flex flex-col w-[75%] p-0" side="left">
       <SheetHeader class="hidden" />
@@ -50,7 +50,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { Menu } from 'lucide-vue-next';
+import { AlignLeft } from 'lucide-vue-next';
 
 const onCloseSidePanel = (payload) => {
   if (!payload) return

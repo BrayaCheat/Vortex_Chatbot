@@ -1,9 +1,9 @@
 <template>
   <div class="flex items-center justify-center flex-1 h-full m-3">
-    <Card class="mx-auto grid w-[450px] gap-6 px-3 py-20" id="login-form">
-      <div class="flex items-center justify-center gap-1">
-        <img src="public/icons/icon-256.png" class="rounded-full object-cover size-[40px]" />
-        <h1 id="title" class="text-[20px]">VORTEX</h1>
+    <Card class="mx-auto grid w-[450px] gap-10 px-10 pb-32 pt-10" id="login-form">
+      <div class="flex flex-col items-start justify-start gap-1">
+        <h1 class="text-[26px] font-bold">Welcome Back</h1>
+        <p class="text-muted-foreground">Welcome back, please enter your credential.</p>
       </div>
       <form @submit.prevent="onSignIn" class="grid gap-4">
         <div class="grid gap-2">
@@ -14,9 +14,6 @@
         <div class="grid gap-2">
           <div class="flex items-center">
             <Label for="password">Password</Label>
-            <!-- <a href="/forgot-password" class="ml-auto inline-block text-sm underline">
-                Forgot your password?
-              </a> -->
           </div>
           <Input type="password" placeholder="**********" required v-model.trim.lazy="credential.password"
             :disabled="userStore.isLoading" class="bg-primary-foreground rounded-[10px]"/>
@@ -25,19 +22,7 @@
           <component v-if="userStore.isLoading" :is="Loader2" class="animate-spin" />
           <span v-else>Continue</span>
         </Button>
-
-        <Separator label="Or signin with" class="my-3" />
-        <Button variant="outline" class="w-full rounded-[10px] bg-primary-foreground">
-          <img src="https://api.iconify.design/logos:google-icon.svg" alt="">
-          <span>Login with Google</span>
-        </Button>
       </form>
-      <!-- <div class="mt-4 text-center text-sm">
-          Don't have an account?
-          <a href="#" class="underline">
-            Sign up
-          </a>
-        </div> -->
     </Card>
   </div>
 </template>

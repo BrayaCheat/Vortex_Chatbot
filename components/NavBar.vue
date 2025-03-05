@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex items-center px-3 md:py-6 py-1 sticky top-0 inset-x-0 bg-inherit z-50 border-b md:shadow-none shadow">
+    class="flex items-center py-1 sticky top-0 inset-x-0 bg-inherit z-50 border-b md:shadow-none shadow">
     <!-- side-panel -->
     <div>
       <SidePanel v-if="isShowSideMenu" />

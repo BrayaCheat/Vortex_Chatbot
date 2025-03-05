@@ -29,3 +29,6 @@ sw.*
 
 #nuxt
 nuxt
+
+#node
+.txt

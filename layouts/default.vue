@@ -125,6 +125,10 @@ const onRetry = (payload) => {
 //     })
 //   }
 // })
+
+// onMounted(() => {
+//   Notification.requestPermission().then(t => alert(t))
+// })
 </script>
 
 
