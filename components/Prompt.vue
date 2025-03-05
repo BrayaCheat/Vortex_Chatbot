@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary-foreground p-3 sticky bottom-0 inset-x-0">
+  <div class="p-3 sticky bottom-0 inset-x-0 border-t z-50 bg-white shadow-[0_-1px_5px_rgba(0,0,0,0.1)]">
     <div class="rounded-3xl border flex flex-col pb-3">
       <form @submit.prevent="onSubmitPrompt">
         <div class="relative flex items-center">

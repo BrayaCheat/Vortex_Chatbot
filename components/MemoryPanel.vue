@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 flex flex-col gap-10 border-l w-[300px]">
+  <div class="p-3 flex flex-col gap-10 border-l w-[300px] shadow">
     <!-- cover -->
     <div id="background-cover" class="inset-0 w-full h-[150px] rounded-[10px] border-4 border-border" />
 

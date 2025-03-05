@@ -9,8 +9,8 @@
     <DialogContent class="rounded-[10px] w-[90%] p-3">
       <DialogTitle class="hidden" />
       <div class="flex flex-col items-start">
-        <h1 class="text-[16px]">Clear conversation?</h1>
-        <span class="text-[12px] text-muted-foreground">Once you clear, the conversation will be gone.</span>
+        <h1 class="text-[20px]">Delete conversation?</h1>
+        <span class="text-[16px] text-muted-foreground">Once you clear, the conversation will be gone.</span>
       </div>
       <DialogDescription>
         <div class="flex items-center justify-end gap-3">
@@ -18,7 +18,6 @@
             <Button
               id="close-btn"
               variant="ghost"
-              size="sm"
             >
               Cancel
             </Button>
@@ -27,7 +26,6 @@
             variant="destructive"
             @click="onClearChat"
             :disabled="memoryStore.isLoading"
-            size="sm"
           >
             <span>Clear</span>
           </Button>
