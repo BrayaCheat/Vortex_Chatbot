@@ -39,7 +39,7 @@ const message = computed(() => {
   return marked(text)
 })
 const chatStyle = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')
-const chatBoxStyle = computed(() => props?.data?.role === 'ai' ? 'whitespace-pre-line text-muted-foreground' : 'whitespace-normal bg-primary-foreground text-primary px-6 pt-1.5')
+const chatBoxStyle = computed(() => props?.data?.role === 'ai' ? 'whitespace-pre-line text-muted-foreground' : 'bg-primary-foreground p-3')
 const role = computed(() => props?.data?.role === 'ai')
 
 //life cycle
@@ -389,16 +389,16 @@ onUpdated(() => {
 /* General Styling */
 .response-box {
   text-wrap: pre-line;
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.5;
   color: hsl(var(--muted-foreground));
 }
 
 /* Headings */
 ::v-deep .response-box h2 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 /* Code Blocks */
@@ -407,10 +407,9 @@ onUpdated(() => {
   white-space: pre-wrap;
   word-break: break-word;
   overflow-x: auto;
-  font-size: 13px;
-  padding: 8px;
+  font-size: 14px;
+  padding: 10px;
   background: hsl(var(--primary-foreground));
-  /* border: 1px solid hsl(var(--border)); */
   border-radius: 6px;
   font-family: 'Fira Code', monospace;
 }
@@ -419,17 +418,17 @@ onUpdated(() => {
 ::v-deep .response-box code {
   background-color: hsl(var(--primary-foreground));
   color: rgb(16 185 129 / var(--tw-text-opacity, 1));
-  padding: 2px 4px;
+  padding: 3px 5px;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 14px;
   font-family: 'Fira Code', monospace;
 }
 
 /* Paragraph Styling */
 ::v-deep .response-box p {
-  font-size: 14px;
+  font-size: 16px;
   color: hsl(var(--muted-foreground));
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 /* Bold Text */
@@ -447,8 +446,8 @@ onUpdated(() => {
 /* Lists */
 ::v-deep .response-box ul,
 ::v-deep .response-box ol {
-  padding-left: 16px;
-  margin: 6px 0;
+  padding-left: 18px;
+  margin: 8px 0;
 }
 
 ::v-deep .response-box ul {
@@ -461,46 +460,46 @@ onUpdated(() => {
 }
 
 ::v-deep .response-box li {
-  margin-bottom: 4px;
-  font-size: 14px;
+  margin-bottom: 6px;
+  font-size: 16px;
 }
 
 /* Blockquotes */
 ::v-deep .response-box blockquote {
-  border-left: 3px solid hsl(var(--primary));
-  padding: 6px 10px;
+  border-left: 4px solid hsl(var(--primary));
+  padding: 8px 12px;
   background-color: hsl(var(--primary-foreground));
   font-style: italic;
-  margin: 6px 0;
+  margin: 8px 0;
 }
 
 /* Tables */
 ::v-deep .response-box table {
   width: 100%;
-  font-size: 13px;
+  font-size: 14px;
   border-collapse: collapse;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 ::v-deep .response-box table td,
 ::v-deep .response-box table th {
   border: 1px solid hsl(var(--border));
-  padding: 6px;
+  padding: 8px;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   ::v-deep .response-box {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   ::v-deep .hljs,
   ::v-deep .response-box pre {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   ::v-deep .response-box table {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 </style>

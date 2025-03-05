@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-white p-3 sticky bottom-0 inset-x-0">
-    <div class="rounded-3xl border flex flex-col">
+  <div class="bg-primary-foreground p-3 sticky bottom-0 inset-x-0">
+    <div class="rounded-3xl border flex flex-col pb-3">
       <form @submit.prevent="onSubmitPrompt">
         <div class="relative flex items-center">
           <Input
@@ -22,14 +22,16 @@
       </form>
 
       <div class="flex items-center">
-        <div v-for="item in promptOptions" :key="item.label">
+        <div v-for="item in promptOptions" :key="item.label" class="flex items-center h-5">
           <Button
+            @click="item.action"
             variant="none"
             class="flex items-center gap-1 text-muted-foreground"
           >
             <component :is="item.icon" class="size-10 text-muted-foreground" />
             {{ item.label }}
           </Button>
+          <Separator orientation="vertical"/>
         </div>
       </div>
     </div>
@@ -44,6 +46,7 @@ import { Earth, Link, SendHorizonal, Smile, Voicemail } from 'lucide-vue-next';
 import { useMemoryStore } from '@/store/memory';
 import DOMPurify from 'dompurify'
 import { useToast } from '@/components/ui/toast/use-toast';
+import {Separator} from '@/components/ui/separator';
 
 const { toast } = useToast()
 const prompt = ref('')
@@ -53,15 +56,18 @@ const placeholder = ref("Message here...")
 const promptOptions = ref([
   {
     label: 'Attact',
-    icon: Link
+    icon: Link,
+    action: () => alert('Featured is currently development')
   },
   {
     label: 'Voice Message',
-    icon: Voicemail
+    icon: Voicemail,
+    action: () => alert('Featured is currently development')
   },
   {
     label: 'Browse Prompt',
-    icon: Earth
+    icon: Earth,
+    action: () => alert('Featured is currently development')
   }
 ])
 
