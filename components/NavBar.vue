@@ -6,18 +6,5 @@
 </template>
 
 <script setup>
-import SidePanel from '@/components/SidePanel.vue';
-import { ChevronLeft } from 'lucide-vue-next';
-import { useMemoryStore } from '@/store/memory';
-import { useUserStore } from '@/store/user';
 import ClearChat from '@/components/ClearChat.vue';
-
-const userStore = useUserStore()
-
-//computed
-const isShowSideMenu = computed(() => route.path === '/')
-
-const onGoBack = () => {
-  router.push('/')
-}
 </script>

@@ -37,7 +37,7 @@
   font-style: normal;
 }
 
-* {
+body {
   scroll-behavior: smooth;
   transition: 300ms;
   font-family: 'BrayaFont', sans-serif;
@@ -60,11 +60,6 @@ input:focus {
 
 input {
   outline: none !important;
-}
-
-#title {
-  font-family: "JetBrains Mono", serif !important;
-  font-weight: 700;
 }
 
 .page-enter-active,

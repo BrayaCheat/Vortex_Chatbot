@@ -2,7 +2,7 @@
   <Dialog>
     <DialogTrigger as-child>
       <component :is="Camera"
-        class="size-[30px] p-1.5 bg-primary-foreground rounded-full text-muted-foreground -mt-[35px] -mr-[60px] cursor-pointer border-2"
+        class="size-[30px] p-1.5 bg-primary-foreground rounded-full text-muted-foreground -mt-[35px] -mr-[30px] cursor-pointer border-2"
         @click="onChangeProfile" />
     </DialogTrigger>
     <DialogContent>

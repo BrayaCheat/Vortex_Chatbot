@@ -1,29 +1,81 @@
 <template>
-  <div class="border-l flex flex-col justify-between overflow-auto h-screen w-[300px]">
-      <div class="flex flex-col gap-6 my-3 px-3 flex-1 overflow-auto">
-        <div v-for="chat in chats" :key="chat.id">
-          <Card class="p-3 bg-primary-foreground">
-            <h2 class="font-semibold">{{ chat.user }}</h2>
-            <p class="text-sm text-gray-600">{{ chat.message }}</p>
-          </Card>
-        </div>
-      </div>
+  <div class="p-3 flex flex-col gap-10 border-l w-[300px]">
+    <!-- cover -->
+    <div id="background-cover" class="inset-0 w-full h-[150px] rounded-[10px] border-4 border-border" />
+
+    <!-- profile -->
+    <div class="mx-auto -mt-[90px]">
+      <Avatar class="size-[80px] mx-auto border-4 border-border">
+        <AvatarImage :src="getProfile" class="object-cover" />
+      </Avatar>
+      <ChangeProfile :profiles="profiles" @onChangeProfile="onChangeProfile"/>
     </div>
+
+
+    <!-- nickname -->
+    <div class="flex items-center">
+      <span class="text-[16px] text-primary">{{ getUsername }}</span>
+    </div>
+
+    <!-- bio -->
+    <div class="relative">
+      <Input :placeholder="getBio" class="text-muted-foreground bg-primary-foreground rounded-[10px] text-center"
+        v-model.trim.lazy="bio" />
+      <component v-if="bio.length >= 5" :is="Check" class="text-green-500 absolute right-2 inset-y-2 cursor-pointer"
+        @click="onChangeBio" />
+    </div>
+
+    <!-- total prompt -->
+    <div>
+      <h1>Total Prompt</h1>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { useUserStore } from '@/store/user';
+import { Input } from '@/components/ui/input';
+import ChangeProfile from '@/components/ChangeProfile.vue';
+import { useToast } from '@/components/ui/toast';
+import { Check, Pencil } from 'lucide-vue-next';
+import { profileList } from '@/utils/helper';
 
-const chats = ref([
-  { id: 1, user: "Alice", message: "Hey! How's it going?" },
-  { id: 2, user: "Bob", message: "Just finished work, what about you?" },
-  { id: 3, user: "Charlie", message: "Anyone tried the new Vue update?" },
-  { id: 4, user: "David", message: "I'm working on a project with Tailwind." },
-  { id: 5, user: "Eve", message: "Planning a trip next weekend. Any ideas?" },
-  { id: 6, user: "Frank", message: "The latest JS framework looks interesting!" },
-  { id: 7, user: "Grace", message: "What’s the best way to structure Pinia stores?" },
-  { id: 8, user: "Hannah", message: "Does anyone know a good UI library for Vue?" },
-  { id: 9, user: "Isaac", message: "Finally deployed my app today! 🎉" },
-  { id: 10, user: "Jack", message: "Looking for Vue job opportunities. Any tips?" },
-]);
+//state
+const profiles = profileList()
+const userStore = useUserStore()
+const { toast } = useToast()
+const bio = ref('')
+
+//computed
+const getProfile = computed(() => userStore.profile ? userStore.profile : '/icons/icon-128.png')
+// const getNickName = computed(() => userStore.nickname ? userStore.nickname : 'Your nickname')
+const getBio = computed(() => userStore.bio ? userStore.bio : 'Say something here...')
+const getUsername = computed(() => userStore.user ? userStore.user?.email : '')
+
+//function
+const onChangeProfile = (payload) => {
+  if (typeof payload !== 'string' || !payload) return
+  userStore.profile = payload
+  toast({
+    title: 'Profile changed.',
+    description: '',
+    class: 'py-2 px-6',
+    duration: 3000
+  })
+}
+
+const onChangeBio = () => {
+  userStore.bio = bio.value
+  bio.value = ''
+}
 </script>
+
+<style scoped>
+#background-cover {
+  background-image: url('/background/background-1.avif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+</style>
