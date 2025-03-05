@@ -1,6 +1,6 @@
 <template>
-  <div class="p-3 sticky bottom-0 inset-x-0 border-t z-50 backdrop-blur-xl shadow-[0_-5px_10px_rgba(0,0,0,0.1)]">
-    <div class="rounded-3xl border flex flex-col pb-3">
+  <div class="p-3 z-50 shadow-[0_-5px_10px_rgba(0,0,0,0.1)]">
+    <div class="rounded-3xl border border-border flex flex-col pb-3">
       <form @submit.prevent="onSubmitPrompt">
         <div class="relative flex items-center">
           <Input
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <p class="text-sm text-muted-foreground mt-5 text-center">The vortex chatbot is responsible for understanding natural language and providing relevant responses.</p>
+    <p class="text-sm text-muted-foreground mt-3 text-center">Vortex can make mistakes. Check important info.</p>
   </div>
 </template>
 

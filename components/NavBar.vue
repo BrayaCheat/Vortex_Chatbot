@@ -1,12 +1,12 @@
 <template>
-  <nav class="flex items-center top-0 inset-x-0 z-50 border-b px-3 shadow-sm">
-    <h1 class="font-semibold text-xl py-3 flex-1">{{ new Date().toDateString() }}</h1>
-    <ClearChat />
-    <Report />
+  <nav class="flex items-center px-3">
+    <h1 class="py-3 text-xl flex-1">Vortex</h1>
+    <UserDisplayCard/>
   </nav>
 </template>
 
 <script setup>
 import ClearChat from '@/components/ClearChat.vue';
 import Report from '@/components/Report.vue';
+import UserDisplayCard from '@/components/UserDisplayCard.vue';
 </script>

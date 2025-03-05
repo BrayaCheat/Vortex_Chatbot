@@ -1,15 +1,15 @@
 <template>
-  <Card class="flex items-center bg-primary-foreground p-1 rounded-[10px] mb-3 mx-3">
+  <Card class="flex items-center p-1 rounded-3xl">
     <DropdownMenu>
       <DropdownMenuTrigger as-child>
         <Button class="flex items-center flex-1 cursor-pointer p-1" variant="none">
           <Avatar class="size-[30px]">
             <AvatarImage :src="getProfile"/>
           </Avatar>
-          <span class="text-[14px] text-muted-foreground">{{ getUsername }}</span>
-          <div class="flex-1 flex items-center justify-end pr-3">
+          <!-- <span class="text-[14px] text-muted-foreground">{{ getUsername }}</span> -->
+          <!-- <div class="flex-1 flex items-center justify-end pr-3">
             <component :is="Ellipsis" class="size-[30px] text-muted-foreground" />
-          </div>
+          </div> -->
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent class="rounded-[10px] w-56">

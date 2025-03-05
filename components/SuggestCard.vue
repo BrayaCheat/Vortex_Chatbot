@@ -1,7 +1,7 @@
 <template>
   <Card
   @click="onSuggestClick"
-  class="rounded-[10px] bg-primary-foreground p-3 flex flex-col items-start gap-3 md:w-full w-auto hover:bg-primary hover:text-primary-foreground cursor-pointer"
+  class="rounded-3xl p-3 flex flex-col items-start gap-3 md:w-full w-auto duration-300 hover:scale-105 hover:border-primary cursor-pointer"
 >
   <component
     :is="suggestion.icon"
@@ -9,12 +9,12 @@
   />
 
   <!-- Dynamic width for title -->
-  <h1 class="text-[14px] duration-0 truncate md:w-full w-[200px]">
+  <h1 class="text-md duration-0 truncate md:w-full w-[200px]">
     {{ suggestion.title }}
   </h1>
 
   <!-- Dynamic width for prompt with truncation -->
-    <span class="text-[12px] text-muted-foreground line-clamp-3 w-full">
+    <span class="text-xs text-muted-foreground line-clamp-3 w-full">
       {{ suggestion.prompt }}
     </span>
 </Card>

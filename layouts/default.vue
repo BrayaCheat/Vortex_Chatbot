@@ -2,21 +2,20 @@
   <ClientOnly>
     <div class="flex h-screen overflow-hidden">
       <SidePanel />
-      <div class="flex-1 flex flex-col">
+      <div class="flex-1 h-screen flex flex-col">
         <NavBar />
-        <main left class="flex flex-col overflow-auto h-screen relative">
-          <VitePwaManifest class="px-3 flex-1"/>
-          <NuxtPage class="px-3 flex-1"/>
-          <!-- <div v-if="!memoryStore.memoryList.length" class="flex-1" /> -->
-          <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
+        <main class="flex flex-col flex-1 h-screen overflow-auto p-3">
+          <NuxtPage class=" rounded-3xl p-3"/>
+          <VitePwaManifest />
           <Loading v-if="isLoading" v-show="isShowPrompt" />
           <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt" />
-          <Toaster v-if="settingStore.isEnableNotification" />
-          <!-- prompt -->
-          <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
         </main>
+        <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
+        <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
       </div>
       <MemoryPanel />
+      <!-- Notification toast -->
+      <Toaster v-if="settingStore.isEnableNotification" />
     </div>
   </ClientOnly>
 </template>

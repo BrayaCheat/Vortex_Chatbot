@@ -3,7 +3,7 @@
     <Avatar v-if="role" class="md:block hidden">
       <AvatarImage src="/icons/icon-128.png"/>
     </Avatar>
-    <div :class="`${chatBoxStyle} response-box rounded-xl`" v-html="message" />
+    <div :class="`${chatBoxStyle} response-box rounded-xl`" v-html="message" :id="props.data.date"/>
   </div>
 </template>
 
@@ -41,7 +41,7 @@ const message = computed(() => {
 const chatStyle = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')
 const chatBoxStyle = computed(() => props?.data?.role === 'ai'
   ? 'text-muted-foreground leading-relaxed whitespace-pre-wrap mt-2'
-  : 'bg-primary-foreground px-3 pt-1.5 rounded-md shadow-sm');
+  : 'border border-border px-3 pt-1.5');
 
 const role = computed(() => props?.data?.role === 'ai')
 

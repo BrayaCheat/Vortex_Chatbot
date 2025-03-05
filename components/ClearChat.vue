@@ -1,8 +1,13 @@
 <template>
   <Dialog>
     <DialogTrigger as-child>
-      <Button variant="ghost" v-if="showDeleteButton" @click="onClearChat">
-        <component :is="Trash" class="text-muted-foreground"/>
+      <Button
+        class="w-full"
+        variant="destructive"
+        v-if="showDeleteButton"
+      >
+        <component :is="Trash" />
+        Clear History
       </Button>
     </DialogTrigger>
     <DialogContent class="rounded-[10px] w-[90%] p-3">

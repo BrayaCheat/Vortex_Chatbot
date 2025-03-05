@@ -1,5 +1,5 @@
 <template>
-  <div ref="chatContainer" class="">
+  <div ref="chatContainer">
     <!-- <Greeting v-if="!memoryList.length" /> -->
     <!-- chat box -->
     <div v-for="item, index in memoryList" :key="index" class="my-6">

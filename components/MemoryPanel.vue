@@ -1,81 +1,53 @@
 <template>
-  <div class="p-3 flex flex-col gap-10 border-l w-[300px]">
-    <!-- cover -->
-    <div id="background-cover" class="inset-0 w-full h-[150px] rounded-[10px] border-4 border-border" />
-
-    <!-- profile -->
-    <div class="mx-auto -mt-[90px]">
-      <Avatar class="size-[80px] mx-auto border-4 border-border">
-        <AvatarImage :src="getProfile" class="object-cover" />
-      </Avatar>
-      <ChangeProfile :profiles="profiles" @onChangeProfile="onChangeProfile"/>
-    </div>
-
-    <!-- bio -->
-    <!-- <div class="relative">
-      <Input :placeholder="getBio" class="text-muted-foreground bg-primary-foreground rounded-[10px] text-center"
-        v-model.trim.lazy="bio" />
-      <component v-if="bio.length >= 5" :is="Check" class="text-green-500 absolute right-2 inset-y-2 cursor-pointer"
-        @click="onChangeBio" />
-    </div> -->
-
-    <!-- total prompt -->
-    <div class="flex flex-col gap-3">
-      <div v-for="item in 4" :key="item">
-        <Card class="bg-primary-foreground">
-          <h1>Total Prompt</h1>
-          {{ totalPrompt }}
+  <div class="border-l md:flex hidden flex-col overflow-auto h-screen w-[300px]">
+    <h1 class="text-xl p-3">History</h1>
+    <div class="flex flex-1 flex-col overflow-auto h-full">
+      <div v-for="(item, index) in historyList" :key="index" class="p-3">
+        <Card class="p-3 flex flex-col gap-3 hover:border-primary duration-300 cursor-pointer">
+          <h1 class="text-md font-bold">{{ sliceLetter(item[0]?.prompt || '', 25) }}</h1>
+          <p class="text-sm text-muted-foreground">{{ sliceLetter(item[1]?.prompt || '', 50) }}</p>
         </Card>
       </div>
+    </div>
+    <div class="p-3">
+      <ClearChat />
     </div>
   </div>
 </template>
 
 <script setup>
-import { Avatar, AvatarImage } from '@/components/ui/avatar'
-import { Card } from '@/components/ui/card'
-import { useUserStore } from '@/store/user';
-import ChangeProfile from '@/components/ChangeProfile.vue';
-import { useToast } from '@/components/ui/toast';
-import { profileList } from '@/utils/helper';
-import { useMemoryStore } from '~/store/memory';
+import { ref, computed } from 'vue';
+import { useMemoryStore } from '@/store/memory';
+import { Card } from '@/components/ui/card';
+import ClearChat from '@/components/ClearChat.vue';
 
-//state
-const profiles = profileList()
-const userStore = useUserStore()
-const memoryStore = useMemoryStore()
-const { toast } = useToast()
-const bio = ref('')
+const memoryStore = useMemoryStore();
 
-//computed
-const getProfile = computed(() => userStore.profile ? userStore.profile : '/icons/icon-128.png')
-const getBio = computed(() => userStore.bio ? userStore.bio : 'Say something here...')
-const getUsername = computed(() => userStore.user ? userStore.user?.email : '')
-const totalPrompt = computed(() => memoryStore.memoryList.filter((item) => item.role !== 'user').length)
+// Ensure function handles undefined or empty arrays properly
+const getHistoryList = (memoryList = []) => {
+  if (!Array.isArray(memoryList) || memoryList.length === 0) return [];
 
-//function
-const onChangeProfile = (payload) => {
-  if (typeof payload !== 'string' || !payload) return
-  userStore.profile = payload
-  toast({
-    title: 'Profile changed.',
-    description: '',
-    class: 'py-2 px-6',
-    duration: 3000
-  })
-}
+  let res = [];
+  for (let i = 0; i < memoryList.length; i += 2) {
+    if (memoryList[i] && memoryList[i + 1]) {
+      res.push([memoryList[i], memoryList[i + 1]]);
+    } else {
+      res.push([memoryList[i]]);
+    }
+  }
 
-const onChangeBio = () => {
-  userStore.bio = bio.value
-  bio.value = ''
-}
+  return res.sort((a, b) => {
+    const dateA = a[0]?.date || 0;
+    const dateB = b[0]?.date || 0;
+    return dateB - dateA; // Sort descending by date
+  });
+};
+
+// Computed property to update history list reactively
+const historyList = computed(() => getHistoryList(memoryStore.memoryList));
+
+// Function to slice text safely
+const sliceLetter = (str, offset) => {
+  return str.length > offset ? `${str.slice(0, offset)}...` : str;
+};
 </script>
-
-<style scoped>
-#background-cover {
-  background-image: url('/background/background-1.avif');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-</style>

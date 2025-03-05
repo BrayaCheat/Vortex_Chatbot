@@ -1,6 +1,6 @@
 <template>
   <Card class="w-full flex items-center justify-start px-0 border-none shadow-none bg-transparent">
-    <Label class="flex-1 text-muted-foreground">Enable Notification</Label>
+    <Label class="flex-1 text-muted-foreground">Notification</Label>
     <Switch :checked="settingStore.isEnableNotification" @click="toggleModel"/>
   </Card>
 </template>
