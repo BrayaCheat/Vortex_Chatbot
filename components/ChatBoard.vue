@@ -39,7 +39,10 @@ const message = computed(() => {
   return marked(text)
 })
 const chatStyle = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')
-const chatBoxStyle = computed(() => props?.data?.role === 'ai' ? 'text-muted-foreground whitespace-pre-line' : 'bg-primary-foreground px-3 pt-1.5')
+const chatBoxStyle = computed(() => props?.data?.role === 'ai'
+  ? 'text-muted-foreground leading-relaxed whitespace-pre-wrap mt-2'
+  : 'bg-primary-foreground px-3 pt-1.5 rounded-md shadow-sm');
+
 const role = computed(() => props?.data?.role === 'ai')
 
 //life cycle
@@ -389,14 +392,14 @@ onUpdated(() => {
 /* General Styling */
 .response-box {
   text-wrap: pre-line;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   color: hsl(var(--muted-foreground));
 }
 
 /* Headings */
 ::v-deep .response-box h2 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -407,7 +410,7 @@ onUpdated(() => {
   white-space: pre-wrap;
   word-break: break-word;
   overflow-x: auto;
-  font-size: 14px;
+  font-size: 12px;
   padding: 10px;
   background: hsl(var(--primary-foreground));
   border-radius: 6px;
@@ -420,13 +423,13 @@ onUpdated(() => {
   color: rgb(16 185 129 / var(--tw-text-opacity, 1));
   padding: 3px 5px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 12px;
   font-family: 'Fira Code', monospace;
 }
 
 /* Paragraph Styling */
 ::v-deep .response-box p {
-  font-size: 16px;
+  font-size: 14px;
   color: hsl(var(--muted-foreground));
   margin-bottom: 8px;
 }
@@ -461,7 +464,7 @@ onUpdated(() => {
 
 ::v-deep .response-box li {
   margin-bottom: 6px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* Blockquotes */
@@ -476,7 +479,7 @@ onUpdated(() => {
 /* Tables */
 ::v-deep .response-box table {
   width: 100%;
-  font-size: 14px;
+  font-size: 12px;
   border-collapse: collapse;
   margin-top: 8px;
 }
@@ -490,16 +493,16 @@ onUpdated(() => {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   ::v-deep .response-box {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   ::v-deep .hljs,
   ::v-deep .response-box pre {
-    font-size: 13px;
+    font-size: 11px;
   }
 
   ::v-deep .response-box table {
-    font-size: 13px;
+    font-size: 11px;
   }
 }
 </style>
