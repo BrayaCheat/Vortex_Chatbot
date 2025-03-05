@@ -56,7 +56,7 @@ const { toast } = useToast()
 const prompt = ref('')
 const emits = defineEmits(['onRequest'])
 const memoryStore = useMemoryStore()
-const placeholder = ref("Message here...")
+const placeholder = ref("Chat With Vortex...")
 const promptOptions = ref([
   {
     label: 'Attact',
