@@ -1,18 +1,22 @@
 <template>
   <ClientOnly>
-    <div class="flex flex-col h-screen overflow-hidden lg:w-[900px] w-full mx-auto relative">
-      <NavBar />
-      <main left class="px-3 flex-1 flex flex-col overflow-auto">
-        <VitePwaManifest />
-        <NuxtPage />
-        <div v-if="!memoryStore.memoryList.length" class="flex-1" />
-        <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
-        <Loading v-if="isLoading" v-show="isShowPrompt"/>
-        <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt"/>
-        <Toaster v-if="settingStore.isEnableNotification"/>
-      </main>
-      <!-- prompt -->
-      <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
+    <div class="flex h-screen overflow-hidden relative">
+      <SidePanel />
+      <div class="flex-1 flex flex-col">
+        <NavBar />
+        <main left class="px-3 flex flex-col overflow-auto h-screen">
+          <VitePwaManifest />
+          <NuxtPage />
+          <div v-if="!memoryStore.memoryList.length" class="flex-1" />
+          <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
+          <Loading v-if="isLoading" v-show="isShowPrompt" />
+          <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt" />
+          <Toaster v-if="settingStore.isEnableNotification" />
+          <!-- prompt -->
+          <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
+        </main>
+      </div>
+      <MemoryPanel />
     </div>
   </ClientOnly>
 </template>
@@ -31,6 +35,8 @@ import Toaster from '@/components/ui/toast/Toaster.vue';
 import { UseSettingStore } from '@/store/setting';
 import { useToast } from '~/components/ui/toast';
 import { useVibrate } from '@vueuse/core';
+import SidePanel from '@/components/SidePanel.vue';
+import MemoryPanel from '@/components/MemoryPanel.vue';
 
 //state
 const memoryStore = useMemoryStore()
@@ -38,8 +44,8 @@ const settingStore = UseSettingStore()
 const sessionStore = useSessionStore()
 const errorMessage = ref('')
 const route = useRoute()
-const {toast} = useToast()
-const {vibrate, stop, isSupported} = useVibrate({pattern: [300, 100, 300]})
+const { toast } = useToast()
+const { vibrate, stop, isSupported } = useVibrate({ pattern: [300, 100, 300] })
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
@@ -113,22 +119,4 @@ const onSuggestion = (payload) => {
 const onRetry = (payload) => {
   onRequest(payload)
 }
-
-// toast debug
-// onMounted(() => {
-//   if(1 === 1) {
-//     toast({
-//       title: 'New message',
-//       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
-//       duration: 10000,
-//       class: 'py-2 px-3'
-//     })
-//   }
-// })
-
-// onMounted(() => {
-//   Notification.requestPermission().then(t => alert(t))
-// })
 </script>
-
-

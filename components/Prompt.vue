@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSubmitPrompt" class="py-5 px-3 rounded-t-3xl">
+  <form @submit.prevent="onSubmitPrompt" class="py-5 rounded-t-3xl sticky bottom-0 inset-x-0">
     <div class="relative flex items-center rounded-[10px] bg-primary-foreground border">
       <Input
         id="search"
