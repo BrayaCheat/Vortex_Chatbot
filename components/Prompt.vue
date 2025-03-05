@@ -1,38 +1,69 @@
 <template>
-  <form @submit.prevent="onSubmitPrompt" class="py-5 rounded-t-3xl sticky bottom-0 inset-x-0">
-    <div class="relative flex items-center rounded-[10px] bg-primary-foreground border">
-      <Input
-        id="search"
-        type="text"
-        v-model.trim.lazy="prompt"
-        :placeholder="placeholder"
-        required
-        class="placeholder:text-[14px] text-[14px] border-none bg-transparent flex-1 ml-1 text-muted-foreground"
-      />
-      <Button
-        v-if="isShowSubmitButton"
-        type="submit" c
-        class="rounded-full size-10 mr-3 text-muted-foreground"
-        variant="ghost"
-      >
-        <component :is="SendHorizonal" />
-      </Button>
+  <div class="bg-white p-3 sticky bottom-0 inset-x-0">
+    <div class="rounded-3xl border flex flex-col">
+      <form @submit.prevent="onSubmitPrompt">
+        <div class="relative flex items-center">
+          <Input
+            type="text"
+            v-model.trim.lazy="prompt"
+            :placeholder="placeholder"
+            required
+            class="placeholder:text-[14px] text-[14px] border-none bg-transparent flex-1 ml-1 text-muted-foreground"
+          />
+          <Button
+            v-if="isShowSubmitButton"
+            type="submit"
+            class="rounded-full size-10 mr-3 text-muted-foreground"
+            variant="ghost"
+          >
+            <component :is="SendHorizonal" />
+          </Button>
+        </div>
+      </form>
+
+      <div class="flex items-center">
+        <div v-for="item in promptOptions" :key="item.label">
+          <Button
+            variant="none"
+            class="flex items-center gap-1 text-muted-foreground"
+          >
+            <component :is="item.icon" class="size-10 text-muted-foreground" />
+            {{ item.label }}
+          </Button>
+        </div>
+      </div>
     </div>
-  </form>
+
+    <p class="text-sm text-muted-foreground mt-5 text-center">The vortex chatbot is responsible for understanding natural language and providing relevant responses.</p>
+  </div>
 </template>
 
 <script setup>
 import { Input } from '@/components/ui/input';
-import { SendHorizonal, Smile } from 'lucide-vue-next';
+import { Earth, Link, SendHorizonal, Smile, Voicemail } from 'lucide-vue-next';
 import { useMemoryStore } from '@/store/memory';
 import DOMPurify from 'dompurify'
 import { useToast } from '@/components/ui/toast/use-toast';
 
-const {toast} = useToast()
+const { toast } = useToast()
 const prompt = ref('')
 const emits = defineEmits(['onRequest'])
 const memoryStore = useMemoryStore()
 const placeholder = ref("Message here...")
+const promptOptions = ref([
+  {
+    label: 'Attact',
+    icon: Link
+  },
+  {
+    label: 'Voice Message',
+    icon: Voicemail
+  },
+  {
+    label: 'Browse Prompt',
+    icon: Earth
+  }
+])
 
 //computed
 const isLoading = computed(() => memoryStore?.isLoading || false)
@@ -42,7 +73,7 @@ const isShowSubmitButton = computed(() => prompt.value.length > 0 && !isLoading.
 const onSubmitPrompt = () => {
   if (isLoading.value) return
   const sanitizedPrompt = DOMPurify.sanitize(prompt.value)
-  if(sanitizedPrompt !== prompt.value){
+  if (sanitizedPrompt !== prompt.value) {
     toast({
       title: 'Warning',
       description: 'Potential XSS attack detected. Prompt sanitized.',

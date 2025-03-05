@@ -1,13 +1,13 @@
 <template>
   <ClientOnly>
-    <div class="flex h-screen overflow-hidden relative">
+    <div class="flex h-screen overflow-hidden">
       <SidePanel />
       <div class="flex-1 flex flex-col">
         <NavBar />
-        <main left class="px-3 flex flex-col overflow-auto h-screen">
-          <VitePwaManifest />
-          <NuxtPage />
-          <div v-if="!memoryStore.memoryList.length" class="flex-1" />
+        <main left class="flex flex-col overflow-auto h-screen relative">
+          <VitePwaManifest class="px-3 flex-1"/>
+          <NuxtPage class="px-3 flex-1"/>
+          <!-- <div v-if="!memoryStore.memoryList.length" class="flex-1" /> -->
           <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
           <Loading v-if="isLoading" v-show="isShowPrompt" />
           <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt" />
