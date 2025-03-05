@@ -1,5 +1,5 @@
 <template>
-  <Card class="flex items-start justify-start flex-1 gap-3 border-none shadow-none text-[14px] text-muted-foreground animate-pulse ml-3">
+  <Card class="flex items-start justify-start flex-1 gap-3 border-none shadow-none text-[14px] text-muted-foreground animate-pulse ml-3 mb-3">
     <component :is="Loader2" class="animate-spin"/>
   </Card>
 </template>
