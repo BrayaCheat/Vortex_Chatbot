@@ -11,47 +11,47 @@
       <ChangeProfile :profiles="profiles" @onChangeProfile="onChangeProfile"/>
     </div>
 
-
-    <!-- nickname -->
-    <div class="flex items-center">
-      <span class="text-[16px] text-primary">{{ getUsername }}</span>
-    </div>
-
     <!-- bio -->
-    <div class="relative">
+    <!-- <div class="relative">
       <Input :placeholder="getBio" class="text-muted-foreground bg-primary-foreground rounded-[10px] text-center"
         v-model.trim.lazy="bio" />
       <component v-if="bio.length >= 5" :is="Check" class="text-green-500 absolute right-2 inset-y-2 cursor-pointer"
         @click="onChangeBio" />
-    </div>
+    </div> -->
 
     <!-- total prompt -->
-    <div>
-      <h1>Total Prompt</h1>
+    <div class="flex flex-col gap-3">
+      <div v-for="item in 4" :key="item">
+        <Card class="bg-primary-foreground">
+          <h1>Total Prompt</h1>
+          {{ totalPrompt }}
+        </Card>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { Card } from '@/components/ui/card'
 import { useUserStore } from '@/store/user';
-import { Input } from '@/components/ui/input';
 import ChangeProfile from '@/components/ChangeProfile.vue';
 import { useToast } from '@/components/ui/toast';
-import { Check, Pencil } from 'lucide-vue-next';
 import { profileList } from '@/utils/helper';
+import { useMemoryStore } from '~/store/memory';
 
 //state
 const profiles = profileList()
 const userStore = useUserStore()
+const memoryStore = useMemoryStore()
 const { toast } = useToast()
 const bio = ref('')
 
 //computed
 const getProfile = computed(() => userStore.profile ? userStore.profile : '/icons/icon-128.png')
-// const getNickName = computed(() => userStore.nickname ? userStore.nickname : 'Your nickname')
 const getBio = computed(() => userStore.bio ? userStore.bio : 'Say something here...')
 const getUsername = computed(() => userStore.user ? userStore.user?.email : '')
+const totalPrompt = computed(() => memoryStore.memoryList.filter((item) => item.role !== 'user').length)
 
 //function
 const onChangeProfile = (payload) => {
