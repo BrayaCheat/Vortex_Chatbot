@@ -15,6 +15,7 @@
             type="submit"
             class="rounded-full size-10 mr-3 text-muted-foreground"
             variant="ghost"
+            :disabled="disableInput"
           >
             <component :is="SendHorizonal" />
           </Button>
@@ -32,6 +33,9 @@
             {{ item.label }}
           </Button>
           <Separator orientation="vertical"/>
+        </div>
+        <div class="text-muted-foreground flex-1 text-right mr-6 text-sm">
+          {{ promptLength }} / 1000
         </div>
       </div>
     </div>
@@ -74,6 +78,8 @@ const promptOptions = ref([
 //computed
 const isLoading = computed(() => memoryStore?.isLoading || false)
 const isShowSubmitButton = computed(() => prompt.value.length > 0 && !isLoading.value)
+const promptLength = computed(() => prompt.value.length || 0)
+const disableInput = computed(() => prompt.value.length >= 1000)
 
 //function
 const onSubmitPrompt = () => {
