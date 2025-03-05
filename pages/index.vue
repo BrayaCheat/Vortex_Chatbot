@@ -30,31 +30,30 @@ const chatContainer = ref(null)
 //computed
 const memoryList = computed(() => memoryStore?.memoryList || [])
 
-//life cycle
-onMounted(() => {
+//function
+const onScroll = () => {
   nextTick(() => {
     if (chatContainer.value) {
       chatContainer.value.lastElementChild?.scrollIntoView({ behavior: 'smooth' })
     }
   })
+}
+
+//life cycle
+onMounted(() => {
+  onScroll()
 })
 
 onUpdated(() => {
-  nextTick(() => {
-    if (chatContainer.value) {
-      chatContainer.value.lastElementChild?.scrollIntoView({ behavior: 'smooth' })
-    }
-  });
+  onScroll()
 });
 
 //watcher
 watch(
   () => memoryStore.memoryList.length,
   () => {
-    nextTick(() => {
-      chatContainer.value?.lastElementChild?.scrollIntoView({ behavior: "smooth" });
-    });
-  }
+    onScroll()
+  }, { immediate: true, deep: true }
 );
 
 watch([() => settingStore.isEnableAutoClear, () => memoryStore.memoryList], ([isEnable, memoryList]) => {

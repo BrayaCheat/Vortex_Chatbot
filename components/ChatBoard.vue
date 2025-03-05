@@ -39,7 +39,7 @@ const message = computed(() => {
   return marked(text)
 })
 const chatStyle = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')
-const chatBoxStyle = computed(() => props?.data?.role === 'ai' ? 'whitespace-pre-line text-muted-foreground' : 'bg-primary-foreground p-3')
+const chatBoxStyle = computed(() => props?.data?.role === 'ai' ? 'text-muted-foreground whitespace-pre-line' : 'bg-primary-foreground px-3 pt-1.5')
 const role = computed(() => props?.data?.role === 'ai')
 
 //life cycle

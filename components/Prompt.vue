@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 sticky bottom-0 inset-x-0 border-t z-50 bg-white shadow-[0_-1px_5px_rgba(0,0,0,0.1)]">
+  <div class="p-3 sticky bottom-0 inset-x-0 border-t z-50 bg-white shadow-[0_-5px_10px_rgba(0,0,0,0.1)]">
     <div class="rounded-3xl border flex flex-col pb-3">
       <form @submit.prevent="onSubmitPrompt">
         <div class="relative flex items-center">
@@ -8,7 +8,7 @@
             v-model.trim.lazy="prompt"
             :placeholder="placeholder"
             required
-            class="placeholder:text-[14px] text-[14px] border-none bg-transparent flex-1 ml-1 text-muted-foreground"
+            class="placeholder:text-md text-md border-none bg-transparent flex-1 ml-1 text-muted-foreground"
           />
           <Button
             v-if="isShowSubmitButton"
@@ -22,7 +22,7 @@
         </div>
       </form>
 
-      <div class="flex items-center">
+      <div class="flex items-center mt-3">
         <div v-for="item in promptOptions" :key="item.label" class="flex items-center h-5">
           <Button
             @click="item.action"

@@ -1,9 +1,8 @@
 <template>
   <Dialog>
     <DialogTrigger as-child>
-        <Button variant="destructive" v-if="showDeleteButton">
-          <p>Delete Conversation</p>
-          <!-- <component :is="Trash" class="text-muted-foreground size-[30px] cursor-pointer p-1" :class="memoryStore.memoryList.length <= 1 && 'cursor-not-allowed'"/> -->
+        <Button variant="destructive" v-if="showDeleteButton" @click="onClearChat">
+          <component :is="Trash" class="text-primary-foreground size-[30px] cursor-pointer" :class="memoryStore.memoryList.length <= 1 && 'cursor-not-allowed'"/>
         </Button>
     </DialogTrigger>
     <DialogContent class="rounded-[10px] w-[90%] p-3">
@@ -39,6 +38,7 @@
 import { Button } from '@/components/ui/button';
 import { useMemoryStore } from '@/store/memory';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose } from '@/components/ui/dialog'
+import { Trash } from 'lucide-vue-next';
 
 //state
 const memoryStore = useMemoryStore()
