@@ -3,7 +3,7 @@
     <Avatar v-if="role" class="md:block hidden">
       <AvatarImage src="/icons/icon-128.png"/>
     </Avatar>
-    <div :class="`${chatBoxStyle} response-box rounded-xl`" v-html="message" :id="props.data.date"/>
+    <div :class="`${chatBoxStyle} response-box rounded-xl`" v-html="message"/>
   </div>
 </template>
 
@@ -40,7 +40,7 @@ const message = computed(() => {
 })
 const chatStyle = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')
 const chatBoxStyle = computed(() => props?.data?.role === 'ai'
-  ? 'text-muted-foreground leading-relaxed whitespace-pre-wrap mt-2'
+  ? 'text-muted-foreground leading-loose mt-2 whitespace-break-spaces'
   : 'border border-border px-3 pt-1.5');
 
 const role = computed(() => props?.data?.role === 'ai')
@@ -392,16 +392,16 @@ onUpdated(() => {
 /* General Styling */
 .response-box {
   text-wrap: pre-line;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.6;
   color: hsl(var(--muted-foreground));
 }
 
 /* Headings */
 ::v-deep .response-box h2 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 /* Code Blocks */
@@ -410,28 +410,28 @@ onUpdated(() => {
   white-space: pre-wrap;
   word-break: break-word;
   overflow-x: auto;
-  font-size: 12px;
-  padding: 10px;
-  background: hsl(var(--primary-foreground));
+  font-size: 14px;
+  padding: 12px;
+  background: hsl(var(--secondary));
   border-radius: 6px;
   font-family: 'Fira Code', monospace;
 }
 
 /* Inline Code */
 ::v-deep .response-box code {
-  background-color: hsl(var(--primary-foreground));
+  background-color: hsl(var(--secondary));
   color: rgb(16 185 129 / var(--tw-text-opacity, 1));
-  padding: 3px 5px;
+  padding: 4px 6px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 14px;
   font-family: 'Fira Code', monospace;
 }
 
 /* Paragraph Styling */
 ::v-deep .response-box p {
-  font-size: 14px;
+  font-size: 16px;
   color: hsl(var(--muted-foreground));
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 /* Bold Text */
@@ -449,8 +449,8 @@ onUpdated(() => {
 /* Lists */
 ::v-deep .response-box ul,
 ::v-deep .response-box ol {
-  padding-left: 18px;
-  margin: 8px 0;
+  padding-left: 20px;
+  margin: 10px 0;
 }
 
 ::v-deep .response-box ul {
@@ -463,46 +463,47 @@ onUpdated(() => {
 }
 
 ::v-deep .response-box li {
-  margin-bottom: 6px;
-  font-size: 14px;
+  margin-bottom: 8px;
+  font-size: 16px;
 }
 
 /* Blockquotes */
 ::v-deep .response-box blockquote {
   border-left: 4px solid hsl(var(--primary));
-  padding: 8px 12px;
+  padding: 10px 14px;
   background-color: hsl(var(--primary-foreground));
   font-style: italic;
-  margin: 8px 0;
+  margin: 10px 0;
 }
 
 /* Tables */
 ::v-deep .response-box table {
   width: 100%;
-  font-size: 12px;
+  font-size: 14px;
   border-collapse: collapse;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 ::v-deep .response-box table td,
 ::v-deep .response-box table th {
   border: 1px solid hsl(var(--border));
-  padding: 8px;
+  padding: 10px;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   ::v-deep .response-box {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   ::v-deep .hljs,
   ::v-deep .response-box pre {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   ::v-deep .response-box table {
-    font-size: 11px;
+    font-size: 13px;
   }
 }
 </style>
+

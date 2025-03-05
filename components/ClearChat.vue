@@ -10,7 +10,7 @@
         Clear History
       </Button>
     </DialogTrigger>
-    <DialogContent class="rounded-[10px] w-[90%] p-3">
+    <DialogContent class="rounded-3xl p-6">
       <DialogTitle class="hidden" />
       <div class="flex flex-col items-start">
         <h1 class="text-[20px]">Delete conversation?</h1>
