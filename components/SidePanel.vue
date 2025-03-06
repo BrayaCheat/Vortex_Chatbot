@@ -15,8 +15,9 @@
         <EnableClearConversation />
       </div>
 
-      <div class="p-3">
+      <div class="p-3 flex flex-col gap-3">
         <EnableDarkMode />
+        <UserDisplayCard/>
       </div>
     </div>
   </div>
@@ -27,5 +28,6 @@ import EnableDarkMode from '@/components/EnableDarkMode.vue';
 import EnableSmartModel from '@/components/EnableSmartModel.vue';
 import EnableClearConversation from '@/components/EnableClearConversation.vue';
 import EnableNotification from '@/components/EnableNotification.vue';
+import UserDisplayCard from '@/components/UserDisplayCard.vue';
 import { Bolt } from 'lucide-vue-next';
 </script>

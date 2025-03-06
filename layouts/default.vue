@@ -10,6 +10,7 @@
           <Loading v-if="isLoading" v-show="isShowPrompt" />
           <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt" />
         </main>
+        <Greeting v-if="!memoryStore.memoryList.length" />
         <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
         <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
       </div>
@@ -36,6 +37,7 @@ import { useToast } from '~/components/ui/toast';
 import { useVibrate } from '@vueuse/core';
 import SidePanel from '@/components/SidePanel.vue';
 import HistoryPanel from '@/components/HistoryPanel.vue';
+import Greeting from '@/components/Greeting.vue';
 
 //state
 const memoryStore = useMemoryStore()

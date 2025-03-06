@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <UserDisplayCard/>
+
   </nav>
 </template>
 

@@ -11,12 +11,16 @@
     </div>
 
     <div v-if="historyList.length" class="flex flex-1 flex-col overflow-auto h-full">
-      <div v-for="(item, index) in historyList" :key="index" class="p-3">
+      <div v-for="(item, index) in historyList" :key="index" class="p-3 flex flex-col">
         <Dialog>
           <DialogTrigger>
-            <Card class="p-3 flex flex-col gap-3 hover:border-primary duration-300 cursor-pointer">
-              <h1 class="text-md font-bold">{{ sliceLetter(item[0]?.prompt || '', 25) }}</h1>
-              <p class="text-sm text-muted-foreground">{{ sliceLetter(item[1]?.prompt || '', 50) }}</p>
+            <Card class="p-3 flex flex-col w-full items-start hover:border-primary duration-300 cursor-pointer">
+              <h1 class="text-md font-semibold">
+                {{ sliceLetter(item[0]?.prompt || '', 25) }}
+              </h1>
+              <p class="text-sm text-muted-foreground">
+                {{ sliceLetter(item[1]?.prompt || '', 35) }}
+              </p>
             </Card>
           </DialogTrigger>
           <DialogContent class="overflow-auto h-full">

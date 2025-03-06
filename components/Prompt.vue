@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 z-50 shadow-[0_-5px_10px_rgba(0,0,0,0.1)]">
+  <div class="p-3 z-50 shadow-[0_-5px_10px_rgba(0,0,0,0.1)] border-t border-border">
     <div class="rounded-3xl border border-border flex flex-col pb-3">
       <form @submit.prevent="onSubmitPrompt">
         <div class="relative flex items-center">
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <p class="text-sm text-muted-foreground mt-3 text-center">Vortex can make mistakes. Check important info.</p>
+    <!-- <p class="text-sm text-muted-foreground mt-3 text-center">Vortex can make mistakes. Check important info.</p> -->
   </div>
 </template>
 

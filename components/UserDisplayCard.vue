@@ -1,27 +1,27 @@
 <template>
-  <Card class="flex items-center p-1 rounded-3xl">
+  <Card class="flex items-center p-1 rounded-3xl border border-border shadow-none">
     <DropdownMenu>
       <DropdownMenuTrigger as-child>
         <Button class="flex items-center flex-1 cursor-pointer p-1" variant="none">
           <Avatar class="size-[30px]">
             <AvatarImage :src="getProfile"/>
           </Avatar>
-          <!-- <span class="text-[14px] text-muted-foreground">{{ getUsername }}</span> -->
-          <!-- <div class="flex-1 flex items-center justify-end pr-3">
+          <span class="text-[14px] text-muted-foreground">{{ getUsername }}</span>
+          <div class="flex-1 flex items-center justify-end pr-3">
             <component :is="Ellipsis" class="size-[30px] text-muted-foreground" />
-          </div> -->
+          </div>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent class="rounded-[10px] w-56">
         <DropdownMenuGroup>
-          <DropdownMenuItem
+          <!-- <DropdownMenuItem
             v-for="item, index in links"
             :key="index"
             class="cursor-pointer"
           >
             <NavigateButton :data="item"/>
           </DropdownMenuItem>
-          <Separator class="my-1"/>
+          <Separator class="my-1"/> -->
           <DropdownMenuItem class="cursor-pointer">
             <Logout />
           </DropdownMenuItem>

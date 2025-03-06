@@ -1,5 +1,5 @@
 <template>
-  <div :class="`flex ${chatStyle} flex-1 gap-3 items-start pb-6`">
+  <div :class="`flex ${chatStyle} flex-1 gap-3 items-start`">
     <Avatar v-if="role" class="md:block hidden">
       <AvatarImage src="/icons/icon-128.png"/>
     </Avatar>

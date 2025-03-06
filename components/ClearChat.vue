@@ -10,14 +10,14 @@
         Clear History
       </Button>
     </DialogTrigger>
-    <DialogContent class="rounded-3xl p-6">
+    <DialogContent class="rounded-3xl">
       <DialogTitle class="hidden" />
       <div class="flex flex-col items-start">
         <h1 class="text-[20px]">Delete conversation?</h1>
         <span class="text-[16px] text-muted-foreground">Once you clear, the conversation will be gone.</span>
       </div>
-      <DialogDescription>
-        <div class="flex items-center justify-end gap-3">
+      <DialogDescription class="border-t border-border">
+        <div class="flex items-center justify-end gap-3 mt-3">
           <DialogClose as-child>
             <Button id="close-btn" variant="ghost">
               Cancel

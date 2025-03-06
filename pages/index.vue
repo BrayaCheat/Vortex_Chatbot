@@ -1,11 +1,7 @@
 <template>
   <div ref="chatContainer">
-    <Greeting v-if="!memoryList.length" />
-    <!-- chat box -->
     <div v-for="item, index in memoryList" :key="index" class="my-6">
-      <!-- chat date -->
-      <!-- <Separator v-if="index % 8 === 0" :label="'New Message'" class="mb-6" /> -->
-      <!-- message box -->
+      <Separator v-if="index % 8 === 0" :label="'New Message'" class="mb-6" />
       <ChatBoard :data="item" />
     </div>
   </div>
@@ -13,7 +9,6 @@
 
 <script setup>
 import ChatBoard from '@/components/ChatBoard.vue';
-import Greeting from '@/components/Greeting.vue';
 import { useMemoryStore } from '@/store/memory';
 import { UseSettingStore } from '@/store/setting';
 
