@@ -1,8 +1,8 @@
 <template>
   <div :class="`flex ${justify} flex-1 gap-3 items-start`">
-    <!-- <Avatar v-if="role" class="md:block hidden">
+    <Avatar v-if="role" class="md:block hidden border border-border">
       <AvatarImage src="/icons/icon-128.png"/>
-    </Avatar> -->
+    </Avatar>
     <div :class="`${chatBoxStyle} response-box rounded-3xl`" v-html="message"/>
   </div>
 </template>
@@ -41,7 +41,7 @@ const message = computed(() => {
 const justify = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')
 const chatBoxStyle = computed(() => props?.data?.role === 'ai'
   ? 'text-muted-foreground'
-  : 'border border-border p-3');
+  : 'px-6 bg-primary-foreground text-primary border border-border');
 
 const role = computed(() => props?.data?.role === 'ai')
 
