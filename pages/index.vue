@@ -1,7 +1,7 @@
 <template>
   <div ref="chatContainer">
     <div v-for="item, index in memoryList" :key="index" class="my-6">
-      <Separator v-if="index % 4 === 0" :label="`New Message - ${date}`" class="mb-6" />
+      <Separator v-if="index % 6 === 0" :label="`New Message - ${date}`" class="mb-6" />
       <ChatBoard :data="item" />
     </div>
   </div>

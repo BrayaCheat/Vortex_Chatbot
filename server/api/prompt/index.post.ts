@@ -45,6 +45,20 @@ export default defineEventHandler(async (event) => {
     }
 
     if (data && data?.user && data?.session) {
+      // const query = {
+      //   contents: [
+      //     {
+      //       parts: [{ text: prompt.trim() }],
+      //     },
+      //   ],
+      //   generationConfig: {
+      //     temperature: 0.2, // Lower value makes responses more deterministic
+      //     topK: 40, // Reduces randomness in word selection
+      //     topP: 0.8, // Limits variability while keeping coherence
+      //     maxOutputTokens: 4096, // 65536 is too high, keeping it reasonable
+      //     responseMimeType: "text/plain",
+      //   },
+      // };
       const query = {
         contents: [
           {
@@ -52,10 +66,10 @@ export default defineEventHandler(async (event) => {
           },
         ],
         generationConfig: {
-          temperature: 0.2, // Lower value makes responses more deterministic
-          topK: 40, // Reduces randomness in word selection
-          topP: 0.8, // Limits variability while keeping coherence
-          maxOutputTokens: 4096, // 65536 is too high, keeping it reasonable
+          temperature: 0.7, // Slightly more creative but still controlled
+          topK: 50, // Keeps responses relevant while allowing some variation
+          topP: 0.9, // Provides a good balance between randomness and coherence
+          maxOutputTokens: 4096, // Enough for detailed responses without being excessive
           responseMimeType: "text/plain",
         },
       };
