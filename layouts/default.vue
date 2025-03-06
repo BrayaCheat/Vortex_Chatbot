@@ -5,7 +5,7 @@
       <div class="flex-1 h-screen flex flex-col">
         <NavBar />
         <main class="flex flex-col flex-1 h-screen overflow-auto p-3">
-          <NuxtPage class=" rounded-3xl p-3"/>
+          <NuxtPage class=" rounded-3xl p-3" />
           <VitePwaManifest />
           <Loading v-if="isLoading" v-show="isShowPrompt" />
           <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt" />
@@ -13,7 +13,7 @@
         <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
         <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
       </div>
-      <MemoryPanel />
+      <HistoryPanel />
       <!-- Notification toast -->
       <Toaster v-if="settingStore.isEnableNotification" />
     </div>
@@ -35,7 +35,7 @@ import { UseSettingStore } from '@/store/setting';
 import { useToast } from '~/components/ui/toast';
 import { useVibrate } from '@vueuse/core';
 import SidePanel from '@/components/SidePanel.vue';
-import MemoryPanel from '@/components/MemoryPanel.vue';
+import HistoryPanel from '@/components/HistoryPanel.vue';
 
 //state
 const memoryStore = useMemoryStore()

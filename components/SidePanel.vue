@@ -1,11 +1,18 @@
 <template>
   <div class="border-r md:flex hidden flex-col overflow-auto h-screen w-[300px]">
-    <h1 class="font-semibold text-xl py-3 pl-3">Vortex</h1>
+    <div class="border-b border-border">
+      <div class="flex items-center justify-between p-3 text-md text-muted-foreground">
+        <div class="flex items-center gap-1">
+          <component :is="Bolt" class="size-5" />
+          <h1>Customize </h1>
+        </div>
+      </div>
+    </div>
     <div class="flex flex-col justify-between h-screen overflow-auto gap-3">
       <div class="flex flex-col justify-between gap-6 p-3">
         <EnableSmartModel />
         <EnableNotification />
-        <!-- <EnableClearConversation /> -->
+        <EnableClearConversation />
       </div>
 
       <div class="p-3">
@@ -18,6 +25,7 @@
 <script setup>
 import EnableDarkMode from '@/components/EnableDarkMode.vue';
 import EnableSmartModel from '@/components/EnableSmartModel.vue';
-// import EnableClearConversation from '@/components/EnableClearConversation.vue';
+import EnableClearConversation from '@/components/EnableClearConversation.vue';
 import EnableNotification from '@/components/EnableNotification.vue';
+import { Bolt } from 'lucide-vue-next';
 </script>

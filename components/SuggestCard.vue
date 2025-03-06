@@ -1,7 +1,7 @@
 <template>
   <Card
   @click="onSuggestClick"
-  class="rounded-3xl p-3 flex flex-col items-start gap-3 md:w-full w-auto duration-300 hover:scale-105 hover:border-primary cursor-pointer"
+  class="rounded-3xl p-3 flex flex-col items-start gap-3 md:w-full w-auto duration-300 hover:scale-105 hover:border-primary cursor-pointer bg-primary-foreground"
 >
   <component
     :is="suggestion.icon"

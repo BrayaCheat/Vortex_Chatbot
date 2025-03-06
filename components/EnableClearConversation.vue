@@ -4,7 +4,7 @@
       id="enable-auto-clear"
       class="flex-1 text-muted-foreground"
     >
-      Enable Automatic Clearing
+      Automatic Delete
     </Label>
     <Switch
       id="enable-auto-clear"

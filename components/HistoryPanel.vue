@@ -1,7 +1,16 @@
 <template>
   <div class="border-l md:flex hidden flex-col overflow-auto h-screen w-[300px]">
-    <h1 class="text-xl p-3">History</h1>
-    <div class="flex flex-1 flex-col overflow-auto h-full">
+    <div class="border-b border-border">
+      <div class="flex items-center justify-between p-3 text-md text-muted-foreground">
+        <div class="flex items-center gap-1">
+          <component :is="Clock" class="size-5" />
+          <h1>History</h1>
+        </div>
+        <p>{{ historyList.length }} / 10</p>
+      </div>
+    </div>
+
+    <div v-if="historyList.length" class="flex flex-1 flex-col overflow-auto h-full">
       <div v-for="(item, index) in historyList" :key="index" class="p-3">
         <Dialog>
           <DialogTrigger>
@@ -14,8 +23,12 @@
             {{ item[1].prompt }}
           </DialogContent>
         </Dialog>
-
       </div>
+    </div>
+    <div v-else class="flex flex-1 flex-col overflow-auto h-full p-3">
+      <Card class="bg-primary-foreground border-border border shadow-none text-md text-muted-foreground p-3">
+        <p>Make your first conversation with Vortex</p>
+      </Card>
     </div>
     <div class="p-3">
       <ClearChat />
@@ -29,6 +42,7 @@ import { useMemoryStore } from '@/store/memory';
 import { Card } from '@/components/ui/card';
 import ClearChat from '@/components/ClearChat.vue';
 import { Dialog, DialogTrigger, DialogContent, } from '@/components/ui/dialog'
+import { Clock } from 'lucide-vue-next';
 
 const memoryStore = useMemoryStore();
 

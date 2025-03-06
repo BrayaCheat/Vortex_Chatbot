@@ -43,7 +43,7 @@ const memoryStore = useMemoryStore()
 const emits = defineEmits(['onCloseSidePanel'])
 
 //computed
-const showDeleteButton = computed(() => memoryStore.memoryList.filter((item) => item.role !== 'user').length >= 2)
+const showDeleteButton = computed(() => memoryStore.memoryList.length >= 2)
 
 //function
 const onCloseModal = () => {
