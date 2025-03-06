@@ -59,6 +59,7 @@ export default defineEventHandler(async (event) => {
       //     responseMimeType: "text/plain",
       //   },
       // };
+      let tokens = 2048
       const query = {
         contents: [
           {
@@ -66,10 +67,10 @@ export default defineEventHandler(async (event) => {
           },
         ],
         generationConfig: {
-          temperature: 0.7, // Slightly more creative but still controlled
-          topK: 50, // Keeps responses relevant while allowing some variation
-          topP: 0.9, // Provides a good balance between randomness and coherence
-          maxOutputTokens: 4096, // Enough for detailed responses without being excessive
+          temperature: 0.7,
+          topK: 50,
+          topP: 0.9,
+          maxOutputTokens: tokens,
           responseMimeType: "text/plain",
         },
       };

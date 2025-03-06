@@ -6,7 +6,10 @@
           <component :is="Clock" class="size-5" />
           <h1>History</h1>
         </div>
-        <p>{{ historyList.length }} / 10</p>
+        <Badge variant="secondary">
+          {{ historyList.length }} / 10
+        </Badge>
+
       </div>
     </div>
 
@@ -47,6 +50,7 @@ import { Card } from '@/components/ui/card';
 import ClearChat from '@/components/ClearChat.vue';
 import { Dialog, DialogTrigger, DialogContent, } from '@/components/ui/dialog'
 import { Clock } from 'lucide-vue-next';
+import { Badge } from '@/components/ui/badge';
 
 const memoryStore = useMemoryStore();
 

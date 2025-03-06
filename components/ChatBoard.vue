@@ -437,7 +437,8 @@ onUpdated(() => {
 /* Italic Text */
 ::v-deep .response-box em {
   font-style: italic;
-  color: hsl(var(--muted-foreground));
+  color: hsl(var(--primary));
+  text-decoration: underline;
 }
 
 /* Lists */
@@ -452,7 +453,7 @@ onUpdated(() => {
 }
 
 ::v-deep .response-box ol {
-  list-style-type: disc;
+  list-style-type: decimal;
 }
 
 ::v-deep .response-box li {
@@ -486,7 +487,7 @@ onUpdated(() => {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   ::v-deep .response-box {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   ::v-deep .hljs,
@@ -497,6 +498,12 @@ onUpdated(() => {
   ::v-deep .response-box table {
     font-size: 14px;
   }
+
+  ::v-deep .response-box ul,
+::v-deep .response-box ol {
+  padding-left: 0px;
+  margin: 30px 0px;
+}
 }
 </style>
 
