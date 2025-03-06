@@ -391,7 +391,7 @@ onUpdated(() => {
 <style scoped>
 /* Headings */
 ::v-deep .response-box h2 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   margin: 30px 0px;
 }
@@ -429,8 +429,8 @@ onUpdated(() => {
 /* Bold Text */
 ::v-deep .response-box strong {
   color: hsl(var(--primary));
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 16px;
   margin: 30px 0px;
 }
 
