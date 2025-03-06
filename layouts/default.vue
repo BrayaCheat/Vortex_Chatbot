@@ -4,18 +4,19 @@
       <SidePanel />
       <div class="flex-1 h-screen flex flex-col">
         <NavBar />
-        <main class="flex flex-col flex-1 h-screen overflow-auto p-3">
-          <NuxtPage class=" rounded-3xl p-3" />
-          <VitePwaManifest />
+        <main class="flex flex-col flex-1 h-screen overflow-auto p-3 w-full">
+          <NuxtPage class="rounded-3xl p-3" />
+          <VitePwaManifest class="rounded-3xl p-3" />
           <Loading v-if="isLoading" v-show="isShowPrompt" />
           <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt" />
         </main>
+
         <Greeting v-if="!memoryStore.memoryList.length" />
         <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
+
         <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
       </div>
       <HistoryPanel />
-      <!-- Notification toast -->
       <Toaster v-if="settingStore.isEnableNotification" />
     </div>
   </ClientOnly>

@@ -1,6 +1,6 @@
 <template>
-  <div class="p-3 z-50 shadow-[0_-5px_10px_rgba(0,0,0,0.1)] border-t border-border">
-    <div class="rounded-3xl border border-border flex flex-col">
+  <div class="px-3 pb-3 z-50">
+    <div class="rounded-3xl border border-border flex flex-col shadow-[0_-5px_10px_rgba(0,0,0,0.1)]">
       <form @submit.prevent="onSubmitPrompt">
         <div class="relative flex items-center">
           <Input
