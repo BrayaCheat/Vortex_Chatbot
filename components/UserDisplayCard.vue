@@ -1,5 +1,5 @@
 <template>
-  <Card class="flex items-center p-1 rounded-3xl border border-border shadow-none">
+  <Card class="flex items-center p-1 rounded-3xl border border-border shadow-none bg-primary-foreground">
     <DropdownMenu>
       <DropdownMenuTrigger as-child>
         <Button class="flex items-center flex-1 cursor-pointer p-1" variant="none">

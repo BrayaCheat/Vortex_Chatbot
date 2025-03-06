@@ -1,6 +1,6 @@
 <template>
   <div class="p-3 z-50 shadow-[0_-5px_10px_rgba(0,0,0,0.1)] border-t border-border">
-    <div class="rounded-3xl border border-border flex flex-col pb-3">
+    <div class="rounded-3xl border border-border flex flex-col">
       <form @submit.prevent="onSubmitPrompt">
         <div class="relative flex items-center">
           <Input
@@ -8,7 +8,7 @@
             v-model.trim.lazy="prompt"
             :placeholder="placeholder"
             required
-            class="placeholder:text-sm text-sm border-none bg-transparent flex-1 ml-1 text-muted-foreground cursor-pointer"
+            class="placeholder:text-[15px] text-[15px] border-none bg-transparent flex-1 ml-1 text-muted-foreground cursor-pointer"
           />
           <Button
             v-if="isShowSubmitButton"
@@ -22,7 +22,7 @@
         </div>
       </form>
 
-      <div class="flex items-center mt-3">
+      <div class="flex items-center py-3 bg-primary-foreground rounded-b-3xl">
         <div v-for="item in promptOptions" :key="item.label" class="flex items-center h-5">
           <Button
             @click="item.action"

@@ -1,6 +1,6 @@
 <template>
   <div class="border-r md:flex hidden flex-col overflow-auto h-screen w-[300px]">
-    <div class="border-b border-border">
+    <div class="border-b border-border bg-primary-foreground">
       <div class="flex items-center justify-between p-3 text-md text-muted-foreground">
         <div class="flex items-center gap-1">
           <component :is="Bolt" class="size-5" />

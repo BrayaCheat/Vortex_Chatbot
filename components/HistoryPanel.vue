@@ -1,6 +1,6 @@
 <template>
   <div class="border-l md:flex hidden flex-col overflow-auto h-screen w-[300px]">
-    <div class="border-b border-border">
+    <div class="border-b border-border bg-primary-foreground">
       <div class="flex items-center justify-between p-3 text-md text-muted-foreground">
         <div class="flex items-center gap-1">
           <component :is="Clock" class="size-5" />
@@ -14,12 +14,12 @@
       <div v-for="(item, index) in historyList" :key="index" class="p-3 flex flex-col">
         <Dialog>
           <DialogTrigger>
-            <Card class="p-3 flex flex-col w-full items-start hover:border-primary duration-300 cursor-pointer">
+            <Card class="py-2 px-6 flex flex-col w-full items-start hover:border-primary duration-300 cursor-pointer bg-primary-foreground">
               <h1 class="text-md font-semibold">
                 {{ sliceLetter(item[0]?.prompt || '', 25) }}
               </h1>
               <p class="text-sm text-muted-foreground">
-                {{ sliceLetter(item[1]?.prompt || '', 35) }}
+                {{ sliceLetter(item[1]?.prompt || '', 25) }}
               </p>
             </Card>
           </DialogTrigger>
