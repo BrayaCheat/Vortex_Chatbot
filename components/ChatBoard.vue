@@ -1,9 +1,9 @@
 <template>
-  <div :class="`flex ${chatStyle} flex-1 gap-3 items-start`">
-    <Avatar v-if="role" class="md:block hidden">
+  <div :class="`flex ${justify} flex-1 gap-3 items-start`">
+    <!-- <Avatar v-if="role" class="md:block hidden">
       <AvatarImage src="/icons/icon-128.png"/>
-    </Avatar>
-    <div :class="`${chatBoxStyle} response-box rounded-xl`" v-html="message"/>
+    </Avatar> -->
+    <div :class="`${chatBoxStyle} response-box rounded-3xl`" v-html="message"/>
   </div>
 </template>
 
@@ -38,10 +38,10 @@ const message = computed(() => {
   }
   return marked(text)
 })
-const chatStyle = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')
+const justify = computed(() => props?.data?.role === 'ai' ? 'justify-start' : 'justify-end')
 const chatBoxStyle = computed(() => props?.data?.role === 'ai'
-  ? 'text-muted-foreground leading-loose mt-2 whitespace-break-spaces'
-  : 'border border-border px-3 pt-1.5');
+  ? 'text-muted-foreground'
+  : 'border border-border p-3');
 
 const role = computed(() => props?.data?.role === 'ai')
 
@@ -389,19 +389,11 @@ onUpdated(() => {
 
 <!-- chatgpt style -->
 <style scoped>
-/* General Styling */
-.response-box {
-  text-wrap: pre-line;
-  font-size: 16px;
-  line-height: 1.6;
-  color: hsl(var(--muted-foreground));
-}
-
 /* Headings */
 ::v-deep .response-box h2 {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin: 30px 0px;
 }
 
 /* Code Blocks */
@@ -431,13 +423,15 @@ onUpdated(() => {
 ::v-deep .response-box p {
   font-size: 16px;
   color: hsl(var(--muted-foreground));
-  margin-bottom: 10px;
+  margin: 10px 0px;
 }
 
 /* Bold Text */
 ::v-deep .response-box strong {
   color: hsl(var(--primary));
   font-weight: 600;
+  font-size: 18px;
+  margin: 30px 0px;
 }
 
 /* Italic Text */
@@ -449,8 +443,8 @@ onUpdated(() => {
 /* Lists */
 ::v-deep .response-box ul,
 ::v-deep .response-box ol {
-  padding-left: 20px;
-  margin: 10px 0;
+  padding-left: 30px;
+  margin: 30px 0px;
 }
 
 ::v-deep .response-box ul {
@@ -458,22 +452,21 @@ onUpdated(() => {
 }
 
 ::v-deep .response-box ol {
-  list-style-type: decimal;
-  color: hsl(var(--primary));
+  list-style-type: disc;
 }
 
 ::v-deep .response-box li {
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   font-size: 16px;
 }
 
 /* Blockquotes */
 ::v-deep .response-box blockquote {
   border-left: 4px solid hsl(var(--primary));
-  padding: 10px 14px;
+  padding: 10px 15px;
   background-color: hsl(var(--primary-foreground));
   font-style: italic;
-  margin: 10px 0;
+  margin: 30px 0;
 }
 
 /* Tables */
@@ -481,7 +474,7 @@ onUpdated(() => {
   width: 100%;
   font-size: 14px;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 ::v-deep .response-box table td,
@@ -493,16 +486,16 @@ onUpdated(() => {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   ::v-deep .response-box {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   ::v-deep .hljs,
   ::v-deep .response-box pre {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   ::v-deep .response-box table {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 </style>
