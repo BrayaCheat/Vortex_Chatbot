@@ -3,11 +3,11 @@
     <DropdownMenu>
       <DropdownMenuTrigger as-child>
         <Button class="flex items-center flex-1 cursor-pointer p-1" variant="none">
-          <Avatar class="size-[30px]">
+          <!-- <Avatar class="size-[30px]">
             <AvatarImage :src="getProfile"/>
-          </Avatar>
+          </Avatar> -->
           <span class="text-[14px] text-muted-foreground">{{ getUsername }}</span>
-          <div class="flex-1 flex items-center justify-end pr-3">
+          <div class="flex-1 flex items-center justify-end pr-1">
             <component :is="Ellipsis" class="size-[30px] text-muted-foreground" />
           </div>
         </Button>

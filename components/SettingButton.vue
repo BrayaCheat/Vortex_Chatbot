@@ -1,7 +1,12 @@
 <template>
   <Dialog>
-    <DialogTrigger>
-      <Badge variant="secondary" class="text-sm">Settings</Badge>
+    <DialogTrigger as-child>
+      <Card variant="none" class="flex items-center p-3 rounded-3xl border border-border shadow-none bg-primary-foreground cursor-pointer">
+        <span class="text-[14px] text-muted-foreground flex-1 font-medium">Settings</span>
+        <div class="flex-1 flex items-center justify-end">
+          <component :is="MoveRight" class="size-4 text-muted-foreground" />
+        </div>
+      </Card>
     </DialogTrigger>
     <DialogContent>
       <DialogTitle class="hidden" />
@@ -15,8 +20,9 @@
 
 <script setup>
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import EnableDarkMode from '@/components/EnableDarkMode.vue';
 import EnableNotification from '@/components/EnableNotification.vue';
 import EnableSmartModel from '@/components/EnableSmartModel.vue';
+import { MoveRight } from 'lucide-vue-next';
 </script>
