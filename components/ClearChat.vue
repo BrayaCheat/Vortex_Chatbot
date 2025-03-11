@@ -7,7 +7,7 @@
         v-if="showDeleteButton"
       >
         <component :is="Trash" />
-        Clear History
+        Clear Conversation
       </Button>
     </DialogTrigger>
     <DialogContent class="rounded-3xl">

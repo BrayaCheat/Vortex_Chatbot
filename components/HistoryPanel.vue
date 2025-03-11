@@ -33,8 +33,9 @@
       </div>
     </div>
     <div v-else class="flex flex-1 flex-col overflow-auto h-full p-3">
-      <Card class="bg-primary-foreground border-border border shadow-none text-md text-muted-foreground p-3">
-        <p>Make your first conversation with Vortex</p>
+      <Card class="bg-primary-foreground border-border border shadow-none text-muted-foreground p-3 flex flex-col items-center">
+        <component :is="Inbox"/>
+        <p class="text-sm">No history yet.</p>
       </Card>
     </div>
     <div class="p-3">
@@ -49,7 +50,7 @@ import { useMemoryStore } from '@/store/memory';
 import { Card } from '@/components/ui/card';
 import ClearChat from '@/components/ClearChat.vue';
 import { Dialog, DialogTrigger, DialogContent, } from '@/components/ui/dialog'
-import { Clock } from 'lucide-vue-next';
+import { Clock, Inbox } from 'lucide-vue-next';
 import { Badge } from '@/components/ui/badge';
 
 const memoryStore = useMemoryStore();

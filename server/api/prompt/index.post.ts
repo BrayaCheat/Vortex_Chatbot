@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
       //     responseMimeType: "text/plain",
       //   },
       // };
-      let tokens = 2048
+      let tokens = 4096
       const query = {
         contents: [
           {
