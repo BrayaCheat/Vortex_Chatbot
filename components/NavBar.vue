@@ -1,9 +1,12 @@
 <template>
-  <nav class="flex items-center px-3 border-b border-border bg-primary-foreground text-muted-foreground">
-      <component :is="toggleIcon" class="size-5 cursor-pointer" @click="toggleHistoryPanel"/>
-      <div class="flex flex-1 items-center justify-between p-3 text-md">
+  <nav class="flex items-center p-3 border-b border-border bg-primary-foreground text-muted-foreground">
+    <div class="container md:mx-[200px] flex items-center">
+      <SidePanel />
+      <div class="flex-1">
         <Badge variant="secondary">VORTEX</Badge>
       </div>
+    </div>
+
   </nav>
 </template>
 
@@ -11,6 +14,7 @@
 import { ChevronsRight, ChevronsLeft } from 'lucide-vue-next';
 import { UseSettingStore } from '@/store/setting';
 import { Badge } from '@/components/ui/badge';
+import SidePanel from '@/components/SidePanel.vue';
 
 const settingStore = UseSettingStore()
 const toggleIcon = computed(() => settingStore.isOpenHistoryPanel ? ChevronsLeft : ChevronsRight)

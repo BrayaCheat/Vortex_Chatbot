@@ -1,21 +1,18 @@
 <template>
   <ClientOnly>
-    <div class="flex h-screen overflow-hidden">
-      <SidePanel />
-      <div class="flex-1 h-screen flex flex-col md:mr-[300px]" :class="settingStore.isOpenHistoryPanel ? 'border-r' : 'ml-[300px]'">
-        <NavBar />
-        <main class="flex flex-col flex-1 h-screen overflow-auto p-3 w-full">
-          <NuxtPage class="rounded-3xl p-3" />
-          <VitePwaManifest class="rounded-3xl p-3" />
-          <Loading v-if="isLoading" v-show="isShowPrompt" />
-          <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt" />
-          <Greeting v-if="!memoryStore.memoryList.length" />
-          <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
-        </main>
-        <Prompt @onRequest="onRequest" v-show="isShowPrompt"/>
+    <div class="h-screen flex flex-col overflow-hidden">
+      <NavBar />
+      <div class="flex flex-col flex-1 container h-screen overflow-auto p-3 ">
+        <VitePwaManifest />
+        <NuxtPage />
+        <Loading v-if="isLoading"/>
+        <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage"/>
+        <Greeting v-if="!memoryStore.memoryList.length" />
+        <Suggest @onSuggestion="onSuggestion" />
       </div>
-      <Toaster v-if="settingStore.isEnableNotification" />
+      <Prompt @onRequest="onRequest" class="md:mx-[200px]" />
     </div>
+    <Toaster v-if="settingStore.isEnableNotification" />
   </ClientOnly>
 </template>
 
@@ -32,7 +29,6 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
 import Toaster from '@/components/ui/toast/Toaster.vue';
 import { useToast } from '@/components/ui/toast';
-import SidePanel from '@/components/SidePanel.vue';
 import Greeting from '@/components/Greeting.vue';
 
 //state
@@ -49,7 +45,6 @@ const isError = computed(() => memoryStore?.isError || false)
 const isLoading = computed(() => memoryStore?.isLoading || false)
 const accessToken = computed(() => sessionStore.session?.access_token || '')
 const refreshToken = computed(() => sessionStore.session?.refresh_token || '')
-const isShowPrompt = computed(() => route.path === '/')
 const model = computed(() => settingStore.isEnableSmartModel ? 'enable' : 'disable')
 
 //function
