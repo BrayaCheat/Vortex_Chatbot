@@ -1,5 +1,5 @@
 <template>
-  <div ref="chatContainer" class="md:mx-[250px]">
+  <div ref="chatContainer" class="md:mx-[300px] md:px-0 px-3">
     <div v-for="item, index in memoryList" :key="index" class="my-6">
       <Separator v-if="index % 6 === 0" :label="`${date}`" class="mb-6" />
       <ChatBoard :data="item" />

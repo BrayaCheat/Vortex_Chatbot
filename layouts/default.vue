@@ -9,7 +9,7 @@
         <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage"/>
         <Suggest @onSuggestion="onSuggestion" />
       </div>
-      <Prompt @onRequest="onRequest" class="md:mx-[250px]" />
+      <Prompt @onRequest="onRequest" class="md:mx-[300px]" />
     </div>
     <Toaster v-if="settingStore.isEnableNotification" />
   </ClientOnly>

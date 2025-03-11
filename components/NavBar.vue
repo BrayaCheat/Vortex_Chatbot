@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center p-3 border-b border-border bg-primary-foreground text-muted-foreground">
+  <nav class="flex items-center md:p-3 py-3 border-b border-border bg-primary-foreground text-muted-foreground">
     <div class="container md:mx-[200px] flex items-center">
       <SidePanel />
       <div class="flex-1">

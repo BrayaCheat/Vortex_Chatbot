@@ -20,7 +20,6 @@
 
 <script setup>
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
 import EnableDarkMode from '@/components/EnableDarkMode.vue';
 import EnableNotification from '@/components/EnableNotification.vue';
 import EnableSmartModel from '@/components/EnableSmartModel.vue';
