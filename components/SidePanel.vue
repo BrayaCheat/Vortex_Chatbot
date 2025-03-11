@@ -16,6 +16,7 @@
       </div>
 
       <div class="p-3 flex flex-col gap-3">
+        <Subscription/>
         <EnableDarkMode />
         <UserDisplayCard/>
       </div>
@@ -29,5 +30,6 @@ import EnableSmartModel from '@/components/EnableSmartModel.vue';
 import EnableClearConversation from '@/components/EnableClearConversation.vue';
 import EnableNotification from '@/components/EnableNotification.vue';
 import UserDisplayCard from '@/components/UserDisplayCard.vue';
+import Subscription from '@/components/Subscription.vue';
 import { Bolt } from 'lucide-vue-next';
 </script>

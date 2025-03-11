@@ -423,7 +423,7 @@ onUpdated(() => {
 ::v-deep .response-box p {
   font-size: 16px;
   color: hsl(var(--muted-foreground));
-  margin: 10px 0px;
+  margin: 4px 0px;
 }
 
 /* Bold Text */

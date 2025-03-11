@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useMemoryStore } from '@/store/memory';
 import { Card } from '@/components/ui/card';
 import ClearChat from '@/components/ClearChat.vue';
