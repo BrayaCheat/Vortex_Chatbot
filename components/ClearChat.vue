@@ -2,7 +2,7 @@
   <Dialog>
     <DialogTrigger as-child>
       <Button
-        class="w-full"
+        class="w-full mb-3"
         variant="destructive"
         v-if="showDeleteButton"
       >

@@ -14,14 +14,6 @@
       </DropdownMenuTrigger>
       <DropdownMenuContent class="rounded-[10px] w-56">
         <DropdownMenuGroup>
-          <!-- <DropdownMenuItem
-            v-for="item, index in links"
-            :key="index"
-            class="cursor-pointer"
-          >
-            <NavigateButton :data="item"/>
-          </DropdownMenuItem>
-          <Separator class="my-1"/> -->
           <DropdownMenuItem class="cursor-pointer">
             <Logout />
           </DropdownMenuItem>
@@ -34,21 +26,10 @@
 <script setup>
 import { Card } from '@/components/ui/card'
 import Logout from '@/components/Logout.vue';
-import NavigateButton from '@/components/NavigateButton.vue';
 import { useUserStore } from '@/store/user';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem } from '@/components/ui/dropdown-menu'
-import { Ellipsis, User } from 'lucide-vue-next';
+import { Ellipsis } from 'lucide-vue-next';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
-
-//state
-const links = reactive([
-  {
-    label: 'View profile',
-    icon: User,
-    path: '/profile'
-  }
-])
 
 //computed
 const userStore = useUserStore()

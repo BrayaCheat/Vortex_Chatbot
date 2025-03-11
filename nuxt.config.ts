@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     },
     head: {
       charset: "utf-8",
-      title: "Braya - BRAINSTORM YOUR IDEA",
+      title: "Vortex - BRAINSTORM YOUR IDEA",
       viewport: "width=device-width, user-scalable=no, initial-scale=0",
       meta: [
 
@@ -97,7 +97,7 @@ export default defineNuxtConfig({
       name: "BRAYA - CHATBOT",
       short_name: "BRAYA - CHATBOT",
       description:
-        "An advanced AI-powered chatbot designed to assist users with various tasks and conversations.",
+        "An advanced AI-powered chatbot designed to assist my daily life with various tasks and conversations.",
       display: "standalone",
       theme_color: "#000000",
       icons: [

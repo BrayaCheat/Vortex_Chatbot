@@ -2,21 +2,18 @@
   <ClientOnly>
     <div class="flex h-screen overflow-hidden">
       <SidePanel />
-      <div class="flex-1 h-screen flex flex-col">
+      <div class="flex-1 h-screen flex flex-col md:mr-[300px]" :class="settingStore.isOpenHistoryPanel ? 'border-r' : 'ml-[300px]'">
         <NavBar />
         <main class="flex flex-col flex-1 h-screen overflow-auto p-3 w-full">
           <NuxtPage class="rounded-3xl p-3" />
           <VitePwaManifest class="rounded-3xl p-3" />
           <Loading v-if="isLoading" v-show="isShowPrompt" />
           <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage" v-show="isShowPrompt" />
+          <Greeting v-if="!memoryStore.memoryList.length" />
+          <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
         </main>
-
-        <Greeting v-if="!memoryStore.memoryList.length" />
-        <Suggest @onSuggestion="onSuggestion" v-show="isShowPrompt" />
-
-        <Prompt @onRequest="onRequest" v-show="isShowPrompt" />
+        <Prompt @onRequest="onRequest" v-show="isShowPrompt"/>
       </div>
-      <HistoryPanel />
       <Toaster v-if="settingStore.isEnableNotification" />
     </div>
   </ClientOnly>
@@ -30,14 +27,12 @@ import Retry from '@/components/Retry.vue';
 import Loading from '@/components/Loading.vue';
 import { useMemoryStore } from '@/store/memory';
 import { useSessionStore } from '@/store/session';
+import { UseSettingStore } from '@/store/setting';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
 import Toaster from '@/components/ui/toast/Toaster.vue';
-import { UseSettingStore } from '@/store/setting';
-import { useToast } from '~/components/ui/toast';
-import { useVibrate } from '@vueuse/core';
+import { useToast } from '@/components/ui/toast';
 import SidePanel from '@/components/SidePanel.vue';
-import HistoryPanel from '@/components/HistoryPanel.vue';
 import Greeting from '@/components/Greeting.vue';
 
 //state
@@ -47,7 +42,6 @@ const sessionStore = useSessionStore()
 const errorMessage = ref('')
 const route = useRoute()
 const { toast } = useToast()
-const { vibrate, stop, isSupported } = useVibrate({ pattern: [300, 100, 300] })
 
 //computed
 const chatDate = computed(() => new Date().toLocaleString())
@@ -82,7 +76,6 @@ const onRequest = async (payload) => {
     const data = response?.data?.data
     const message = response?.data?.message
     if (data && message) {
-      vibrate()
       toast({
         title: `New message`,
         description: `Received at: ${new Date().toDateString()}`,

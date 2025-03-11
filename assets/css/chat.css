@@ -1,0 +1,116 @@
+/* Headings */
+ .response-box h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 30px 0px;
+}
+
+/* Code Blocks */
+ .hljs,
+ .response-box pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  font-size: 14px;
+  padding: 12px;
+  background: hsl(var(--secondary));
+  border-radius: 6px;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Inline Code */
+ .response-box code {
+  background-color: hsl(var(--secondary));
+  color: rgb(16 185 129 / var(--tw-text-opacity, 1));
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Paragraph Styling */
+ .response-box p {
+  font-size: 16px;
+  color: hsl(var(--muted-foreground));
+  margin: 4px 0px;
+}
+
+/* Bold Text */
+ .response-box strong {
+  color: hsl(var(--primary));
+  font-weight: 500;
+  font-size: 16px;
+  margin: 30px 0px;
+}
+
+/* Italic Text */
+ .response-box em {
+  font-style: italic;
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+/* Lists */
+ .response-box ul,
+ .response-box ol {
+  padding-left: 30px;
+  margin: 30px 0px;
+}
+
+ .response-box ul {
+  list-style-type: disc;
+}
+
+ .response-box ol {
+  list-style-type: decimal;
+}
+
+ .response-box li {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* Blockquotes */
+ .response-box blockquote {
+  border-left: 4px solid hsl(var(--primary));
+  padding: 10px 15px;
+  background-color: hsl(var(--primary-foreground));
+  font-style: italic;
+  margin: 30px 0;
+}
+
+/* Tables */
+ .response-box table {
+  width: 100%;
+  font-size: 14px;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+ .response-box table td,
+ .response-box table th {
+  border: 1px solid hsl(var(--border));
+  padding: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+   .response-box {
+    font-size: 14px;
+  }
+
+   .hljs,
+   .response-box pre {
+    font-size: 14px;
+  }
+
+   .response-box table {
+    font-size: 14px;
+  }
+
+   .response-box ul,
+   .response-box ol {
+    padding-left: 0px;
+    margin: 30px 0px;
+  }
+}

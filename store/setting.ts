@@ -5,12 +5,14 @@ export const UseSettingStore = defineStore(
     const isEnableDarkMode = ref<boolean>(false);
     const isEnableSmartModel = ref<boolean>(false);
     const isEnableNotification = ref<boolean>(true);
+    const isOpenHistoryPanel = ref<boolean>(false)
 
     return {
       isEnableAutoClear,
       isEnableDarkMode,
       isEnableSmartModel,
       isEnableNotification,
+      isOpenHistoryPanel
     };
   },
   {
