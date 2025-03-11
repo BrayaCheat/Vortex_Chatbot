@@ -1,18 +1,11 @@
 <template>
-  <Card class="flex items-center p-1 rounded-3xl border border-border shadow-none bg-primary-foreground">
     <DropdownMenu>
       <DropdownMenuTrigger as-child>
-        <Button class="flex items-center flex-1 cursor-pointer p-1" variant="none">
-          <!-- <Avatar class="size-[30px]">
+          <Avatar class="size-6 cursor-pointer">
             <AvatarImage :src="getProfile"/>
-          </Avatar> -->
-          <span class="text-[14px] text-muted-foreground">{{ getUsername }}</span>
-          <div class="flex-1 flex items-center justify-end pr-1">
-            <component :is="Ellipsis" class="size-[30px] text-muted-foreground" />
-          </div>
-        </Button>
+          </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent class="rounded-[10px] w-56">
+      <DropdownMenuContent class="rounded-3xl w-56">
         <DropdownMenuGroup>
           <DropdownMenuItem class="cursor-pointer">
             <Logout />
@@ -20,19 +13,13 @@
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  </Card>
 </template>
 
 <script setup>
-import { Card } from '@/components/ui/card'
 import Logout from '@/components/Logout.vue';
 import { useUserStore } from '@/store/user';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem } from '@/components/ui/dropdown-menu'
-import { Ellipsis } from 'lucide-vue-next';
-import { Button } from '@/components/ui/button';
 
-//computed
 const userStore = useUserStore()
 const getProfile = computed(() => userStore.profile ? userStore.profile : '/icons/icon-128.png')
-const getUsername = computed(() => userStore.user?.email || '')
 </script>

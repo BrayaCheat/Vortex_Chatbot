@@ -8,7 +8,7 @@
         </h1>
       </Card>
     </DialogTrigger>
-    <DialogContent class="overflow-auto h-full">
+    <DialogContent class="overflow-auto ">
       <DialogHeader class="hidden"/>
       <DialogTitle class="hidden"/>
       <DialogDescription class="hidden"/>

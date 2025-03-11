@@ -1,9 +1,7 @@
 <template>
   <Sheet>
     <SheetTrigger>
-      <Button>
-        <component :is="PanelLeft" />
-      </Button>
+        <component :is="PanelLeft" class="size-5"/>
     </SheetTrigger>
     <SheetContent side="left" class="p-0 flex flex-col">
       <SheetTitle class="hidden" />
@@ -23,7 +21,6 @@
         </div>
         <div class="p-3 flex flex-col gap-3">
           <SettingButton />
-          <UserDisplayCard />
         </div>
       </div>
     </SheetContent>
@@ -32,8 +29,6 @@
 
 <script setup>
 import { useMemoryStore } from '@/store/memory';
-import { UseSettingStore } from '@/store/setting';
-import UserDisplayCard from '@/components/UserDisplayCard.vue';
 import ClearChat from '@/components/ClearChat.vue';
 import { Badge } from '@/components/ui/badge';
 import SettingButton from '@/components/SettingButton.vue';

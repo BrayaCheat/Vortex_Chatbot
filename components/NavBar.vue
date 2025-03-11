@@ -5,6 +5,7 @@
       <div class="flex-1">
         <Badge variant="secondary">VORTEX</Badge>
       </div>
+      <UserDisplayCard />
     </div>
 
   </nav>
@@ -15,8 +16,7 @@ import { ChevronsRight, ChevronsLeft } from 'lucide-vue-next';
 import { UseSettingStore } from '@/store/setting';
 import { Badge } from '@/components/ui/badge';
 import SidePanel from '@/components/SidePanel.vue';
+import UserDisplayCard from '@/components/UserDisplayCard.vue';
 
 const settingStore = UseSettingStore()
-const toggleIcon = computed(() => settingStore.isOpenHistoryPanel ? ChevronsLeft : ChevronsRight)
-const toggleHistoryPanel = () => settingStore.isOpenHistoryPanel = !settingStore.isOpenHistoryPanel
 </script>

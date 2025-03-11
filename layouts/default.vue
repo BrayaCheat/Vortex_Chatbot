@@ -7,10 +7,9 @@
         <NuxtPage />
         <Loading v-if="isLoading"/>
         <Retry v-if="isError" @onRetry="onRetry" :errorMessage="errorMessage"/>
-        <Greeting v-if="!memoryStore.memoryList.length" />
         <Suggest @onSuggestion="onSuggestion" />
       </div>
-      <Prompt @onRequest="onRequest" class="md:mx-[200px]" />
+      <Prompt @onRequest="onRequest" class="md:mx-[250px]" />
     </div>
     <Toaster v-if="settingStore.isEnableNotification" />
   </ClientOnly>
@@ -29,14 +28,12 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
 import Toaster from '@/components/ui/toast/Toaster.vue';
 import { useToast } from '@/components/ui/toast';
-import Greeting from '@/components/Greeting.vue';
 
 //state
 const memoryStore = useMemoryStore()
 const settingStore = UseSettingStore()
 const sessionStore = useSessionStore()
 const errorMessage = ref('')
-const route = useRoute()
 const { toast } = useToast()
 
 //computed
