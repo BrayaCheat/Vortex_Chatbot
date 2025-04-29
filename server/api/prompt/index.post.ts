@@ -16,7 +16,8 @@ export default defineEventHandler(async (event) => {
     const access_token = event.headers.get("access_token");
     const refresh_token = event.headers.get("refresh_token");
     const model = event.headers.get('model')
-    const configModel = model === 'enable' ? SMART_MODEL : NORMAL_MODEL
+    // const configModel = model === 'enable' ? SMART_MODEL : NORMAL_MODEL
+    const configModel = SMART_MODEL
 
     if (!access_token || !refresh_token) {
       return createError({
