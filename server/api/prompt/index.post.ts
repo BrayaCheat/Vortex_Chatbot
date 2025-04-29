@@ -67,14 +67,13 @@ export default defineEventHandler(async (event) => {
           },
         ],
         generationConfig: {
-          temperature: 0.7,
-          topK: 40,
-          topP: 0.95,
-          maxOutputTokens: 256,       
+          temperature: 0.2,
+          topK: 15,
+          topP: 0.6,
+          maxOutputTokens: tokens,
           responseMimeType: "text/plain"
         }
       };
-
 
       const response = await $fetch(
         `${GEMINI_ENDPOINT}${configModel}?key=${GEMINI_KEY}`,
