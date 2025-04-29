@@ -42,8 +42,6 @@
           <span v-else>Continue</span>
         </Button>
       </form>
-
-      <p class="text-sm text-muted-foreground">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, fugit?</p>
     </Card>
   </div>
 </template>

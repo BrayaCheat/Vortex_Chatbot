@@ -4,4 +4,5 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (!sessionStore.session) {
     return navigateTo("/login");
   }
+  return
 });

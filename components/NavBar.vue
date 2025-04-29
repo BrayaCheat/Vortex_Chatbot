@@ -12,7 +12,6 @@
 </template>
 
 <script setup>
-import { ChevronsRight, ChevronsLeft } from 'lucide-vue-next';
 import { UseSettingStore } from '@/store/setting';
 import { Badge } from '@/components/ui/badge';
 import SidePanel from '@/components/SidePanel.vue';
