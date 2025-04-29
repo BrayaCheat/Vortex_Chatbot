@@ -12,7 +12,7 @@
         </div>
       </form>
 
-      <div class="flex flex-wrap items-center py-3 bg-primary-foreground rounded-b-3xl">
+      <!-- <div class="flex flex-wrap items-center py-3 bg-primary-foreground rounded-b-3xl">
         <div v-for="item in promptOptions" :key="item.label"
           class="flex items-center h-5 text-muted-foreground hover:text-primary">
           <Button @click="item.action" variant="none" class="flex items-center gap-1">
@@ -26,7 +26,7 @@
             {{ promptLength }} / 1000
           </Badge>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- <p class="text-sm text-muted-foreground mt-3 text-center">Vortex can make mistakes. Check important info.</p> -->
